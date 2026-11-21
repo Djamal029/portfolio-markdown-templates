@@ -26,6 +26,7 @@ import datetime as dt
 import re
 import shutil
 import sys
+import tempfile
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -1122,14 +1123,25 @@ def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
     out = ROOT / "previews"
     safe_clean(out)
     jobs = [(tpl, lang, folder) for tpl in TEMPLATES for lang, folder in (("en", "content"), ("fr", "content-fr-example"))]
+    # Un profil d'exemple différent par modèle (outils/exemples.py), construit dans un dossier temporaire.
+    sys.path.insert(0, str(ROOT / "outils"))
+    try:
+        import exemples
+    except ImportError:
+        exemples = None
+    tmp = Path(tempfile.mkdtemp(prefix="portfolio-exemples-"))
     for tpl, lang, folder in jobs:
         if not (ROOT / folder).is_dir():
             print(f"Dossier {folder}/ absent : aperçu {tpl.upper()} {lang} ignoré.")
             continue
-        code = main(["--content", folder, "--template", tpl, "--language", lang, "--out", f"previews/{tpl}/{lang}", "--quiet"])
+        source = folder
+        if exemples is not None and tpl in exemples.PERSONAS:
+            source = str(exemples.make_content(tpl, lang, ROOT / folder, tmp / tpl / lang))
+        code = main(["--content", source, "--template", tpl, "--language", lang, "--out", f"previews/{tpl}/{lang}", "--quiet"])
         if code:
             return code
         (out / tpl / BUILD_MARKER).write_text("", encoding="utf-8")
+    shutil.rmtree(tmp, ignore_errors=True)
     thumbs = out / "thumbs"
     thumbs.mkdir(exist_ok=True)
     cards, minis = [], []

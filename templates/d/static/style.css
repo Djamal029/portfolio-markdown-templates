@@ -410,9 +410,10 @@ h1.shine-text { background: linear-gradient(100deg, var(--text) 20%, rgb(var(--a
 .project-hero { border-radius: var(--radius); box-shadow: var(--shadow-lift); }
 
 @media (max-width: 980px) {
-  .tile-intro, .tile-photo { grid-column: span 12; grid-row: auto; }
-  .tile-photo { max-height: 340px; }
-  .tile-stat { grid-column: span 6; }
+  .tile-intro { grid-column: span 12; grid-row: auto; }
+  .tile-photo { grid-column: span 4; grid-row: auto; }
+  .tile-photo img { min-height: 0; aspect-ratio: 1; }
+  .tile-stat { grid-column: span 4; }
   .tile-links { grid-column: span 12; }
   .project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

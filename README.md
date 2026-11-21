@@ -24,7 +24,7 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ## 1. Les huit modèles
 
-**Voir les huit modèles en ligne, avec une courte animation explicative :** https://djamal029.github.io/portfolio-markdown-templates/ . Le bouton « Choisir ce modèle » compte combien de personnes ont choisi chaque modèle et mène au dépôt GitHub.
+**Voir les huit modèles en ligne, avec une courte animation explicative :** https://djamal029.github.io/portfolio-markdown-templates/ . Le bouton « Choisir ce modèle » compte combien de personnes ont choisi chaque modèle et mène au dépôt GitHub. Dans la galerie, chaque modèle montre un profil fictif différent (biostatistique, machine learning, IA, NLP, épidémiologie, data engineering…) ; ces profils viennent de `outils/exemples.py`. Votre propre site n'utilise que le dossier `content/`.
 
 | | Modèle A « Editorial » | Modèle B « Cards » | Modèle C « Sidebar » | Modèle D « Bento » | Modèle E « Spotlight » | Modèle F « Terminal » | Modèle G « Resume » | Modèle H « Horizon » |
 |---|---|---|---|---|---|---|---|---|
@@ -91,7 +91,7 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ![Modèle F en mode sombre](docs-assets/template-f-dark.webp)
 
-Les huit modèles s'adaptent au téléphone, se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).
+Les huit modèles s'adaptent au téléphone, à la tablette (portrait et paysage), se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).
 
 ### Comparer les modèles chez vous
 
