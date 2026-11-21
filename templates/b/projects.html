@@ -1,0 +1,19 @@
+{% extends "_base.html" %}
+{% from "_macros.html" import page_head, project_card %}
+{% block title %}{{ t.nav_projects }} · {{ profile.name }}{% endblock %}
+{% block main %}
+{{ page_head(t.section_projects) }}
+<section class="wrap block" aria-label="{{ t.section_projects }}">
+  {% if has_academic and has_personal %}
+  <div class="filters" role="group" aria-label="{{ t.filter_label }}" data-filters>
+    <button type="button" class="filter" data-filter="all" aria-pressed="true">{{ t.filter_all }}</button>
+    <button type="button" class="filter" data-filter="academic" aria-pressed="false">{{ t.academic }}</button>
+    <button type="button" class="filter" data-filter="personal" aria-pressed="false">{{ t.personal }}</button>
+  </div>
+  {% endif %}
+  <ul class="card-grid" data-project-grid>
+    {% for p in projects %}{{ project_card(p, t, root) }}{% endfor %}
+  </ul>
+  <p class="muted" hidden data-empty>{{ t.no_projects }}</p>
+</section>
+{% endblock %}

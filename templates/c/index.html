@@ -1,0 +1,137 @@
+{% extends "_base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_macros.html" import section_head, tags, contact_buttons, project_links %}
+{% block main %}
+<section class="intro" id="home" aria-labelledby="hero-title">
+  <p class="kicker">{{ profile.headline }}</p>
+  <h1 id="hero-title" class="intro-title">{{ profile.name }}</h1>
+  {% if profile.pitch_html %}<div class="intro-pitch">{{ profile.pitch_html | safe }}</div>{% endif %}
+  <div class="actions">
+    {% if visible.contact %}<a class="btn btn-primary" href="#contact">{{ icon("mail") }}<span>{{ t.contact_me }}</span></a>{% endif %}
+    {% if visible.projects %}<a class="btn btn-ghost" href="#projects"><span>{{ t.section_projects }}</span>{{ icon("arrow-right", 16) }}</a>{% endif %}
+  </div>
+</section>
+
+{% if visible.about %}
+<section class="section" id="about" aria-labelledby="about-title">
+  {{ section_head("about", t) }}
+  <div class="prose">{{ about_html | safe }}</div>
+</section>
+{% endif %}
+
+{% if visible.experiences %}
+<section class="section" id="experiences" aria-labelledby="experiences-title">
+  {{ section_head("experiences", t) }}
+  <ol class="rows">
+    {% for e in experiences %}
+    <li class="row">
+      <div class="row-side">
+        <time class="mono"{% if e.start_iso %} datetime="{{ e.start_iso }}"{% endif %}>{{ e.dates }}</time>
+        <span class="type-label">{{ e.type_label }}</span>
+      </div>
+      <article class="row-main">
+        <header class="exp-head">
+          {% if e.logo %}<img class="exp-logo" src="{{ root }}{{ e.logo }}" alt="{{ e.logo_alt }}" width="40" height="40" loading="lazy">
+          {% else %}<span class="exp-logo exp-initials" aria-hidden="true">{{ e.org_initials }}</span>{% endif %}
+          <div>
+            <h3>{{ e.title }}</h3>
+            <p class="exp-org">{{ e.organisation }}{% if e.location %}<span class="muted"> · {{ e.location }}</span>{% endif %}</p>
+          </div>
+        </header>
+        {% if e.body_html %}<div class="prose">{{ e.body_html | safe }}</div>{% endif %}
+        {{ tags(e.tags, t) }}
+      </article>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
+
+{% if visible.projects %}
+<section class="section" id="projects" aria-labelledby="projects-title">
+  {{ section_head("projects", t) }}
+  {% if has_academic and has_personal %}
+  <div class="filters" role="group" aria-label="{{ t.filter_label }}" data-filters>
+    <button type="button" class="filter" data-filter="all" aria-pressed="true">{{ t.filter_all }}</button>
+    <button type="button" class="filter" data-filter="academic" aria-pressed="false">{{ t.academic }}</button>
+    <button type="button" class="filter" data-filter="personal" aria-pressed="false">{{ t.personal }}</button>
+  </div>
+  {% endif %}
+  <ul class="project-list" data-project-grid>
+    {% for p in projects %}
+    <li class="project-item{% if not p.thumbnail %} no-thumb{% endif %}" data-category="{{ p.category }}">
+      {% if p.thumbnail %}
+      <div class="project-thumb"><img src="{{ root }}{{ p.thumbnail }}" alt="{{ p.thumbnail_alt }}" width="1200" height="675" loading="lazy"></div>
+      {% endif %}
+      <div class="project-body">
+        <p class="project-meta mono"><span class="cat cat-{{ p.category }}">{{ p.category_label }}</span><time datetime="{{ p.date_iso }}">{{ p.date_label }}</time>{% if p.featured %}<span class="star">★ {{ t.featured }}</span>{% endif %}</p>
+        <h3>{% if p.has_page %}<a href="{{ root }}projects/{{ p.slug }}.html">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</h3>
+        <p class="project-summary">{{ p.summary }}</p>
+        {{ tags(p.tags, t) }}
+        <div class="project-links">
+          {% if p.has_page %}<a class="link-more" href="{{ root }}projects/{{ p.slug }}.html">{{ t.view_project }}{{ icon("arrow-right", 16) }}<span class="sr-only">: {{ p.title }}</span></a>{% endif %}
+          {{ project_links(p, t, root) }}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="muted" hidden data-empty>{{ t.no_projects }}</p>
+</section>
+{% endif %}
+
+{% if visible.skills %}
+<section class="section" id="skills" aria-labelledby="skills-title">
+  {{ section_head("skills", t) }}
+  {% if skills.intro_html %}<div class="prose">{{ skills.intro_html | safe }}</div>{% endif %}
+  <div class="skills">
+    {% for g in skills.groups %}
+    <div class="skill-group">
+      <h3 class="mono">{{ g.name }}</h3>
+      {% if g.has_levels %}
+      <ul class="skill-meter">
+        {% for s in g.entries %}
+        <li>
+          <span>{{ s.name }}</span>
+          {% if s.level %}<span class="meter mono" role="img" aria-label="{{ t.level.format(n=s.level) }}"><span aria-hidden="true">{{ "■" * s.level }}</span><span class="off" aria-hidden="true">{{ "■" * (5 - s.level) }}</span></span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <ul class="tags">{% for s in g.entries %}<li>{{ s.name }}</li>{% endfor %}</ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if visible.education %}
+<section class="section" id="education" aria-labelledby="education-title">
+  {{ section_head("education", t) }}
+  <ol class="rows">
+    {% for e in education %}
+    <li class="row">
+      <div class="row-side"><span class="mono">{{ e.dates }}</span></div>
+      <div class="row-main">
+        <h3>{{ e.degree }}</h3>
+        <p class="exp-org">{{ e.school }}{% if e.location %}<span class="muted"> · {{ e.location }}</span>{% endif %}</p>
+        {% if e.details_html %}<div class="prose muted">{{ e.details_html | safe }}</div>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
+
+{% if visible.contact %}
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  {{ section_head("contact", t) }}
+  <div class="contact-box">
+    <p class="contact-title">{{ t.contact_title }}</p>
+    <p class="muted">{{ t.contact_text }}</p>
+    <div class="actions">{{ contact_buttons(profile, t, root) }}</div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

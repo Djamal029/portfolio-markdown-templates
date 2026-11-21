@@ -1,0 +1,32 @@
+{% extends "_base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_macros.html" import page_head %}
+{% block title %}{{ t.nav_contact }} · {{ profile.name }}{% endblock %}
+{% block main %}
+{{ page_head(t.contact_title, t.contact_text) }}
+<section class="wrap block" aria-label="{{ t.section_contact }}">
+  <ul class="contact-grid">
+    {% if profile.email %}
+    <li><a class="card contact-card contact-primary" href="mailto:{{ profile.email }}">{{ icon("mail", 22) }}<span class="contact-label">{{ t.email }}</span><span class="contact-value">{{ profile.email }}</span></a></li>
+    {% endif %}
+    {% if profile.phone %}
+    <li><a class="card contact-card" href="tel:{{ profile.phone_link }}">{{ icon("phone", 22) }}<span class="contact-label">{{ t.phone }}</span><span class="contact-value">{{ profile.phone }}</span></a></li>
+    {% endif %}
+    {% if profile.linkedin %}
+    <li><a class="card contact-card" href="{{ profile.linkedin }}" rel="noopener" target="_blank">{{ icon("linkedin", 22) }}<span class="contact-label">{{ t.linkedin }}</span><span class="contact-value">{{ profile.linkedin | replace("https://", "") | replace("www.", "") }}</span></a></li>
+    {% endif %}
+    {% if profile.github %}
+    <li><a class="card contact-card" href="{{ profile.github }}" rel="noopener" target="_blank">{{ icon("github", 22) }}<span class="contact-label">{{ t.github }}</span><span class="contact-value">{{ profile.github | replace("https://", "") }}</span></a></li>
+    {% endif %}
+    {% if profile.website %}
+    <li><a class="card contact-card" href="{{ profile.website }}" rel="noopener" target="_blank">{{ icon("globe", 22) }}<span class="contact-label">{{ t.website }}</span><span class="contact-value">{{ profile.website | replace("https://", "") }}</span></a></li>
+    {% endif %}
+    {% if profile.location %}
+    <li><div class="card contact-card">{{ icon("pin", 22) }}<span class="contact-label">{{ t.location }}</span><span class="contact-value">{{ profile.location }}</span></div></li>
+    {% endif %}
+  </ul>
+  {% if profile.cv_pdf %}
+  <p class="contact-cv"><a class="btn btn-primary" href="{{ root }}{{ profile.cv_pdf }}" download>{{ icon("download") }}<span>{{ t.download_cv }}</span></a></p>
+  {% endif %}
+</section>
+{% endblock %}

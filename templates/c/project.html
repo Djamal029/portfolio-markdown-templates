@@ -1,0 +1,19 @@
+{% extends "_base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_macros.html" import tags, project_links %}
+{% block title %}{{ project.title }} · {{ profile.name }}{% endblock %}
+{% block description %}{{ project.summary }}{% endblock %}
+{% block main %}
+<article class="project-page">
+  <a class="back-link" href="{{ root }}{{ projects_page }}">{{ icon("arrow-left", 16) }}<span>{{ t.back_to_projects }}</span></a>
+  <p class="project-meta mono"><span class="cat cat-{{ project.category }}">{{ project.category_label }}</span><time datetime="{{ project.date_iso }}">{{ project.date_label }}</time></p>
+  <h1>{{ project.title }}</h1>
+  <p class="lead">{{ project.summary }}</p>
+  {{ tags(project.tags, t) }}
+  {% if project.links %}<div class="project-links">{{ project_links(project, t, root) }}</div>{% endif %}
+  {% if project.thumbnail %}
+  <figure class="project-hero"><img src="{{ root }}{{ project.thumbnail }}" alt="{{ project.thumbnail_alt }}" width="1200" height="675"></figure>
+  {% endif %}
+  <div class="prose">{{ project_body | safe }}</div>
+</article>
+{% endblock %}

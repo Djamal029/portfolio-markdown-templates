@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guide du portfolio Markdown</title>
+<style>
+:root{--bg:#fbfaf7;--surface:#fff;--surface-2:#f2f0ea;--text:#1c1917;--muted:#5a5550;--line:#e4e0d8;--accent:#0f766e;--code:#f4f2ec;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#131211;--surface:#1c1b19;--surface-2:#252320;--text:#ede9e3;--muted:#b0aaa2;--line:#34312d;--accent:#5fc4b8;--code:#201f1c;color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:20px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.7 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.layout{display:grid;grid-template-columns:280px minmax(0,1fr);max-width:1280px;margin:0 auto}
+nav.toc{position:sticky;top:0;height:100vh;overflow-y:auto;padding:32px 24px;border-right:1px solid var(--line)}
+nav.toc p{font-weight:700;margin:0 0 10px}
+nav.toc ul{list-style:none;margin:0;padding:0}
+nav.toc li{margin:2px 0}
+nav.toc a{display:block;padding:5px 10px;border-radius:8px;color:var(--muted);text-decoration:none;font-size:.93rem}
+nav.toc a:hover{background:var(--surface-2);color:var(--text)}
+main{padding:40px 56px 80px;min-width:0;max-width:900px}
+h1{font-size:clamp(1.9rem,4vw,2.6rem);line-height:1.15;letter-spacing:-.02em;margin:0 0 16px}
+h2{font-size:1.6rem;margin:56px 0 14px;padding-top:14px;border-top:1px solid var(--line);letter-spacing:-.01em}
+h3{font-size:1.2rem;margin:32px 0 10px}
+a{color:var(--accent)}
+img{max-width:100%;height:auto;border-radius:12px;border:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.08);display:block;margin:14px 0}
+p img{display:inline-block}
+blockquote{margin:16px 0;padding:12px 18px;border-left:4px solid var(--accent);background:var(--surface);border-radius:0 10px 10px 0;color:var(--muted)}
+blockquote p{margin:0}
+code{font-family:ui-monospace,"Cascadia Code",Consolas,monospace;font-size:.88em;background:var(--code);padding:.12em .4em;border-radius:5px}
+pre{background:var(--code);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto;line-height:1.5}
+pre code{background:none;padding:0;font-size:.86rem}
+table{border-collapse:collapse;width:100%;margin:16px 0;font-size:.94rem;display:block;overflow-x:auto}
+th,td{text-align:left;vertical-align:top;padding:9px 12px;border-bottom:1px solid var(--line)}
+th{background:var(--surface-2)}
+hr{display:none}
+li{margin:4px 0}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+@media (max-width:900px){.layout{grid-template-columns:1fr}nav.toc{position:static;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:20px 16px}main{padding:28px 16px 60px}}
+</style>
+</head>
+<body>
+<div class="layout">
+<nav class="toc" aria-label="Sommaire"><p>Sommaire</p><ul><li><a href="#1-les-trois-modèles">1. Les trois modèles</a></li><li><a href="#2-démarrage-rapide-5-minutes">2. Démarrage rapide (5 minutes)</a></li><li><a href="#3-ce-quil-faut-modifier">3. Ce qu'il faut modifier</a></li><li><a href="#4-référence-des-fichiers-champ-par-champ">4. Référence des fichiers, champ par champ</a></li><li><a href="#5-couleurs-et-polices">5. Couleurs et polices</a></li><li><a href="#6-tâches-courantes">6. Tâches courantes</a></li><li><a href="#7-voir-le-site-sur-son-ordinateur">7. Voir le site sur son ordinateur</a></li><li><a href="#8-publier-sur-github-pages">8. Publier sur GitHub Pages</a></li><li><a href="#9-faq">9. FAQ</a></li></ul></nav>
+<main>
+<h1 id="portfolio-markdown--trois-modèles-prêts-à-lemploi">Portfolio Markdown : trois modèles prêts à l'emploi</h1>
+<p>Créez votre site portfolio <strong>sans écrire de HTML</strong>. Vous remplissez quelques fichiers texte (Markdown), un script fabrique le site, et GitHub Pages le publie gratuitement.</p>
+<p>Trois modèles visuels sont fournis, avec <strong>le même contenu</strong> : vous passez de l'un à l'autre en changeant une seule ligne. Couleurs, polices, langue (français ou anglais) et sections se règlent dans un seul fichier.</p>
+<hr />
+<hr />
+<h2 id="1-les-trois-modèles">1. Les trois modèles</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Modèle A « Editorial »</th>
+<th>Modèle B « Cards »</th>
+<th>Modèle C « Sidebar »</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Organisation</td>
+<td>une seule longue page, menu de sections collé en haut</td>
+<td>plusieurs pages (Accueil, À propos, Expériences, Projets, Contact)</td>
+<td>profil fixe dans une colonne à gauche, contenu à droite</td>
+</tr>
+<tr>
+<td>Style</td>
+<td>titres à empattements, ambiance magazine</td>
+<td>grille de cartes, police sans empattements</td>
+<td>sobre et technique, détails en police à chasse fixe</td>
+</tr>
+<tr>
+<td>Palette par défaut</td>
+<td><code>teal</code></td>
+<td><code>indigo</code></td>
+<td><code>graphite</code></td>
+</tr>
+<tr>
+<td>Idéal pour</td>
+<td>un profil à lire d'une traite</td>
+<td>beaucoup de projets</td>
+<td>un profil technique, data ou dev</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Modèle A, ordinateur et téléphone</strong></p>
+<p><img alt="Modèle A sur ordinateur" src="docs-assets/template-a-desktop.webp" /></p>
+<p><img src="docs-assets/template-a-mobile.webp" alt="Modèle A sur téléphone" width="300"></p>
+<p><strong>Modèle B, ordinateur et téléphone</strong></p>
+<p><img alt="Modèle B sur ordinateur" src="docs-assets/template-b-desktop.webp" /></p>
+<p><img src="docs-assets/template-b-mobile.webp" alt="Modèle B sur téléphone" width="300"></p>
+<p><strong>Modèle C, ordinateur et téléphone</strong></p>
+<p><img alt="Modèle C sur ordinateur" src="docs-assets/template-c-desktop.webp" /></p>
+<p><img src="docs-assets/template-c-mobile.webp" alt="Modèle C sur téléphone" width="300"></p>
+<p><strong>Mode sombre</strong> : chaque modèle a un bouton lune/soleil, et suit automatiquement le réglage de l'ordinateur du visiteur.</p>
+<p><img alt="Modèle C en mode sombre" src="docs-assets/template-c-dark.webp" /></p>
+<p>Les trois modèles s'adaptent au téléphone, se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).</p>
+<h3 id="comparer-les-trois-modèles-chez-vous">Comparer les trois modèles chez vous</h3>
+<p>Une commande génère les trois modèles avec l'exemple, en anglais et en français, et ouvre une page de choix :</p>
+<pre><code>uv run build.py --preview-all
+</code></pre>
+<p>(ou <code>install.ps1 preview-all</code> sous Windows, <code>sh install.sh preview-all</code> sous Linux et macOS). La page s'ouvre sur <code>http://localhost:8000</code> ; elle est aussi lisible sans serveur en double-cliquant sur <code>previews/index.html</code>. Arrêtez le serveur avec Ctrl+C.</p>
+<p><img alt="Page de choix des modèles" src="docs-assets/preview-chooser.webp" /></p>
+<hr />
+<h2 id="2-démarrage-rapide-5-minutes">2. Démarrage rapide (5 minutes)</h2>
+<ol>
+<li><strong>Téléchargez</strong> ce dossier (bouton vert <strong>Code &gt; Download ZIP</strong> sur GitHub), puis décompressez-le.</li>
+<li><strong>Lancez l'installateur</strong>, qui installe ce qu'il faut (l'outil <code>uv</code>) si besoin, génère le site et l'ouvre :
+   - <strong>Windows</strong> : double-cliquez sur <code>install.cmd</code>. Ou, dans PowerShell ouvert dans le dossier : <code>powershell -ExecutionPolicy Bypass -File install.ps1</code>
+   - <strong>macOS</strong> : ouvrez le Terminal, tapez <code>cd</code> (avec un espace), glissez le dossier dans la fenêtre, Entrée, puis <code>sh install.sh</code>
+   - <strong>Linux</strong> : dans un terminal ouvert dans le dossier : <code>sh install.sh</code></li>
+<li><strong>Modifiez</strong> les fichiers du dossier <code>content/</code> (voir plus bas), puis relancez l'installateur (ou <code>uv run build.py</code>) pour voir le résultat.</li>
+<li><strong>Publiez</strong> sur GitHub Pages (section 8).</li>
+</ol>
+<p><img alt="Sortie de l'installateur sous Windows" src="docs-assets/installer-windows.webp" /></p>
+<p>L'installateur peut être relancé autant de fois que vous voulez : si <code>uv</code> est déjà là, il ne réinstalle rien. Options :</p>
+<table>
+<thead>
+<tr>
+<th>Commande</th>
+<th>Effet</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>install.ps1</code> / <code>sh install.sh</code></td>
+<td>installe uv si besoin, génère <code>docs/</code>, ouvre <code>docs/index.html</code></td>
+</tr>
+<tr>
+<td><code>install.ps1 preview</code> / <code>sh install.sh preview</code></td>
+<td>idem, puis sert le site sur <code>http://localhost:8000</code> (Ctrl+C pour arrêter)</td>
+</tr>
+<tr>
+<td><code>install.ps1 preview-all</code> / <code>sh install.sh preview-all</code></td>
+<td>les trois modèles côte à côte (voir section 1)</td>
+</tr>
+<tr>
+<td><code>-Port 8080</code> / <code>--port 8080</code></td>
+<td>utiliser un autre port</td>
+</tr>
+<tr>
+<td><code>-NoOpen</code> / <code>--no-open</code></td>
+<td>ne pas ouvrir le navigateur</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3-ce-quil-faut-modifier">3. Ce qu'il faut modifier</h2>
+<pre><code>portfolio/
+  content/              &lt;- LE SEUL DOSSIER À MODIFIER
+    site.yml            réglages : langue, modèle, couleurs, polices, sections
+    profile.md          nom, titre, photo, liens, CV, courte présentation
+    about.md            texte libre « À propos »
+    skills.md           compétences, rangées par groupes
+    education.md        formations
+    experiences/        un fichier .md par expérience
+    projects/           un fichier .md par projet
+    images/             photo, logos, vignettes de projets
+    files/              CV en PDF, rapports
+  content-fr-example/   le même exemple, rédigé en français (à consulter)
+  templates/a, b, c/    les modèles (inutile d'y toucher)
+  build.py              le script qui fabrique le site
+  install.ps1, install.sh, install.cmd   installateurs
+  docs/                 le site généré (ne pas modifier à la main)
+  docs-assets/          images de ce guide
+  outils/               regénère README.html à partir de README.md (uv run outils/readme_html.py)
+</code></pre>
+<p>Le dossier <code>content/</code> contient un exemple complet en anglais (Alex Martin, étudiant fictif). <code>content-fr-example/</code> contient le même exemple en français. <strong>Remplacez le contenu d'Alex par le vôtre</strong>, fichier par fichier. Si vous préférez partir de la version française : supprimez <code>content/</code> puis renommez <code>content-fr-example/</code> en <code>content/</code>.</p>
+<p>Un éditeur de texte suffit (Bloc-notes, TextEdit en mode texte brut, ou mieux <a href="https://code.visualstudio.com/">VS Code</a>). Voici le dossier ouvert dans un éditeur :</p>
+<p><img alt="Le dossier content dans un éditeur" src="docs-assets/editor-content.webp" /></p>
+<h3 id="comment-lire-un-fichier-md">Comment lire un fichier .md</h3>
+<p>Chaque fichier a deux parties :</p>
+<pre><code class="language-markdown">---
+title: Data Science Intern        &lt;- en-tête : des lignes « clé: valeur »
+start: 2025-06
+---
+- Texte libre en Markdown          &lt;- corps : votre texte
+- **gras**, *italique*, [lien](https://exemple.com)
+</code></pre>
+<p>Règles qui évitent 90 % des erreurs :</p>
+<ul>
+<li>l'en-tête commence et finit par une ligne <code>---</code> ;</li>
+<li>après les deux-points, <strong>mettez un espace</strong> : <code>title: Mon titre</code> ;</li>
+<li>si une valeur contient <code>:</code> ou <code>#</code>, mettez-la entre guillemets : <code>title: "Stage : data science"</code> ;</li>
+<li>les couleurs commencent par <code>#</code> : <strong>mettez-les toujours entre guillemets</strong> (<code>"#0f766e"</code>), sinon elles sont lues comme un commentaire ;</li>
+<li>indentez avec des <strong>espaces</strong>, jamais des tabulations ;</li>
+<li>les dates s'écrivent <code>AAAA-MM</code> (exemple <code>2024-09</code>), ou <code>present</code> pour un poste en cours ;</li>
+<li>les chemins d'images sont relatifs au dossier <code>content/</code> : <code>images/photo.jpg</code>.</li>
+</ul>
+<hr />
+<h2 id="4-référence-des-fichiers-champ-par-champ">4. Référence des fichiers, champ par champ</h2>
+<h3 id="contentsiteyml"><code>content/site.yml</code></h3>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Obligatoire</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>language</code></td>
+<td>non (défaut <code>en</code>)</td>
+<td>langue de l'interface : <code>en</code> ou <code>fr</code> (menus, titres de sections, mois, « Aujourd'hui »...)</td>
+</tr>
+<tr>
+<td><code>template</code></td>
+<td>non (défaut <code>a</code>)</td>
+<td><code>a</code> (Editorial), <code>b</code> (Cards) ou <code>c</code> (Sidebar)</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>non</td>
+<td>titre de l'onglet du navigateur</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>non</td>
+<td>phrase affichée par Google et LinkedIn</td>
+</tr>
+<tr>
+<td><code>base_url</code></td>
+<td>non</td>
+<td>adresse finale du site, par exemple <code>https://pseudo.github.io/portfolio/</code></td>
+</tr>
+<tr>
+<td><code>palette</code></td>
+<td>non</td>
+<td><code>teal</code>, <code>indigo</code>, <code>forest</code>, <code>sunset</code> ou <code>graphite</code> (voir section 5)</td>
+</tr>
+<tr>
+<td><code>colors</code></td>
+<td>non</td>
+<td>couleurs personnalisées du mode clair (voir section 5)</td>
+</tr>
+<tr>
+<td><code>dark_colors</code></td>
+<td>non</td>
+<td>couleurs personnalisées du mode sombre</td>
+</tr>
+<tr>
+<td><code>dark_mode</code></td>
+<td>non (défaut <code>true</code>)</td>
+<td><code>false</code> pour supprimer le mode sombre et son bouton</td>
+</tr>
+<tr>
+<td><code>fonts</code></td>
+<td>non</td>
+<td>polices des titres (<code>heading</code>) et du texte (<code>body</code>)</td>
+</tr>
+<tr>
+<td><code>google_fonts</code></td>
+<td>non (défaut <code>true</code>)</td>
+<td><code>false</code> pour n'utiliser que les polices de l'ordinateur</td>
+</tr>
+<tr>
+<td><code>sections</code></td>
+<td>non</td>
+<td><code>true</code>/<code>false</code> pour chaque section : <code>about</code>, <code>experiences</code>, <code>projects</code>, <code>skills</code>, <code>education</code>, <code>contact</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-yaml">language: fr
+template: c
+title: &quot;Camille Durand, élève ingénieure à l'ENSAI&quot;
+description: &quot;Portfolio de Camille Durand, statistique et data science.&quot;
+base_url: &quot;https://camille-durand.github.io/portfolio/&quot;
+palette: &quot;forest&quot;
+dark_mode: true
+fonts:
+  heading: &quot;lora&quot;
+  body: &quot;&quot;
+sections:
+  about: true
+  experiences: true
+  projects: true
+  skills: true
+  education: true
+  contact: true
+</code></pre>
+<p>Une section sans contenu (par exemple aucun projet) est <strong>cachée automatiquement</strong>, même si elle vaut <code>true</code>.</p>
+<h3 id="contentprofilemd"><code>content/profile.md</code></h3>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Obligatoire</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><strong>oui</strong></td>
+<td>prénom et nom</td>
+</tr>
+<tr>
+<td><code>headline</code></td>
+<td><strong>oui</strong></td>
+<td>votre titre en une ligne</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td>non</td>
+<td>ville, pays</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td>non</td>
+<td>si renseigné, un bouton « Envoyer un e-mail » apparaît. Sinon, aucune adresse n'est affichée</td>
+</tr>
+<tr>
+<td><code>phone</code></td>
+<td>non</td>
+<td>numéro de téléphone</td>
+</tr>
+<tr>
+<td><code>show_phone</code></td>
+<td>non (défaut <code>false</code>)</td>
+<td>le numéro n'est <strong>jamais affiché</strong> tant que ce champ ne vaut pas <code>true</code></td>
+</tr>
+<tr>
+<td><code>photo</code></td>
+<td>non</td>
+<td>chemin de la photo, par exemple <code>images/photo.jpg</code> (carrée de préférence)</td>
+</tr>
+<tr>
+<td><code>photo_alt</code></td>
+<td>non</td>
+<td>description de la photo pour les lecteurs d'écran (défaut : « Portrait de ... »)</td>
+</tr>
+<tr>
+<td><code>cv_pdf</code></td>
+<td>non</td>
+<td>chemin du CV, par exemple <code>files/cv.pdf</code> : ajoute un bouton « Télécharger le CV »</td>
+</tr>
+<tr>
+<td><code>linkedin</code>, <code>github</code>, <code>website</code></td>
+<td>non</td>
+<td>adresses complètes, commençant par <code>https://</code></td>
+</tr>
+</tbody>
+</table>
+<p>Le corps du fichier est votre présentation courte (2 ou 3 phrases), affichée en haut du site.</p>
+<pre><code class="language-markdown">---
+name: Camille Durand
+headline: Élève ingénieure en data science
+location: Rennes, France
+email: camille.durand@example.com
+phone: &quot;+33 6 00 00 00 00&quot;
+show_phone: false
+photo: images/photo.jpg
+cv_pdf: files/cv-camille-durand.pdf
+linkedin: https://www.linkedin.com/in/camille-durand
+github: https://github.com/camille-durand
+website: &quot;&quot;
+---
+Élève ingénieure en deuxième année à l'**ENSAI**. Je recherche un stage de 6 mois en data science.
+</code></pre>
+<h3 id="contentaboutmd"><code>content/about.md</code></h3>
+<p>Texte libre en Markdown, sans en-tête obligatoire. Paragraphes, listes, gras, liens : tout est permis. Laissez le fichier vide pour cacher la section.</p>
+<pre><code class="language-markdown">J'ai découvert la statistique grâce à un projet de lycée...
+
+En dehors des cours :
+
+- je fais partie de l'association de théâtre ;
+- je cours un semi-marathon par an.
+</code></pre>
+<h3 id="contentskillsmd"><code>content/skills.md</code></h3>
+<p>Une liste de groupes. Chaque compétence s'écrit soit simplement, soit avec un niveau de 1 à 5 (affiché sous forme de points, de barre ou de carrés selon le modèle).</p>
+<pre><code class="language-markdown">---
+groups:
+  - name: Programmation
+    items:
+      - name: Python
+        level: 5
+      - name: R
+        level: 4
+  - name: Outils
+    items: [pandas, scikit-learn, Power BI]
+  - name: Langues
+    items: [Français (natif), Anglais (C1)]
+---
+</code></pre>
+<p>Le corps du fichier (sous le second <code>---</code>) est facultatif : une phrase d'introduction affichée au-dessus des compétences.</p>
+<h3 id="contenteducationmd"><code>content/education.md</code></h3>
+<pre><code class="language-markdown">---
+entries:
+  - school: ENSAI
+    degree: Diplôme d'ingénieur, statistique et science des données
+    location: Bruz, France
+    start: 2023-09
+    end: present
+    details: Modélisation statistique, machine learning, sondages.
+  - school: Lycée Exemple
+    degree: CPGE MP
+    location: Nantes, France
+    start: 2021-09
+    end: 2023-06
+---
+</code></pre>
+<p><code>school</code> et <code>degree</code> sont obligatoires ; <code>location</code>, <code>start</code>, <code>end</code> et <code>details</code> sont facultatifs. Les formations sont triées automatiquement, la plus récente en premier.</p>
+<h3 id="contentexperiencesmd-un-fichier-par-expérience"><code>content/experiences/*.md</code> (un fichier par expérience)</h3>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Obligatoire</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><strong>oui</strong></td>
+<td>intitulé du poste</td>
+</tr>
+<tr>
+<td><code>organisation</code></td>
+<td><strong>oui</strong></td>
+<td>entreprise ou association</td>
+</tr>
+<tr>
+<td><code>location</code></td>
+<td>non</td>
+<td>lieu</td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td><strong>oui</strong></td>
+<td>date de début <code>AAAA-MM</code></td>
+</tr>
+<tr>
+<td><code>end</code></td>
+<td><strong>oui</strong></td>
+<td>date de fin <code>AAAA-MM</code>, ou <code>present</code></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><strong>oui</strong></td>
+<td><code>internship</code> (stage), <code>job</code> (emploi), <code>apprenticeship</code> (alternance) ou <code>volunteering</code> (bénévolat)</td>
+</tr>
+<tr>
+<td><code>logo</code></td>
+<td>non</td>
+<td>chemin du logo, par exemple <code>images/logos/entreprise.png</code> (sinon, les initiales sont affichées)</td>
+</tr>
+<tr>
+<td><code>logo_alt</code></td>
+<td>non</td>
+<td>description du logo (défaut : « Logo de ... »)</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>non</td>
+<td>mots-clés : <code>[Python, SQL]</code></td>
+</tr>
+</tbody>
+</table>
+<p>Le corps contient vos réalisations, idéalement une liste à puces avec des résultats chiffrés.</p>
+<pre><code class="language-markdown">---
+title: Stagiaire data scientist
+organisation: Banque Exemple
+location: Paris, France
+start: 2025-06
+end: 2025-08
+type: internship
+logo: images/logos/banque-exemple.png
+tags: [Python, Scoring, SQL]
+---
+- Construit un modèle de scoring qui a amélioré l'AUC de 0,71 à 0,78.
+- Automatisé le reporting mensuel (deux jours gagnés par mois).
+</code></pre>
+<p>Les expériences sont triées automatiquement par date, la plus récente en premier.</p>
+<h3 id="contentprojectsmd-un-fichier-par-projet"><code>content/projects/*.md</code> (un fichier par projet)</h3>
+<table>
+<thead>
+<tr>
+<th>Champ</th>
+<th>Obligatoire</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td><strong>oui</strong></td>
+<td>nom du projet</td>
+</tr>
+<tr>
+<td><code>date</code></td>
+<td><strong>oui</strong></td>
+<td><code>AAAA-MM</code></td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td><strong>oui</strong></td>
+<td><code>academic</code> (académique) ou <code>personal</code> (personnel) : sert aux filtres</td>
+</tr>
+<tr>
+<td><code>summary</code></td>
+<td><strong>oui</strong></td>
+<td>une ou deux phrases, affichées sur la carte</td>
+</tr>
+<tr>
+<td><code>thumbnail</code></td>
+<td>non</td>
+<td>vignette, format paysage 16:9 conseillé (par exemple 1200 x 675 pixels)</td>
+</tr>
+<tr>
+<td><code>thumbnail_alt</code></td>
+<td>non</td>
+<td>description de la vignette (défaut : « Illustration du projet ... »)</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>non</td>
+<td>mots-clés</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td>non</td>
+<td><code>repo</code> (code), <code>demo</code> (démo en ligne), <code>report</code> (rapport : adresse web ou fichier <code>files/rapport.pdf</code>)</td>
+</tr>
+<tr>
+<td><code>featured</code></td>
+<td>non (défaut <code>false</code>)</td>
+<td><code>true</code> pour mettre le projet à la une</td>
+</tr>
+</tbody>
+</table>
+<p>Le corps est la page détaillée du projet (contexte, ce que vous avez fait, résultats, tableaux, images). <strong>Si le corps est vide</strong>, le projet n'a pas de page détaillée : seule la carte est affichée.</p>
+<pre><code class="language-markdown">---
+title: Scoring du défaut de crédit
+date: 2025-03
+category: academic
+thumbnail: images/thumbnails/credit.png
+thumbnail_alt: Courbe ROC des trois modèles comparés
+tags: [Python, LightGBM]
+summary: Prédire le défaut de paiement sur 300 000 demandes de prêt.
+featured: true
+links:
+  repo: https://github.com/camille-durand/credit-scoring
+  report: files/rapport-credit.pdf
+---
+## Contexte
+
+Projet en équipe de 4 pour le cours de Machine Learning...
+</code></pre>
+<hr />
+<h2 id="5-couleurs-et-polices">5. Couleurs et polices</h2>
+<p>Tout se règle dans <code>content/site.yml</code>.</p>
+<h3 id="palettes-toutes-prêtes">Palettes toutes prêtes</h3>
+<p>Écrivez simplement <code>palette: "sunset"</code> (ou <code>teal</code>, <code>indigo</code>, <code>forest</code>, <code>graphite</code>). Chaque palette a une version claire et une version sombre, déjà vérifiées pour la lisibilité.</p>
+<p><img alt="Les cinq palettes, en clair et en sombre" src="docs-assets/palettes.webp" /></p>
+<p><img alt="La ligne palette dans site.yml" src="docs-assets/editor-site-yml.webp" /></p>
+<p><strong>Avant / après</strong> : le modèle B avec sa palette par défaut, puis avec <code>palette: "sunset"</code> et <code>heading: "lora"</code>.</p>
+<p><img alt="Avant : palette indigo" src="docs-assets/colors-before.webp" /></p>
+<p><img alt="Après : palette sunset et titres en Lora" src="docs-assets/colors-after.webp" /></p>
+<h3 id="couleurs-personnalisées">Couleurs personnalisées</h3>
+<p>Pour aller plus loin, remplacez une ou plusieurs couleurs de la palette (toujours <strong>entre guillemets</strong>) :</p>
+<pre><code class="language-yaml">palette: &quot;teal&quot;
+colors:
+  primary: &quot;#9d174d&quot;      # boutons et liens
+  secondary: &quot;#0369a1&quot;    # petits détails : étiquettes, « À la une »
+  background: &quot;#fffaf5&quot;   # fond de la page
+  surface: &quot;#ffffff&quot;      # fond des cartes
+  text: &quot;#1f1720&quot;         # texte
+dark_colors:
+  primary: &quot;&quot;             # vide = calculé automatiquement à partir du mode clair
+dark_mode: true           # false = pas de mode sombre ni de bouton lune/soleil
+</code></pre>
+<p>Le script <strong>vérifie la lisibilité</strong> (contraste suffisant pour les normes d'accessibilité). Si une couleur est trop claire ou trop proche du fond, il l'ajuste automatiquement et vous prévient, par exemple :</p>
+<pre><code>Avertissement (couleurs) : mode clair : la couleur principale #f5d90a contraste trop peu avec le fond ; le site utilise #86750b pour les liens et les boutons.
+</code></pre>
+<p>Pour trouver un code couleur : <a href="https://htmlcolorcodes.com/fr/">htmlcolorcodes.com</a>.</p>
+<h3 id="polices">Polices</h3>
+<pre><code class="language-yaml">fonts:
+  heading: &quot;fraunces&quot;   # titres
+  body: &quot;inter&quot;         # texte
+</code></pre>
+<p>Choix possibles : <code>inter</code>, <code>plus-jakarta-sans</code>, <code>space-grotesk</code>, <code>ibm-plex-sans</code> (sans empattements), <code>fraunces</code>, <code>lora</code>, <code>source-serif-4</code> (avec empattements), <code>jetbrains-mono</code> (chasse fixe), <code>system</code> (police de l'ordinateur, aucun téléchargement). Laissez vide pour garder la police du modèle. Avec <code>google_fonts: false</code>, aucune police n'est téléchargée et le site utilise les polices de l'ordinateur.</p>
+<hr />
+<h2 id="6-tâches-courantes">6. Tâches courantes</h2>
+<h3 id="ajouter-une-expérience-ou-un-projet">Ajouter une expérience ou un projet</h3>
+<ol>
+<li>Dans <code>content/experiences/</code> (ou <code>content/projects/</code>), <strong>copiez un fichier existant</strong> et renommez la copie, par exemple <code>stage-banque.md</code>. Utilisez des minuscules, des tirets et pas d'accents dans le nom du fichier : il sert d'adresse à la page du projet.</li>
+<li>Modifiez l'en-tête et le texte.</li>
+<li>Relancez <code>uv run build.py</code> (ou l'installateur).</li>
+</ol>
+<p>Pour supprimer un élément, supprimez son fichier. Pour le mettre de côté sans le supprimer, ajoutez un tiret bas au début du nom (<code>_brouillon.md</code>) : les fichiers qui commencent par <code>_</code> sont ignorés.</p>
+<h3 id="ajouter-une-photo-un-logo-ou-une-vignette">Ajouter une photo, un logo ou une vignette</h3>
+<ol>
+<li>Copiez l'image dans <code>content/images/</code> (ou un sous-dossier comme <code>images/thumbnails/</code>).</li>
+<li>Indiquez son chemin dans le fichier concerné : <code>thumbnail: images/thumbnails/mon-projet.png</code>.</li>
+<li>Formats acceptés : <code>.jpg</code>, <code>.png</code>, <code>.webp</code>, <code>.svg</code>. Pensez à alléger les photos (moins de 500 Ko).</li>
+<li>Remplissez <code>thumbnail_alt</code> (ou <code>photo_alt</code>, <code>logo_alt</code>) avec une courte description de l'image : c'est ce que lisent les personnes malvoyantes.</li>
+</ol>
+<p>Les images fournies (silhouette, logos à initiales, vignettes abstraites) sont des exemples neutres à remplacer.</p>
+<h3 id="changer-de-langue">Changer de langue</h3>
+<p>Dans <code>content/site.yml</code>, mettez <code>language: fr</code> ou <code>language: en</code>. Cela traduit l'interface (menus, titres, mois, « Aujourd'hui »). <strong>Votre texte n'est pas traduit</strong> : rédigez-le dans la langue choisie.</p>
+<h3 id="changer-de-modèle">Changer de modèle</h3>
+<p>Dans <code>content/site.yml</code>, mettez <code>template: a</code>, <code>template: b</code> ou <code>template: c</code>, puis relancez le script. Aucun autre changement n'est nécessaire. Pour essayer sans modifier le fichier : <code>uv run build.py --template c</code>.</p>
+<hr />
+<h2 id="7-voir-le-site-sur-son-ordinateur">7. Voir le site sur son ordinateur</h2>
+<p>Le plus simple est l'installateur (section 2). Si vous préférez les commandes :</p>
+<h3 id="installer-uv-une-seule-fois">Installer uv (une seule fois)</h3>
+<p><code>uv</code> est un petit outil qui installe Python et les bibliothèques nécessaires à votre place.</p>
+<ul>
+<li><strong>Windows</strong> (PowerShell) : <code>powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"</code></li>
+<li><strong>macOS et Linux</strong> : <code>curl -LsSf https://astral.sh/uv/install.sh | sh</code></li>
+</ul>
+<p>Fermez puis rouvrez le terminal.</p>
+<h3 id="générer-et-ouvrir-le-site">Générer et ouvrir le site</h3>
+<p>Ouvrez un terminal <strong>dans le dossier du portfolio</strong> (sous Windows : clic droit dans le dossier, « Ouvrir dans le terminal »), puis :</p>
+<pre><code>uv run build.py
+</code></pre>
+<p>Ouvrez ensuite <code>docs/index.html</code> en double-cliquant dessus. Après chaque modification, relancez la commande et rafraîchissez la page (F5).</p>
+<h3 id="si-quelque-chose-ne-va-pas">Si quelque chose ne va pas</h3>
+<p>Si le contenu contient une erreur, le site n'est pas généré et le script indique <strong>le fichier, le champ et la correction attendue</strong> :</p>
+<p><img alt="Exemple de message d'erreur" src="docs-assets/error-message.webp" /></p>
+<p>Ici, deux corrections : mettre le titre entre guillemets (<code>title: "Data Science Intern: churn"</code>) et écrire la date <code>2024-12</code>.</p>
+<p><strong>Sans uv</strong> : <code>python -m pip install markdown pyyaml jinja2</code> puis <code>python build.py</code> (Python 3.11 ou plus récent).</p>
+<p>Options utiles :</p>
+<pre><code>uv run build.py --template b                                    # essayer un autre modèle
+uv run build.py --language fr                                   # essayer l'autre langue d'interface
+uv run build.py --content content-fr-example --out apercu-fr    # générer l'exemple français ailleurs
+uv run build.py --preview-all                                   # les trois modèles côte à côte
+</code></pre>
+<hr />
+<h2 id="8-publier-sur-github-pages">8. Publier sur GitHub Pages</h2>
+<h3 id="étape-1--créer-votre-dépôt">Étape 1 : créer votre dépôt</h3>
+<ol>
+<li>Créez un compte sur <a href="https://github.com">github.com</a> si besoin.</li>
+<li>Le plus simple : sur la page de ce projet, cliquez sur <strong>Use this template &gt; Create a new repository</strong> (ou <strong>Fork</strong>), nommez-le par exemple <code>portfolio</code>, laissez-le <strong>Public</strong>.</li>
+<li>Sinon, créez un dépôt vide (<strong>New repository</strong>) et envoyez-y le dossier :
+   - sans ligne de commande : sur la page du dépôt, <strong>uploading an existing file</strong>, glissez-déposez le contenu du dossier (y compris le dossier <code>.github</code> ; s'il n'apparaît pas, affichez les fichiers cachés) ;
+   - avec Git :
+     <code>git init
+     git add .
+     git commit -m "Mon portfolio"
+     git branch -M main
+     git remote add origin https://github.com/VOTRE-PSEUDO/portfolio.git
+     git push -u origin main</code></li>
+</ol>
+<h3 id="étape-2--activer-la-publication">Étape 2 : activer la publication</h3>
+<p>Dans votre dépôt, ouvrez l'onglet <strong>Settings</strong> (roue dentée, en haut à droite), puis dans le menu de gauche la rubrique <strong>Pages</strong> (section « Code and automation »). L'écran affiche un titre « GitHub Pages » et un bloc <strong>Build and deployment</strong> avec une liste déroulante <strong>Source</strong>. Deux choix, prenez-en <strong>un</strong> :</p>
+<ul>
+<li><strong>GitHub Actions (recommandé)</strong> : choisissez <code>GitHub Actions</code> dans la liste <strong>Source</strong>. Rien d'autre à régler : à chaque modification envoyée sur la branche <code>main</code>, le site est régénéré et publié tout seul. Suivez l'avancement dans l'onglet <strong>Actions</strong> (rond orange pendant la publication, coche verte quand c'est fini). Vous pouvez même modifier vos fichiers <code>content/</code> directement sur le site de GitHub (icône crayon).</li>
+<li><strong>Deploy from a branch (simple)</strong> : choisissez <code>Deploy from a branch</code>, puis dans les deux listes qui apparaissent, la branche <code>main</code> et le dossier <code>/docs</code>, et cliquez sur <strong>Save</strong>. GitHub publie alors le dossier <code>docs/</code> tel quel : pensez à lancer <code>uv run build.py</code> sur votre ordinateur <strong>avant</strong> chaque envoi.</li>
+</ul>
+<p>Après une ou deux minutes, un bandeau en haut de cette page indique « Your site is live at ... » avec l'adresse, du type <code>https://VOTRE-PSEUDO.github.io/portfolio/</code>. Reportez-la dans <code>base_url</code> de <code>site.yml</code>.</p>
+<hr />
+<h2 id="9-faq">9. FAQ</h2>
+<p><strong>Le site affiche toujours Alex Martin.</strong>
+Relancez <code>uv run build.py</code> après vos modifications, puis rafraîchissez la page (Ctrl+F5). Sur GitHub, vérifiez que l'onglet <strong>Actions</strong> est vert.</p>
+<p><strong>Mon image ne s'affiche pas.</strong>
+Le script signale les images introuvables. Vérifiez le chemin (relatif à <code>content/</code>), les majuscules (<code>Photo.JPG</code> n'est pas <code>photo.jpg</code> sur GitHub) et l'extension.</p>
+<p><strong>Ma couleur n'est pas prise en compte.</strong>
+Elle n'est sans doute pas entre guillemets : <code>primary: "#9d174d"</code>. Sans guillemets, tout ce qui suit <code>#</code> est un commentaire.</p>
+<p><strong>Je ne veux pas montrer mon e-mail.</strong>
+Laissez <code>email:</code> vide : aucun bouton ni adresse n'apparaît. Le téléphone, lui, n'est jamais affiché sans <code>show_phone: true</code>.</p>
+<p><strong>Comment cacher une section ?</strong>
+Dans <code>site.yml</code>, passez-la à <code>false</code> (par exemple <code>skills: false</code>). Une section vide est de toute façon cachée.</p>
+<p><strong>Je veux un projet sans page détaillée.</strong>
+Laissez le corps du fichier vide (rien sous le second <code>---</code>) : seule la carte s'affiche, avec ses liens.</p>
+<p><strong>Windows refuse de lancer install.ps1.</strong>
+Utilisez <code>install.cmd</code> (double-clic), ou la commande complète <code>powershell -ExecutionPolicy Bypass -File install.ps1</code>, qui autorise ce script seulement, une fois.</p>
+<p><strong>Le port 8000 est déjà utilisé.</strong>
+Ajoutez <code>-Port 8080</code> (Windows) ou <code>--port 8080</code> (Linux, macOS). <code>--preview-all</code> essaie aussi automatiquement les ports suivants.</p>
+<p><strong>Le site doit-il être en ligne pour fonctionner ?</strong>
+Non. Le dossier <code>docs/</code> fonctionne aussi hors ligne. Pour n'utiliser aucune ressource externe, mettez <code>google_fonts: false</code>.</p>
+<p><strong>Puis-je modifier la mise en page plus finement ?</strong>
+Oui, dans <code>templates/&lt;a|b|c&gt;/static/style.css</code>. Ce n'est pas nécessaire pour un usage normal.</p>
+<p><strong>Que sont les dossiers <code>previews/</code> et <code>_qa/</code> ?</strong>
+<code>previews/</code> est créé par <code>--preview-all</code> ; <code>_qa/</code> contient des essais de vérification. Les deux sont ignorés par Git et peuvent être supprimés.</p>
+<hr />
+<p>Licence MIT. Les images d'exemple sont des créations neutres libres de droits, à remplacer par les vôtres.</p>
+</main>
+</div>
+</body>
+</html>

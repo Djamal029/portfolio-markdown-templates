@@ -1,0 +1,60 @@
+{% extends "_base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_macros.html" import project_card, experience_card %}
+{% block main %}
+<section class="wrap hero" aria-labelledby="hero-title">
+  <div class="hero-card">
+    {% if profile.photo %}
+    <img class="hero-photo" src="{{ root }}{{ profile.photo }}" alt="{{ profile.photo_alt }}" width="400" height="400">
+    {% endif %}
+    <div class="hero-text">
+      {% if profile.location %}<p class="hero-location">{{ icon("pin", 16) }}<span>{{ profile.location }}</span></p>{% endif %}
+      <h1 id="hero-title">{{ profile.name }}</h1>
+      <p class="hero-role">{{ profile.headline }}</p>
+      {% if profile.pitch_html %}<div class="hero-pitch">{{ profile.pitch_html | safe }}</div>{% endif %}
+      <div class="actions">
+        {% if profile.cv_pdf %}<a class="btn btn-primary" href="{{ root }}{{ profile.cv_pdf }}" download>{{ icon("download") }}<span>{{ t.download_cv }}</span></a>{% endif %}
+        {% if visible.contact %}<a class="btn {{ 'btn-ghost' if profile.cv_pdf else 'btn-primary' }}" href="{{ root }}contact.html">{{ icon("mail") }}<span>{{ t.contact_me }}</span></a>{% endif %}
+        {% if profile.linkedin %}<a class="btn btn-icon" href="{{ profile.linkedin }}" rel="noopener" target="_blank" aria-label="{{ t.linkedin }}">{{ icon("linkedin") }}</a>{% endif %}
+        {% if profile.github %}<a class="btn btn-icon" href="{{ profile.github }}" rel="noopener" target="_blank" aria-label="{{ t.github }}">{{ icon("github") }}</a>{% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if visible.projects %}
+<section class="wrap block" aria-labelledby="featured-title">
+  <div class="block-head">
+    <h2 id="featured-title">{{ t.featured_projects }}</h2>
+    <a class="link-more" href="{{ root }}projects.html">{{ t.see_all_projects }}{{ icon("arrow-right", 16) }}</a>
+  </div>
+  <ul class="card-grid">
+    {% for p in featured[:3] %}{{ project_card(p, t, root) }}{% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if visible.experiences %}
+<section class="wrap block" aria-labelledby="recent-title">
+  <div class="block-head">
+    <h2 id="recent-title">{{ t.latest_experience }}</h2>
+    <a class="link-more" href="{{ root }}experience.html">{{ t.see_all_experiences }}{{ icon("arrow-right", 16) }}</a>
+  </div>
+  <ul class="exp-grid exp-grid-2">
+    {% for e in experiences[:2] %}{{ experience_card(e, t, root) }}{% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if visible.about %}
+<section class="wrap block" aria-labelledby="about-peek-title">
+  <div class="card cta-band">
+    <div>
+      <h2 id="about-peek-title">{{ t.section_about }}</h2>
+      <p class="muted">{{ about_html | striptags | truncate(220) }}</p>
+    </div>
+    <a class="btn btn-ghost" href="{{ root }}about.html"><span>{{ t.more_about }}</span>{{ icon("arrow-right", 16) }}</a>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

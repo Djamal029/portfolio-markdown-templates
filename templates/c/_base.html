@@ -1,0 +1,99 @@
+{% from "_icons.html" import icon %}
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ description }}{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ self.title() }}">
+  <meta property="og:description" content="{{ self.description() }}">
+  {% if site.base_url %}
+  <link rel="canonical" href="{{ site.base_url }}{{ '' if page.file == 'index.html' else page.file }}">
+  <meta property="og:url" content="{{ site.base_url }}{{ '' if page.file == 'index.html' else page.file }}">
+  {% if profile.photo %}<meta property="og:image" content="{{ site.base_url }}{{ profile.photo }}">{% endif %}
+  {% endif %}
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="{{ root }}favicon.svg" type="image/svg+xml">
+  <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  {% if theme.fonts_url %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ theme.fonts_url }}">
+  {% endif %}
+  <link rel="stylesheet" href="{{ root }}assets/style.css">
+  <style>{{ theme.css | safe }}</style>
+</head>
+<body>
+  <a class="skip-link" href="#main">{{ t.skip_link }}</a>
+
+  {# Barre compacte, visible seulement sur petit écran #}
+  <header class="mobile-bar">
+    <div class="mobile-bar-row">
+      <a class="mobile-brand" href="{{ root }}index.html">{{ profile.name }}</a>
+      {% if theme.dark_mode %}
+      <button class="theme-toggle" type="button" aria-label="{{ t.theme_toggle }}" title="{{ t.theme_toggle }}" data-theme-toggle>
+        <span class="when-light">{{ icon("moon") }}</span><span class="when-dark">{{ icon("sun") }}</span>
+      </button>
+      {% endif %}
+    </div>
+    {% if nav %}
+    <nav class="mobile-nav" aria-label="{{ t.main_nav }}">
+      <ul>
+        {% for item in nav %}<li><a href="{{ root }}{{ item.href }}" data-spy="{{ item.key }}">{{ item.label }}</a></li>{% endfor %}
+      </ul>
+    </nav>
+    {% endif %}
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        {% if profile.photo %}
+        <img class="side-photo" src="{{ root }}{{ profile.photo }}" alt="{{ profile.photo_alt }}" width="400" height="400">
+        {% endif %}
+        <p class="side-name"><a href="{{ root }}index.html">{{ profile.name }}</a></p>
+        <p class="side-role">{{ profile.headline }}</p>
+        {% if profile.location %}<p class="side-location">{{ icon("pin", 15) }}<span>{{ profile.location }}</span></p>{% endif %}
+
+        {% if nav %}
+        <nav class="side-nav" aria-label="{{ t.main_nav }}">
+          <ol>
+            {% for item in nav %}
+            <li><a href="{{ root }}{{ item.href }}" data-spy="{{ item.key }}"><span class="nav-num" aria-hidden="true">{{ "%02d" % loop.index }}</span>{{ item.label }}</a></li>
+            {% endfor %}
+          </ol>
+        </nav>
+        {% endif %}
+
+        <div class="side-actions">
+          {% if profile.cv_pdf %}<a class="btn btn-primary" href="{{ root }}{{ profile.cv_pdf }}" download>{{ icon("download") }}<span>{{ t.download_cv }}</span></a>{% endif %}
+          <div class="side-icons">
+            {% if profile.email %}<a class="icon-link" href="mailto:{{ profile.email }}" aria-label="{{ t.email_me }}" title="{{ t.email_me }}">{{ icon("mail") }}</a>{% endif %}
+            {% if profile.linkedin %}<a class="icon-link" href="{{ profile.linkedin }}" rel="noopener" target="_blank" aria-label="{{ t.linkedin }}" title="{{ t.linkedin }}">{{ icon("linkedin") }}</a>{% endif %}
+            {% if profile.github %}<a class="icon-link" href="{{ profile.github }}" rel="noopener" target="_blank" aria-label="{{ t.github }}" title="{{ t.github }}">{{ icon("github") }}</a>{% endif %}
+            {% if profile.website %}<a class="icon-link" href="{{ profile.website }}" rel="noopener" target="_blank" aria-label="{{ t.website }}" title="{{ t.website }}">{{ icon("globe") }}</a>{% endif %}
+            {% if theme.dark_mode %}
+            <button class="icon-link theme-toggle-side" type="button" aria-label="{{ t.theme_toggle }}" title="{{ t.theme_toggle }}" data-theme-toggle>
+              <span class="when-light">{{ icon("moon") }}</span><span class="when-dark">{{ icon("sun") }}</span>
+            </button>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="content">
+      <main id="main" tabindex="-1">
+        {% block main %}{% endblock %}
+      </main>
+      <footer class="footer">
+        <p>&copy; {{ year }} {{ profile.name }}</p>
+        <p class="muted">{{ t.footer_built }} {{ updated }}.</p>
+      </footer>
+    </div>
+  </div>
+  <script src="{{ root }}assets/main.js" defer></script>
+</body>
+</html>

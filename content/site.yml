@@ -1,0 +1,63 @@
+# Réglages généraux du site. Les lignes qui commencent par # sont des commentaires.
+
+# Langue de l'interface (menus, titres, mois) : en ou fr
+language: en
+
+# Modèle visuel : a (Editorial, une page), b (Cards, plusieurs pages) ou c (Sidebar, profil à gauche)
+template: a
+
+# Titre affiché dans l'onglet du navigateur et sur les moteurs de recherche
+title: "Alex Martin, Data Science Student at ENSAI"
+description: "Portfolio of Alex Martin, statistics and data science engineering student at ENSAI."
+
+# Adresse finale du site (facultatif, sert aux aperçus de liens). Exemple : https://pseudo.github.io/portfolio/
+base_url: ""
+
+# ----- Couleurs -----------------------------------------------------------
+# Palette toute prête : teal, indigo, forest, sunset ou graphite.
+# Laissez vide pour la palette du modèle (A : teal, B : indigo, C : graphite).
+palette: ""
+
+# Couleurs personnalisées (facultatif), toujours entre guillemets. Vide = couleur de la palette.
+#   primary    : boutons et liens principaux
+#   secondary  : petits détails (étiquettes, mentions « À la une »)
+#   background : fond de la page
+#   surface    : fond des cartes
+#   text       : texte
+colors:
+  primary: ""
+  secondary: ""
+  background: ""
+  surface: ""
+  text: ""
+
+# Mêmes réglages pour le mode sombre (facultatif). Vide = calculé automatiquement.
+dark_colors:
+  primary: ""
+  secondary: ""
+  background: ""
+  surface: ""
+  text: ""
+
+# Mode sombre disponible (bouton lune/soleil) : true ou false
+dark_mode: true
+
+# ----- Polices ------------------------------------------------------------
+# Choix possibles : inter, plus-jakarta-sans, space-grotesk, ibm-plex-sans,
+# fraunces, lora, source-serif-4, jetbrains-mono, system. Vide = police du modèle.
+fonts:
+  heading: ""
+  body: ""
+
+# Polices Google Fonts (true) ou polices de l'ordinateur uniquement (false)
+google_fonts: true
+
+# ----- Sections -----------------------------------------------------------
+# Une section sans contenu est cachée automatiquement.
+sections:
+  about: true
+  experiences: true
+  projects: true
+  skills: true
+  education: true
+  contact: true

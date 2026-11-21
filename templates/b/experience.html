@@ -1,0 +1,11 @@
+{% extends "_base.html" %}
+{% from "_macros.html" import page_head, experience_card %}
+{% block title %}{{ t.nav_experiences }} · {{ profile.name }}{% endblock %}
+{% block main %}
+{{ page_head(t.section_experiences) }}
+<section class="wrap block" aria-label="{{ t.section_experiences }}">
+  <ol class="exp-grid exp-timeline">
+    {% for e in experiences %}{{ experience_card(e, t, root) }}{% endfor %}
+  </ol>
+</section>
+{% endblock %}

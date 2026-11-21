@@ -1,0 +1,57 @@
+{% extends "_base.html" %}
+{% from "_macros.html" import page_head %}
+{% block title %}{{ t.nav_about }} · {{ profile.name }}{% endblock %}
+{% block main %}
+{{ page_head(t.section_about) }}
+
+{% if visible.about %}
+<section class="wrap block" aria-label="{{ t.section_about }}">
+  <div class="card about-card">
+    {% if profile.photo %}<img class="about-photo" src="{{ root }}{{ profile.photo }}" alt="{{ profile.photo_alt }}" width="400" height="400">{% endif %}
+    <div class="prose">{{ about_html | safe }}</div>
+  </div>
+</section>
+{% endif %}
+
+{% if visible.skills %}
+<section class="wrap block" aria-labelledby="skills-title">
+  <div class="block-head"><h2 id="skills-title">{{ t.section_skills }}</h2></div>
+  {% if skills.intro_html %}<div class="prose block-intro">{{ skills.intro_html | safe }}</div>{% endif %}
+  <ul class="skill-grid">
+    {% for g in skills.groups %}
+    <li class="card skill-card">
+      <h3>{{ g.name }}</h3>
+      {% if g.has_levels %}
+      <ul class="skill-bars">
+        {% for s in g.entries %}
+        <li>
+          <div class="skill-row"><span>{{ s.name }}</span>{% if s.level %}<span class="muted small">{{ s.level }}/5</span>{% endif %}</div>
+          {% if s.level %}<div class="bar" role="img" aria-label="{{ t.level.format(n=s.level) }}"><span style="width: {{ s.level * 20 }}%"></span></div>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <ul class="tags tags-lg">{% for s in g.entries %}<li>{{ s.name }}</li>{% endfor %}</ul>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+{% if visible.education %}
+<section class="wrap block" aria-labelledby="education-title">
+  <div class="block-head"><h2 id="education-title">{{ t.section_education }}</h2></div>
+  <ul class="edu-grid">
+    {% for e in education %}
+    <li class="card edu-card">
+      <p class="card-meta">{{ e.dates }}{% if e.location %}<span aria-hidden="true">·</span><span>{{ e.location }}</span>{% endif %}</p>
+      <h3>{{ e.degree }}</h3>
+      <p class="edu-school">{{ e.school }}</p>
+      {% if e.details_html %}<div class="prose small muted">{{ e.details_html | safe }}</div>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+{% endblock %}
