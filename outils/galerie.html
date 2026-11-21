@@ -290,7 +290,7 @@ dialog::backdrop{background:rgba(5,8,10,.55);backdrop-filter:blur(4px)}
 
   /* per-template counters (free Abacus counter service, no personal data) */
   var NS = "%COUNTER_NS%", API = "https://abacus.jasoncameron.dev";
-  function label(n) { return n + (n > 1 ? " personnes l'ont choisi" : (n === 1 ? " personne l'a choisi" : " : soyez le premier à le choisir")); }
+  function label(n) { return n > 1 ? n + " personnes l'ont choisi" : (n === 1 ? "1 personne l'a choisi" : "Soyez le premier à le choisir"); }
   document.querySelectorAll("[data-count]").forEach(function (el) {
     var key = el.getAttribute("data-count");
     fetch(API + "/get/" + NS + "/" + key).then(function (r) { return r.ok ? r.json() : { value: 0 }; })
