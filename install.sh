@@ -100,8 +100,9 @@ if [ "$ACTION" = "build" ]; then
 fi
 
 [ "$NO_SERVE" -eq 1 ] && exit 0
-URL="http://localhost:$PORT/"
-step "Aperçu local sur $URL (Ctrl+C pour arrêter)"
-open_target "$URL"
-"$UV" run --no-project python -m http.server "$PORT" --bind 127.0.0.1 --directory docs \
+step "Aperçu local (serveur http.server de Python, Ctrl+C pour arrêter)"
+# build.py choisit le port suivant si $PORT est déjà pris par un autre programme.
+set -- --serve --port "$PORT"
+[ "$NO_OPEN" -eq 1 ] && set -- "$@" --no-open
+"$UV" run build.py "$@" \
   || fail "le serveur local n'a pas pu démarrer (port $PORT déjà utilisé ?). Essayez : sh install.sh preview --port 8080"

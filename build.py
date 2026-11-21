@@ -1083,6 +1083,59 @@ PREVIEW_TEXT = {
 }
 
 
+def serve_folder(out: Path, port: int, open_browser: bool) -> int:
+    """Sert un dossier sur http://localhost:<port> (module http.server de Python) et ouvre le navigateur."""
+    index = out / "index.html"
+    import functools
+    import http.server
+    import socketserver
+    import webbrowser
+
+    import socket
+
+    class QuietHandler(http.server.SimpleHTTPRequestHandler):
+        def log_message(self, *args: Any) -> None:  # pas de journal à chaque requête
+            pass
+
+    def port_in_use(number: int) -> bool:
+        # Un autre logiciel (serveur web local...) peut déjà écouter sur ce port, en IPv4 ou IPv6.
+        for family, host in ((socket.AF_INET, "127.0.0.1"), (socket.AF_INET6, "::1")):
+            try:
+                with socket.socket(family, socket.SOCK_STREAM) as probe:
+                    probe.settimeout(0.3)
+                    if probe.connect_ex((host, number)) == 0:
+                        return True
+            except OSError:
+                continue
+        return False
+
+    handler = functools.partial(QuietHandler, directory=str(out))
+    httpd = None
+    for candidate in range(port, port + 10):
+        if port_in_use(candidate):
+            print(f"Port {candidate} déjà utilisé par un autre programme, essai du suivant.", flush=True)
+            continue
+        try:
+            httpd = socketserver.ThreadingTCPServer(("127.0.0.1", candidate), handler)
+            break
+        except OSError:
+            continue
+    if httpd is None:
+        print(f"Aucun port libre entre {port} et {port + 9}. Ouvrez directement {index}.")
+        return 1
+    url = f"http://localhost:{candidate}/"
+    print(f"Aperçu disponible sur {url}  (Ctrl+C pour arrêter)", flush=True)
+    if open_browser:
+        webbrowser.open(url)
+    try:
+        httpd.serve_forever()
+    except KeyboardInterrupt:
+        print("\nServeur arrêté.")
+    finally:
+        httpd.server_close()
+    return 0
+
+
 def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
     out = ROOT / "previews"
     safe_clean(out)
@@ -1116,33 +1169,7 @@ def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
     if not serve:
         return 0
 
-    import functools
-    import http.server
-    import socketserver
-    import webbrowser
-
-    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(out))
-    handler.log_message = lambda *args, **kwargs: None  # type: ignore[attr-defined]
-    for candidate in range(port, port + 10):
-        try:
-            httpd = socketserver.ThreadingTCPServer(("127.0.0.1", candidate), handler)
-            break
-        except OSError:
-            continue
-    else:
-        print(f"Aucun port libre entre {port} et {port + 9}. Ouvrez directement {index}.")
-        return 1
-    url = f"http://localhost:{candidate}/"
-    print(f"Aperçu disponible sur {url}  (Ctrl+C pour arrêter)")
-    if open_browser:
-        webbrowser.open(url)
-    try:
-        httpd.serve_forever()
-    except KeyboardInterrupt:
-        print("\nServeur arrêté.")
-    finally:
-        httpd.server_close()
-    return 0
+    return serve_folder(out, port, open_browser)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -1153,7 +1180,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--language", choices=list(I18N), help="force la langue de l'interface (sinon : site.yml)")
     parser.add_argument("--preview-all", action="store_true", help="génère les 3 modèles (anglais et français) dans previews/ et les ouvre")
     parser.add_argument("--no-serve", action="store_true", help="avec --preview-all : génère sans lancer le serveur local")
-    parser.add_argument("--no-open", action="store_true", help="avec --preview-all : ne pas ouvrir le navigateur")
+    parser.add_argument("--serve", action="store_true", help="après la génération, sert le site sur http://localhost:8000")
+    parser.add_argument("--no-open", action="store_true", help="avec --preview-all ou --serve : ne pas ouvrir le navigateur")
     parser.add_argument("--port", type=int, default=8000, help="port du serveur local (défaut : 8000)")
     parser.add_argument("--quiet", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
@@ -1307,6 +1335,8 @@ def main(argv: list[str] | None = None) -> int:
         f"(modèle {site['template'].upper()}, langue {site['language']}, sections : {shown}).\n"
         f"Ouvrez {out_display}/index.html dans votre navigateur pour le voir."
     )
+    if args.serve:
+        return serve_folder(out_dir, args.port, open_browser=not args.no_open)
     return 0
 
 

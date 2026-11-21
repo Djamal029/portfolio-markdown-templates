@@ -628,6 +628,7 @@ dark_mode: true           # false = pas de mode sombre ni de bouton lune/soleil
 uv run build.py --language fr                                   # essayer l'autre langue d'interface
 uv run build.py --content content-fr-example --out apercu-fr    # générer l'exemple français ailleurs
 uv run build.py --preview-all                                   # les trois modèles côte à côte
+uv run build.py --serve                                         # génère puis sert docs/ sur http://localhost:8000
 </code></pre>
 <hr />
 <h2 id="8-publier-sur-github-pages">8. Publier sur GitHub Pages</h2>
@@ -669,7 +670,7 @@ Laissez le corps du fichier vide (rien sous le second <code>---</code>) : seule 
 <p><strong>Windows refuse de lancer install.ps1.</strong>
 Utilisez <code>install.cmd</code> (double-clic), ou la commande complète <code>powershell -ExecutionPolicy Bypass -File install.ps1</code>, qui autorise ce script seulement, une fois.</p>
 <p><strong>Le port 8000 est déjà utilisé.</strong>
-Ajoutez <code>-Port 8080</code> (Windows) ou <code>--port 8080</code> (Linux, macOS). <code>--preview-all</code> essaie aussi automatiquement les ports suivants.</p>
+Pas de souci : l'aperçu essaie automatiquement les ports suivants (8001, 8002...) et affiche l'adresse retenue. Vous pouvez aussi choisir le port : <code>-Port 8080</code> (Windows) ou <code>--port 8080</code> (Linux, macOS).</p>
 <p><strong>Le site doit-il être en ligne pour fonctionner ?</strong>
 Non. Le dossier <code>docs/</code> fonctionne aussi hors ligne. Pour n'utiliser aucune ressource externe, mettez <code>google_fonts: false</code>.</p>
 <p><strong>Puis-je modifier la mise en page plus finement ?</strong>

@@ -117,10 +117,11 @@ if ($Action -eq "build") {
 }
 
 if ($NoServe) { exit 0 }
-$url = "http://localhost:$Port/"
-Write-Step "Aperçu local sur $url (Ctrl+C pour arrêter)"
-if (-not $NoOpen) { Start-Process $url }
-$code = Invoke-Uv run --no-project python -m http.server $Port --bind 127.0.0.1 --directory docs
+Write-Step "Aperçu local (serveur http.server de Python, Ctrl+C pour arrêter)"
+# build.py choisit le port suivant si $Port est déjà pris par un autre programme.
+$serveArgs = @("run", "build.py", "--serve", "--port", "$Port")
+if ($NoOpen) { $serveArgs += "--no-open" }
+$code = Invoke-Uv @serveArgs
 if ($code -ne 0) {
     Stop-WithError "le serveur local n'a pas pu démarrer (port $Port déjà utilisé ?). Essayez : install.ps1 preview -Port 8080"
 }

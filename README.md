@@ -472,6 +472,7 @@ uv run build.py --template b                                    # essayer un aut
 uv run build.py --language fr                                   # essayer l'autre langue d'interface
 uv run build.py --content content-fr-example --out apercu-fr    # générer l'exemple français ailleurs
 uv run build.py --preview-all                                   # les trois modèles côte à côte
+uv run build.py --serve                                         # génère puis sert docs/ sur http://localhost:8000
 ```
 
 ---
@@ -529,7 +530,7 @@ Laissez le corps du fichier vide (rien sous le second `---`) : seule la carte s'
 Utilisez `install.cmd` (double-clic), ou la commande complète `powershell -ExecutionPolicy Bypass -File install.ps1`, qui autorise ce script seulement, une fois.
 
 **Le port 8000 est déjà utilisé.**
-Ajoutez `-Port 8080` (Windows) ou `--port 8080` (Linux, macOS). `--preview-all` essaie aussi automatiquement les ports suivants.
+Pas de souci : l'aperçu essaie automatiquement les ports suivants (8001, 8002...) et affiche l'adresse retenue. Vous pouvez aussi choisir le port : `-Port 8080` (Windows) ou `--port 8080` (Linux, macOS).
 
 **Le site doit-il être en ligne pour fonctionner ?**
 Non. Le dossier `docs/` fonctionne aussi hors ligne. Pour n'utiliser aucune ressource externe, mettez `google_fonts: false`.
