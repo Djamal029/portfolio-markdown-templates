@@ -1,0 +1,40 @@
+{% from "_icons.html" import icon %}
+
+{% macro section_head(num, key, t) -%}
+<header class="section-head">
+  <span class="section-num" aria-hidden="true">{{ "%02d" % num }} · {{ t["nav_" ~ key] }}</span>
+  <h2 id="{{ key }}-title">{{ t["section_" ~ key] }}</h2>
+</header>
+{%- endmacro %}
+
+{% macro tags(list, t) -%}
+{% if list %}
+<ul class="tags" aria-label="{{ t.tags }}">
+  {% for tag in list %}<li>{{ tag }}</li>{% endfor %}
+</ul>
+{% endif %}
+{%- endmacro %}
+
+{% macro contact_buttons(profile, t, root) -%}
+{% if profile.email %}
+<a class="btn btn-primary" href="mailto:{{ profile.email }}">{{ icon("mail") }}<span>{{ t.email_me }}</span></a>
+{% endif %}
+{% if profile.phone %}
+<a class="btn btn-ghost" href="tel:{{ profile.phone_link }}">{{ icon("phone") }}<span>{{ profile.phone }}</span></a>
+{% endif %}
+{% if profile.linkedin %}
+<a class="btn btn-ghost" href="{{ profile.linkedin }}" rel="noopener" target="_blank">{{ icon("linkedin") }}<span>{{ t.linkedin }}</span></a>
+{% endif %}
+{% if profile.github %}
+<a class="btn btn-ghost" href="{{ profile.github }}" rel="noopener" target="_blank">{{ icon("github") }}<span>{{ t.github }}</span></a>
+{% endif %}
+{% if profile.website %}
+<a class="btn btn-ghost" href="{{ profile.website }}" rel="noopener" target="_blank">{{ icon("globe") }}<span>{{ t.website }}</span></a>
+{% endif %}
+{%- endmacro %}
+
+{% macro project_links(project, t, root) -%}
+{% for link in project.links %}
+<a class="link-chip" href="{{ link.href if link.external else root ~ link.href }}"{% if link.external %} rel="noopener" target="_blank"{% endif %}>{{ icon(link.kind, 16) }}<span>{{ link.label }}</span></a>
+{% endfor %}
+{%- endmacro %}

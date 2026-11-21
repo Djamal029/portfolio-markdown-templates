@@ -391,3 +391,6 @@ body {
 .contact-panel .actions { justify-content: center; }
 @media (max-width: 640px) { .contact-panel { padding: 40px 20px; } .edu-item { grid-template-columns: 1fr; gap: 6px; } }
 @media (prefers-reduced-motion: reduce) { .skill-group:hover, .edu-item:hover { transform: none; } }
+
+/* keep decorative glows from widening the page on phones */
+html, body { overflow-x: clip; }

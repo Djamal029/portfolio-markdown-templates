@@ -85,9 +85,9 @@ if ($script:Uv) {
 $version = & $script:Uv --version
 Write-Ok "Version : $version"
 
-# 2. Aperçu des trois modèles
+# 2. Aperçu de tous les modèles
 if ($Action -eq "preview-all") {
-    Write-Step "Génération des trois modèles dans previews\"
+    Write-Step "Génération de tous les modèles dans previews\"
     $extra = @("--port", "$Port")
     if ($NoOpen) { $extra += "--no-open" }
     if ($NoServe) { $extra += "--no-serve" }

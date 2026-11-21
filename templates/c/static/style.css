@@ -332,3 +332,6 @@ body {
 .skills { gap: 18px; }
 .contact-box { background: radial-gradient(600px 300px at 50% 0%, rgba(var(--accent2-rgb), 0.2), transparent 70%), linear-gradient(180deg, var(--panel-a), var(--panel-b)); box-shadow: var(--shadow-lift); }
 @media (prefers-reduced-motion: reduce) { .skill-group:hover { transform: none; } }
+
+/* keep decorative glows from widening the page on phones */
+html, body { overflow-x: clip; }

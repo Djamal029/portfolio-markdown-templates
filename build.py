@@ -504,6 +504,8 @@ TEMPLATES = {
     "a": {"name": "Editorial", "palette": "teal", "heading": "fraunces", "body": "inter", "mono": "system"},
     "b": {"name": "Cards", "palette": "indigo", "heading": "plus-jakarta-sans", "body": "plus-jakarta-sans", "mono": "system"},
     "c": {"name": "Sidebar", "palette": "graphite", "heading": "space-grotesk", "body": "ibm-plex-sans", "mono": "jetbrains-mono"},
+    "d": {"name": "Bento", "palette": "indigo", "heading": "space-grotesk", "body": "inter", "mono": "system"},
+    "e": {"name": "Spotlight", "palette": "sunset", "heading": "source-serif-4", "body": "inter", "mono": "system"},
 }
 
 WHITE = (255, 255, 255)
@@ -999,7 +1001,7 @@ def favicon_svg(initials: str, accent: str) -> str:
 
 def build_pages(template: str, visible: dict[str, bool]) -> list[dict]:
     """Liste des pages HTML à générer pour chaque modèle."""
-    if template in ("a", "c"):
+    if template != "b":
         return [{"file": "index.html", "template": "index.html", "key": "home"}]
     pages = [{"file": "index.html", "template": "index.html", "key": "home"}]
     if visible["about"] or visible["skills"] or visible["education"]:
@@ -1014,7 +1016,7 @@ def build_pages(template: str, visible: dict[str, bool]) -> list[dict]:
 
 
 def build_nav(template: str, visible: dict[str, bool], pages: list[dict], t: dict) -> list[dict]:
-    if template in ("a", "c"):
+    if template != "b":
         return [
             {"key": s, "label": t[f"nav_{s}"], "href": f"index.html#{s}"}
             for s in SECTION_ORDER
@@ -1039,7 +1041,7 @@ def safe_clean(out_dir: Path) -> None:
 
 
 # ---------------------------------------------------------------------------
-# Aperçu des trois modèles côte à côte (--preview-all)
+# Aperçu de tous les modèles côte à côte (--preview-all)
 # ---------------------------------------------------------------------------
 
 PREVIEW_PAGE = """<!doctype html>
@@ -1075,7 +1077,7 @@ a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 <body>
 <main>
 <h1>Choisir un modèle de portfolio</h1>
-<p class="lead">Les trois modèles affichent exactement le même contenu d'exemple (Alex Martin, étudiant fictif). Pour utiliser un modèle, écrivez sa lettre dans <code>content/site.yml</code>, à la ligne <code>template:</code>.</p>
+<p class="lead">Tous les modèles affichent exactement le même contenu d'exemple (Alex Martin, étudiant fictif). Pour utiliser un modèle, écrivez sa lettre dans <code>content/site.yml</code>, à la ligne <code>template:</code>.</p>
 <ul>
 %CARDS%
 </ul>
@@ -1089,6 +1091,8 @@ PREVIEW_TEXT = {
     "a": "Une seule longue page, menu de sections collé en haut, titres à empattements.",
     "b": "Plusieurs pages (accueil, à propos, expériences, projets, contact), grille de cartes.",
     "c": "Profil fixe dans une colonne à gauche, contenu à droite, détails en police à chasse fixe.",
+    "d": "Une seule page en tuiles (bento) : grandes cartes lumineuses, projet vedette en double largeur, menu flottant.",
+    "e": "Une seule page centrée façon vitrine : grand titre éclairé, frise alternée, projets en grandes rangées.",
 }
 
 

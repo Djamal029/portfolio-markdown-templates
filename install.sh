@@ -75,9 +75,9 @@ else
 fi
 ok "Version : $("$UV" --version)"
 
-# 2. Aperçu des trois modèles
+# 2. Aperçu de tous les modèles
 if [ "$ACTION" = "preview-all" ]; then
-  step "Génération des trois modèles dans previews/"
+  step "Génération de tous les modèles dans previews/"
   set -- --preview-all --port "$PORT"
   [ "$NO_OPEN" -eq 1 ] && set -- "$@" --no-open
   [ "$NO_SERVE" -eq 1 ] && set -- "$@" --no-serve
