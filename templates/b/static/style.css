@@ -322,3 +322,7 @@ body {
 @media (max-width: 760px) {
   .shell { width: 100%; margin: 0; border-radius: 0; border: 0; box-shadow: none; }
 }
+
+/* === polish layer (panels for skills, education, contact) === */
+.contact-card .icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: rgba(var(--accent-rgb), 0.12); box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.18), 0 8px 20px -10px rgba(var(--accent-rgb), 0.6); }
+.bar span { background: linear-gradient(90deg, rgb(var(--accent-rgb)), color-mix(in srgb, rgb(var(--accent-rgb)) 60%, #fff)); box-shadow: 0 0 10px rgba(var(--accent-rgb), 0.5); }

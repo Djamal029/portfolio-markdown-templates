@@ -319,3 +319,16 @@ body {
 @media (max-width: 760px) {
   .layout { width: 100%; margin: 0; border-radius: 0; border: 0; box-shadow: none; }
 }
+
+/* === polish layer (panels for skills, education, contact) === */
+.section-head h2 { position: relative; padding-bottom: 12px; }
+.section-head h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 64px; height: 3px; border-radius: 3px;
+  background: linear-gradient(90deg, rgb(var(--accent2-rgb)), rgba(var(--accent2-rgb), 0.6), transparent); }
+.skill-group {
+  background: radial-gradient(circle at top left, rgba(var(--accent2-rgb), 0.12), transparent 45%), linear-gradient(180deg, var(--panel-a), var(--panel-b));
+  border: 1px solid color-mix(in srgb, var(--line) 85%, rgb(var(--accent2-rgb)) 15%); border-radius: 18px;
+  box-shadow: var(--shadow); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; padding: 18px 20px; }
+.skill-group:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift), 0 12px 36px -18px rgba(var(--accent2-rgb), .5); border-color: rgba(var(--accent2-rgb), .45); }
+.skills { gap: 18px; }
+.contact-box { background: radial-gradient(600px 300px at 50% 0%, rgba(var(--accent2-rgb), 0.2), transparent 70%), linear-gradient(180deg, var(--panel-a), var(--panel-b)); box-shadow: var(--shadow-lift); }
+@media (prefers-reduced-motion: reduce) { .skill-group:hover { transform: none; } }

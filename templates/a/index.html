@@ -154,9 +154,11 @@
 {% if visible.contact %}{% set n.i = n.i + 1 %}
 <section class="section wrap contact" id="contact" aria-labelledby="contact-title">
   {{ section_head(n.i, "contact", t) }}
-  <p class="contact-title">{{ t.contact_title }}</p>
-  <p class="contact-text">{{ t.contact_text }}</p>
-  <div class="actions">{{ contact_buttons(profile, t, root) }}</div>
+  <div class="contact-panel">
+    <p class="contact-title">{{ t.contact_title }}</p>
+    <p class="contact-text">{{ t.contact_text }}</p>
+    <div class="actions">{{ contact_buttons(profile, t, root) }}</div>
+  </div>
 </section>
 {% endif %}
 {% endblock %}
