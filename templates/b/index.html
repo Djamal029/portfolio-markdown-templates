@@ -11,6 +11,7 @@
       {% if profile.location %}<p class="hero-location">{{ icon("pin", 16) }}<span>{{ profile.location }}</span></p>{% endif %}
       <h1 id="hero-title">{{ profile.name }}</h1>
       <p class="hero-role">{{ profile.headline }}</p>
+      {% if profile.availability %}<p class="status"><span class="status-dot" aria-hidden="true"></span>{{ profile.availability }}</p>{% endif %}
       {% if profile.pitch_html %}<div class="hero-pitch">{{ profile.pitch_html | safe }}</div>{% endif %}
       <div class="actions">
         {% if profile.cv_pdf %}<a class="btn btn-primary" href="{{ root }}{{ profile.cv_pdf }}" download>{{ icon("download") }}<span>{{ t.download_cv }}</span></a>{% endif %}

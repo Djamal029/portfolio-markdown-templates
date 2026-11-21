@@ -2,6 +2,8 @@
 name: Alex Martin
 headline: Élève ingénieur en data science, statistique et machine learning
 location: Rennes, France
+# Facultatif : s'affiche comme un badge vert en haut de la page
+availability: "Disponible dès avril 2027 pour un stage de 6 mois"
 email: alex.martin@example.com
 # Le téléphone reste caché tant que show_phone vaut false
 phone: "+33 6 00 00 00 00"

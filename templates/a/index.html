@@ -8,6 +8,7 @@
     {% if profile.location %}<p class="eyebrow">{{ icon("pin", 16) }}<span>{{ profile.location }}</span></p>{% endif %}
     <h1 id="hero-title">{{ profile.name }}</h1>
     <p class="role">{{ profile.headline }}</p>
+    {% if profile.availability %}<p class="status"><span class="status-dot" aria-hidden="true"></span>{{ profile.availability }}</p>{% endif %}
     {% if profile.pitch_html %}<div class="pitch">{{ profile.pitch_html | safe }}</div>{% endif %}
     <div class="actions">
       {% if profile.cv_pdf %}<a class="btn btn-primary" href="{{ root }}{{ profile.cv_pdf }}" download>{{ icon("download") }}<span>{{ t.download_cv }}</span></a>{% endif %}
@@ -26,7 +27,22 @@
 {% if visible.about %}{% set n.i = n.i + 1 %}
 <section class="section wrap" id="about" aria-labelledby="about-title">
   {{ section_head(n.i, "about", t) }}
-  <div class="prose prose-lead">{{ about_html | safe }}</div>
+  <div class="about-grid">
+    <div class="prose prose-lead">{{ about_html | safe }}</div>
+    <aside class="glance" aria-label="{{ t.at_a_glance }}">
+      <p class="glance-title">{{ t.at_a_glance }}</p>
+      <div class="glance-stats">
+        {% if experiences %}<div><b>{{ experiences | length }}</b><span>{{ t.n_experiences }}</span></div>{% endif %}
+        {% if projects %}<div><b>{{ projects | length }}</b><span>{{ t.n_projects }}</span></div>{% endif %}
+      </div>
+      <dl>
+        {% if profile.location %}<div><dt>{{ t.location }}</dt><dd>{{ profile.location }}</dd></div>{% endif %}
+        {% if profile.availability %}<div><dt>{{ t.availability }}</dt><dd>{{ profile.availability }}</dd></div>{% endif %}
+        {% if profile.email %}<div><dt>{{ t.email }}</dt><dd><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></dd></div>{% endif %}
+      </dl>
+      {% if profile.cv_pdf %}<a class="btn btn-ghost glance-cv" href="{{ root }}{{ profile.cv_pdf }}" download>{{ icon("download") }}<span>{{ t.download_cv }}</span></a>{% endif %}
+    </aside>
+  </div>
 </section>
 {% endif %}
 

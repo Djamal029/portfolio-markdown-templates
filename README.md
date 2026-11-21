@@ -195,6 +195,7 @@ Une section sans contenu (par exemple aucun projet) est **cachée automatiquemen
 | `name` | **oui** | prénom et nom |
 | `headline` | **oui** | votre titre en une ligne |
 | `location` | non | ville, pays |
+| `availability` | non | phrase courte affichée dans un badge vert en haut de la page (ex. « Disponible dès avril 2027 pour un stage de 6 mois ») |
 | `email` | non | si renseigné, un bouton « Envoyer un e-mail » apparaît. Sinon, aucune adresse n'est affichée |
 | `phone` | non | numéro de téléphone |
 | `show_phone` | non (défaut `false`) | le numéro n'est **jamais affiché** tant que ce champ ne vaut pas `true` |
@@ -210,6 +211,7 @@ Le corps du fichier est votre présentation courte (2 ou 3 phrases), affichée e
 name: Camille Durand
 headline: Élève ingénieure en data science
 location: Rennes, France
+availability: "Available from April 2027 for a 6-month internship"
 email: camille.durand@example.com
 phone: "+33 6 00 00 00 00"
 show_phone: false

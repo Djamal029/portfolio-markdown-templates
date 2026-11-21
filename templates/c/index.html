@@ -5,6 +5,7 @@
 <section class="intro" id="home" aria-labelledby="hero-title">
   <p class="kicker">{{ profile.headline }}</p>
   <h1 id="hero-title" class="intro-title">{{ profile.name }}</h1>
+  {% if profile.availability %}<p class="status"><span class="status-dot" aria-hidden="true"></span>{{ profile.availability }}</p>{% endif %}
   {% if profile.pitch_html %}<div class="intro-pitch">{{ profile.pitch_html | safe }}</div>{% endif %}
   <div class="actions">
     {% if visible.contact %}<a class="btn btn-primary" href="#contact">{{ icon("mail") }}<span>{{ t.contact_me }}</span></a>{% endif %}
