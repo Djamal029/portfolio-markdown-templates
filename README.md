@@ -1,4 +1,4 @@
-# Portfolio Markdown : cinq modèles prêts à l'emploi
+# Portfolio Markdown : huit modèles prêts à l'emploi
 
 Créez votre site portfolio **sans écrire de HTML**. Vous remplissez quelques fichiers texte (Markdown), un script fabrique le site, et GitHub Pages le publie gratuitement.
 
@@ -10,7 +10,7 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ## Sommaire
 
-1. [Les cinq modèles](#1-les-cinq-modèles)
+1. [Les huit modèles](#1-les-huit-modèles)
 2. [Démarrage rapide (5 minutes)](#2-démarrage-rapide-5-minutes)
 3. [Ce qu'il faut modifier](#3-ce-quil-faut-modifier)
 4. [Référence des fichiers, champ par champ](#4-référence-des-fichiers-champ-par-champ)
@@ -22,14 +22,16 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ---
 
-## 1. Les cinq modèles
+## 1. Les huit modèles
 
-| | Modèle A « Editorial » | Modèle B « Cards » | Modèle C « Sidebar » | Modèle D « Bento » | Modèle E « Spotlight » |
-|---|---|---|---|---|---|
-| Organisation | une seule longue page, menu de sections collé en haut | plusieurs pages (Accueil, À propos, Expériences, Projets, Contact) | profil fixe dans une colonne à gauche, contenu à droite | une seule page en tuiles, menu flottant en forme de pilule | une seule page centrée, frise d'expériences alternée |
-| Style | titres à empattements, ambiance magazine | grille de cartes, police sans empattements | sobre et technique, détails en police à chasse fixe | tuiles lumineuses, chiffres clés, projet vedette en double largeur | grand titre éclairé, photo cerclée de couleur, projets en grandes rangées |
-| Palette par défaut | `teal` | `indigo` | `graphite` | `indigo` | `sunset` |
-| Idéal pour | un profil à lire d'une traite | beaucoup de projets | un profil technique, data ou dev | un profil moderne qui veut tout montrer d'un coup d'œil | un profil qui veut marquer les esprits |
+**Voir les huit modèles en ligne, avec une courte animation explicative :** https://djamal029.github.io/portfolio-markdown-templates/ . Le bouton « Choisir ce modèle » compte combien de personnes ont choisi chaque modèle et mène au dépôt GitHub.
+
+| | Modèle A « Editorial » | Modèle B « Cards » | Modèle C « Sidebar » | Modèle D « Bento » | Modèle E « Spotlight » | Modèle F « Terminal » | Modèle G « Resume » | Modèle H « Horizon » |
+|---|---|---|---|---|---|---|---|---|
+| Organisation | une seule longue page, menu de sections collé en haut | plusieurs pages (Accueil, À propos, Expériences, Projets, Contact) | profil fixe dans une colonne à gauche, contenu à droite | une seule page en tuiles, menu flottant en forme de pilule | une seule page centrée, frise d'expériences alternée | une page façon terminal, fenêtres avec barre de titre | un CV en ligne : feuille avec colonne de contact et compétences | une page grand format, projets en défilement horizontal |
+| Style | titres à empattements, ambiance magazine | grille de cartes, police sans empattements | sobre et technique, détails en police à chasse fixe | tuiles lumineuses, chiffres clés, projet vedette en double largeur | grand titre éclairé, photo cerclée de couleur, projets en grandes rangées | commandes et police à chasse fixe | sobre et élégant, imprimable | nom géant, chiffres clés, expériences numérotées |
+| Palette par défaut | `teal` | `indigo` | `graphite` | `indigo` | `sunset` | `graphite` | `teal` | `indigo` |
+| Idéal pour | un profil à lire d'une traite | beaucoup de projets | un profil technique, data ou dev | un profil moderne qui veut tout montrer d'un coup d'œil | un profil qui veut marquer les esprits | un profil développeur ou data | un profil qui veut un CV en ligne | un profil qui veut un effet « waouh » |
 
 **Modèle A, ordinateur et téléphone**
 
@@ -61,6 +63,24 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 <img src="docs-assets/template-e-mobile.webp" alt="Modèle E sur téléphone" width="300">
 
+**Modèle F, ordinateur et téléphone**
+
+![Modèle F sur ordinateur](docs-assets/template-f-desktop.webp)
+
+<img src="docs-assets/template-f-mobile.webp" alt="Modèle F sur téléphone" width="300">
+
+**Modèle G, ordinateur et téléphone**
+
+![Modèle G sur ordinateur](docs-assets/template-g-desktop.webp)
+
+<img src="docs-assets/template-g-mobile.webp" alt="Modèle G sur téléphone" width="300">
+
+**Modèle H, ordinateur et téléphone**
+
+![Modèle H sur ordinateur](docs-assets/template-h-desktop.webp)
+
+<img src="docs-assets/template-h-mobile.webp" alt="Modèle H sur téléphone" width="300">
+
 **Mode sombre** : chaque modèle a un bouton lune/soleil, et suit automatiquement le réglage de l'ordinateur du visiteur.
 
 ![Modèle C en mode sombre](docs-assets/template-c-dark.webp)
@@ -69,11 +89,13 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ![Modèle E en mode sombre](docs-assets/template-e-dark.webp)
 
-Les cinq modèles s'adaptent au téléphone, se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).
+![Modèle F en mode sombre](docs-assets/template-f-dark.webp)
+
+Les huit modèles s'adaptent au téléphone, se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).
 
 ### Comparer les modèles chez vous
 
-Une commande génère les cinq modèles avec l'exemple, en anglais et en français, et ouvre une page de choix :
+Une commande génère les huit modèles avec l'exemple, en anglais et en français, et ouvre une page de choix :
 
 ```
 uv run build.py --preview-all
@@ -103,7 +125,7 @@ L'installateur peut être relancé autant de fois que vous voulez : si `uv` est 
 |---|---|
 | `install.ps1` / `sh install.sh` | installe uv si besoin, génère `docs/`, ouvre `docs/index.html` |
 | `install.ps1 preview` / `sh install.sh preview` | idem, puis sert le site sur `http://localhost:8000` (Ctrl+C pour arrêter) |
-| `install.ps1 preview-all` / `sh install.sh preview-all` | les cinq modèles côte à côte (voir section 1) |
+| `install.ps1 preview-all` / `sh install.sh preview-all` | les huit modèles côte à côte (voir section 1) |
 | `-Port 8080` / `--port 8080` | utiliser un autre port |
 | `-NoOpen` / `--no-open` | ne pas ouvrir le navigateur |
 
@@ -124,7 +146,7 @@ portfolio/
     images/             photo, logos, vignettes de projets
     files/              CV en PDF, rapports
   content-fr-example/   le même exemple, rédigé en français (à consulter)
-  templates/a … e/      les modèles (inutile d'y toucher)
+  templates/a … h/      les modèles (inutile d'y toucher)
   build.py              le script qui fabrique le site
   install.ps1, install.sh, install.cmd   installateurs
   docs/                 le site généré (ne pas modifier à la main)
@@ -170,7 +192,7 @@ Règles qui évitent 90 % des erreurs :
 | Champ | Obligatoire | Rôle |
 |---|---|---|
 | `language` | non (défaut `en`) | langue de l'interface : `en` ou `fr` (menus, titres de sections, mois, « Aujourd'hui »...) |
-| `template` | non (défaut `a`) | `a` (Editorial), `b` (Cards), `c` (Sidebar), `d` (Bento) ou `e` (Spotlight) |
+| `template` | non (défaut `a`) | `a` (Editorial), `b` (Cards), `c` (Sidebar), `d` (Bento), `e` (Spotlight), `f` (Terminal), `g` (Resume) ou `h` (Horizon) |
 | `title` | non | titre de l'onglet du navigateur |
 | `description` | non | phrase affichée par Google et LinkedIn |
 | `base_url` | non | adresse finale du site, par exemple `https://pseudo.github.io/portfolio/` |
@@ -446,7 +468,7 @@ Dans `content/site.yml`, mettez `language: fr` ou `language: en`. Cela traduit l
 
 ### Changer de modèle
 
-Dans `content/site.yml`, mettez `template: a`, `b`, `c`, `d` ou `e`, puis relancez le script. Aucun autre changement n'est nécessaire. Pour essayer sans modifier le fichier : `uv run build.py --template c`.
+Dans `content/site.yml`, mettez `template: a`, `b`, `c`, `d`, `e`, `f`, `g` ou `h`, puis relancez le script. Aucun autre changement n'est nécessaire. Pour essayer sans modifier le fichier : `uv run build.py --template c`.
 
 ---
 
@@ -489,7 +511,7 @@ Options utiles :
 uv run build.py --template b                                    # essayer un autre modèle
 uv run build.py --language fr                                   # essayer l'autre langue d'interface
 uv run build.py --content content-fr-example --out apercu-fr    # générer l'exemple français ailleurs
-uv run build.py --preview-all                                   # les cinq modèles côte à côte
+uv run build.py --preview-all                                   # les huit modèles côte à côte
 uv run build.py --serve                                         # génère puis sert docs/ sur http://localhost:8000
 ```
 
@@ -554,7 +576,7 @@ Pas de souci : l'aperçu essaie automatiquement les ports suivants (8001, 8002..
 Non. Le dossier `docs/` fonctionne aussi hors ligne. Pour n'utiliser aucune ressource externe, mettez `google_fonts: false`.
 
 **Puis-je modifier la mise en page plus finement ?**
-Oui, dans `templates/<a|b|c|d|e>/static/style.css`. Ce n'est pas nécessaire pour un usage normal.
+Oui, dans `templates/<a…h>/static/style.css`. Ce n'est pas nécessaire pour un usage normal.
 
 **Que sont les dossiers `previews/` et `_qa/` ?**
 `previews/` est créé par `--preview-all` ; `_qa/` contient des essais de vérification. Les deux sont ignorés par Git et peuvent être supprimés.
@@ -562,3 +584,9 @@ Oui, dans `templates/<a|b|c|d|e>/static/style.css`. Ce n'est pas nécessaire pou
 ---
 
 Licence MIT. Les images d'exemple sont des créations neutres libres de droits, à remplacer par les vôtres.
+
+---
+
+## Licence
+
+Projet libre sous [licence MIT](LICENSE) : vous pouvez l'utiliser, le modifier et le partager gratuitement, y compris pour votre portfolio personnel. Seule condition : garder la mention de copyright du fichier `LICENSE` dans les copies du code. Si le projet vous aide, une étoile sur le dépôt et un abonnement à [Djamal029](https://github.com/Djamal029) font plaisir.

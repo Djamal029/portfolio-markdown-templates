@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfolio Markdown : %COUNT% modèles gratuits</title>
+<meta name="description" content="Des modèles de portfolio gratuits (licence MIT) : on remplit des fichiers Markdown, le site se construit tout seul et se publie sur GitHub Pages.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230f766e'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial' font-size='28' font-weight='700' fill='%23fff'%3EM%3C/text%3E%3C/svg%3E">
+<style>
+:root{--bg:#f4f5f2;--page:#e9ebe6;--card:#fff;--text:#16181d;--muted:#5a5f6b;--line:#dde0da;--accent:#0f766e;--accent-rgb:15,118,110;--accent2:#b45309;--accent2-rgb:180,83,9;--on:#fff;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1214;--page:#080a0b;--card:#161a1d;--text:#eceff1;--muted:#a2a9b1;--line:#262c31;--accent:#5fc4b8;--accent-rgb:95,196,184;--accent2:#f0b65a;--accent2-rgb:240,182,90;--on:#06201d}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--text);font:400 1rem/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:radial-gradient(900px 500px at 10% -10%,rgba(var(--accent-rgb),.18),transparent 60%),radial-gradient(800px 500px at 100% 10%,rgba(var(--accent2-rgb),.12),transparent 60%),var(--page);overflow-x:clip}
+a{color:var(--accent)}
+.wrap{width:min(100% - 32px,1220px);margin:0 auto}
+.icon{width:18px;height:18px;flex:none}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:8px}
+
+/* header */
+.top{display:flex;align-items:center;gap:14px;padding:18px 0}
+.logo{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:1.1rem;color:var(--text);text-decoration:none}
+.logo i{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-style:normal;color:#fff;background:linear-gradient(135deg,var(--accent),var(--accent2));box-shadow:0 6px 18px -6px rgba(var(--accent-rgb),.8)}
+.top nav{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:999px;font-weight:700;font-size:.92rem;text-decoration:none;color:var(--text);background:color-mix(in srgb,var(--card) 80%,transparent);border:1px solid var(--line);transition:border-color .2s,transform .2s}
+.pill:hover{border-color:var(--accent);transform:translateY(-1px)}
+.pill.primary{background:var(--accent);color:var(--on);border-color:var(--accent);box-shadow:0 10px 24px -12px rgba(var(--accent-rgb),.9)}
+
+.hero{text-align:center;padding:40px 0 28px}
+.kicker{display:inline-flex;gap:8px;align-items:center;font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);padding:6px 14px;border-radius:999px;background:rgba(var(--accent-rgb),.1);border:1px solid rgba(var(--accent-rgb),.25)}
+.hero h1{font-size:clamp(2.2rem,5.6vw,4rem);line-height:1.04;letter-spacing:-.035em;margin:18px auto 14px;max-width:16ch}
+.hero h1 span{background:linear-gradient(100deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{color:var(--muted);font-size:1.12rem;max-width:62ch;margin:0 auto}
+
+/* explainer animation */
+.film{margin:34px auto 0;max-width:980px;border-radius:24px;overflow:hidden;background:linear-gradient(180deg,var(--card),color-mix(in srgb,var(--card) 70%,var(--bg)));border:1px solid var(--line);box-shadow:0 40px 90px -50px rgba(0,0,0,.6),0 0 0 8px color-mix(in srgb,var(--card) 40%,transparent)}
+.stage{position:relative;aspect-ratio:16/8.2;min-height:340px;overflow:hidden;background:radial-gradient(600px 300px at 20% 0%,rgba(var(--accent-rgb),.14),transparent 70%),radial-gradient(500px 300px at 90% 100%,rgba(var(--accent2-rgb),.12),transparent 70%)}
+.scene{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;gap:28px;padding:34px 44px;opacity:0;visibility:hidden;transition:opacity .5s ease,visibility .5s}
+.scene.on{opacity:1;visibility:visible}
+.say .step{font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.say h2{font-size:clamp(1.5rem,3.4vw,2.4rem);line-height:1.1;letter-spacing:-.025em;margin:8px 0 10px}
+.say p{color:var(--muted);margin:0;font-size:1.02rem}
+.scene.on .say>*{animation:up .6s both}
+.scene.on .say>*:nth-child(2){animation-delay:.12s}.scene.on .say>*:nth-child(3){animation-delay:.24s}
+@keyframes up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}
+@keyframes type{from{width:0}to{width:100%}}
+@keyframes drop{0%{opacity:0;transform:translateY(-60px) rotate(-8deg)}70%{opacity:1;transform:translateY(6px) rotate(2deg)}100%{opacity:1;transform:none}}
+.viz{position:relative;height:100%;display:grid;place-items:center}
+.win{width:100%;max-width:440px;border-radius:14px;background:var(--card);border:1px solid var(--line);box-shadow:0 24px 60px -30px rgba(0,0,0,.55);overflow:hidden}
+.win-bar{display:flex;gap:6px;align-items:center;padding:9px 12px;background:color-mix(in srgb,var(--card) 85%,var(--text) 6%);border-bottom:1px solid var(--line);font:600 .75rem ui-monospace,Consolas,monospace;color:var(--muted)}
+.win-bar b{width:9px;height:9px;border-radius:50%;background:#ef4444}.win-bar b+b{background:#f59e0b}.win-bar b+b+b{background:#22c55e}
+.win-bar span{margin-left:8px}
+.win-body{padding:16px 18px}
+/* scene 1: site mock builds itself */
+.mock .row{height:12px;border-radius:6px;background:var(--line);margin:8px 0}
+.mock .av{width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2))}
+.mock .head{display:flex;gap:14px;align-items:center}
+.mock .head div{flex:1}
+.mock .title{height:18px;width:70%;background:var(--text);opacity:.85;border-radius:6px}
+.mock .cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px}
+.mock .cards i{height:64px;border-radius:10px;background:linear-gradient(135deg,rgba(var(--accent-rgb),.55),rgba(var(--accent2-rgb),.45))}
+.scene.on .mock .head,.scene.on .mock .row,.scene.on .mock .cards i{animation:pop .5s both}
+.scene.on .mock .row:nth-of-type(1){animation-delay:.5s}.scene.on .mock .row:nth-of-type(2){animation-delay:.65s}
+.scene.on .mock .cards i:nth-child(1){animation-delay:.9s}.scene.on .mock .cards i:nth-child(2){animation-delay:1.05s}.scene.on .mock .cards i:nth-child(3){animation-delay:1.2s}
+/* scene 2: price */
+.price{text-align:center}
+.price b{display:block;font-size:clamp(4rem,11vw,7.5rem);font-weight:900;letter-spacing:-.06em;line-height:1;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.price ul{list-style:none;padding:0;margin:16px 0 0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.price li{padding:7px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-weight:700;font-size:.88rem}
+.scene.on .price b{animation:pop .7s both}.scene.on .price li{animation:up .5s both}
+.scene.on .price li:nth-child(1){animation-delay:.5s}.scene.on .price li:nth-child(2){animation-delay:.7s}.scene.on .price li:nth-child(3){animation-delay:.9s}
+/* scene 3 and 4: markdown typing */
+.split{display:grid;grid-template-columns:1fr;gap:12px;width:100%;max-width:440px}
+.code{font:500 .82rem/1.7 ui-monospace,Consolas,monospace;white-space:pre}
+.code .ln{display:block;overflow:hidden;width:0}
+.scene.on .code .ln{animation:type .7s steps(28) both}
+.code .k{color:var(--accent)}.code .s{color:var(--accent2)}.code .c{color:var(--muted)}
+.result{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:12px;background:var(--card);border:1px solid rgba(var(--accent-rgb),.4);box-shadow:0 14px 34px -20px rgba(var(--accent-rgb),.8)}
+.result .th{width:62px;height:44px;border-radius:8px;flex:none;background:linear-gradient(135deg,#1e3a5f,#3b6ea5)}
+.result b{display:block}.result small{color:var(--muted)}
+.scene.on .result{animation:pop .5s both}
+.arrow{justify-self:center;font-weight:800;color:var(--accent);font-size:1.3rem}
+.scene.on .arrow{animation:up .4s both}
+/* scene 4: images */
+.tree{font:500 .85rem/1.9 ui-monospace,Consolas,monospace}
+.tree .new{color:var(--accent);font-weight:700}
+.photo{width:74px;height:74px;border-radius:50%;flex:none;background:radial-gradient(circle at 50% 38%,#c9d3da 0 22%,transparent 23%),radial-gradient(circle at 50% 100%,#c9d3da 0 42%,transparent 43%),linear-gradient(135deg,#7f93a3,#5b6f80);border:3px solid var(--card);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.6)}
+.scene.on .drop{animation:drop .9s both}
+/* scene 5: templates and colours */
+.minis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%;max-width:460px}
+.minis img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--line);box-shadow:0 10px 24px -16px rgba(0,0,0,.6)}
+.scene.on .minis img{animation:pop .45s both}
+.swatches{display:flex;gap:8px;justify-content:center;margin-top:16px}
+.swatches i{width:28px;height:28px;border-radius:50%;border:3px solid var(--card);box-shadow:0 0 0 1px var(--line)}
+/* scene 6: publish */
+.term{background:#0d1117;color:#e6edf3;border-color:#30363d}
+.term .win-bar{background:#161b22;color:#8b949e;border-color:#30363d}
+.term .code .k{color:#7ee787}.term .code .c{color:#8b949e}
+.url{margin-top:14px;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;font-weight:700;background:var(--card);border:1px solid rgba(var(--accent-rgb),.5);box-shadow:0 12px 30px -16px rgba(var(--accent-rgb),.9)}
+.scene.on .url{animation:pop .5s both;animation-delay:2.2s}
+/* controls */
+.ctrl{display:flex;align-items:center;gap:12px;padding:12px 16px;border-top:1px solid var(--line)}
+.ctrl button{font:inherit;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;height:38px;min-width:38px;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;gap:6px;font-weight:700;font-size:.85rem}
+.ctrl button:hover{border-color:var(--accent);color:var(--accent)}
+[data-ic][hidden]{display:none}
+.film{text-align:left}
+.dots{display:flex;gap:6px;flex:1}
+.dots button{flex:1;height:6px;min-width:0;padding:0;border-radius:999px;border:0;background:var(--line);position:relative;overflow:hidden}
+.dots button span{position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.dots button.done span{width:100%}
+.dots button.on span{animation:fill var(--dur) linear both}
+.film.paused .dots button.on span{animation-play-state:paused}
+@keyframes fill{to{width:100%}}
+
+/* gallery */
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:64px 0 22px}
+.section-title h2{font-size:clamp(1.7rem,3.6vw,2.5rem);letter-spacing:-.03em;margin:0}
+.section-title p{margin:0;color:var(--muted)}
+.grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.card{position:relative;display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:linear-gradient(180deg,var(--card),color-mix(in srgb,var(--card) 70%,var(--bg)));border:1px solid var(--line);box-shadow:0 14px 40px -30px rgba(0,0,0,.6);transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:hover{transform:translateY(-4px);border-color:rgba(var(--accent-rgb),.5);box-shadow:0 26px 60px -30px rgba(var(--accent-rgb),.7)}
+.shot{aspect-ratio:16/10;overflow:hidden;border-bottom:1px solid var(--line);background:var(--line)}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}
+.card:hover .shot img{transform:scale(1.04)}
+.body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.body h3{margin:0;font-size:1.15rem;display:flex;align-items:center;gap:8px}
+.letter{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;font-size:.85rem;color:var(--on);background:var(--accent)}
+.body p{margin:0;color:var(--muted);font-size:.93rem}
+.count{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:700;color:var(--accent2);margin-top:4px}
+.links{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:12px}
+.links a,.links button{font:inherit;font-weight:700;font-size:.88rem;text-align:center;padding:9px 10px;border-radius:10px;text-decoration:none;border:1px solid var(--line);color:var(--text);background:var(--card);cursor:pointer}
+.links a:hover{border-color:var(--accent);color:var(--accent)}
+.links .choose{grid-column:1/-1;background:linear-gradient(135deg,var(--accent),color-mix(in srgb,var(--accent) 65%,var(--accent2)));color:var(--on);border:0;padding:11px;box-shadow:0 12px 26px -14px rgba(var(--accent-rgb),.9)}
+.links .choose:hover{filter:brightness(1.07)}
+
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px}
+.how div{padding:20px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.how b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(var(--accent-rgb),.14);color:var(--accent);margin-bottom:8px}
+.how h3{margin:0 0 4px;font-size:1.05rem}.how p{margin:0;color:var(--muted);font-size:.93rem}
+code{font:500 .85em ui-monospace,Consolas,monospace;background:color-mix(in srgb,var(--card) 60%,var(--line));padding:1px 6px;border-radius:6px}
+footer{margin:64px 0 0;padding:24px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
+
+/* modal */
+dialog{border:0;padding:0;border-radius:22px;max-width:min(520px,calc(100% - 32px));background:var(--card);color:var(--text);box-shadow:0 40px 120px -30px rgba(0,0,0,.7)}
+dialog::backdrop{background:rgba(5,8,10,.55);backdrop-filter:blur(4px)}
+.modal{padding:28px 28px 24px;background:radial-gradient(500px 220px at 50% 0%,rgba(var(--accent-rgb),.18),transparent 70%)}
+.modal h2{margin:0 0 6px;font-size:1.5rem;letter-spacing:-.02em}
+.modal p{margin:0 0 14px;color:var(--muted)}
+.asks{display:grid;gap:10px;margin:16px 0}
+.ask{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:1px solid var(--line);text-decoration:none;color:var(--text);font-weight:700;transition:border-color .2s,background .2s}
+.ask:hover{border-color:var(--accent);background:rgba(var(--accent-rgb),.06)}
+.ask small{display:block;font-weight:500;color:var(--muted)}
+.ask .icon{width:22px;height:22px;color:var(--accent2)}
+.go{display:flex;gap:10px;flex-wrap:wrap}
+.go a,.go button{flex:1;font:inherit;font-weight:800;text-align:center;padding:12px 14px;border-radius:12px;text-decoration:none;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--text)}
+.go a{background:var(--accent);color:var(--on);border-color:var(--accent)}
+.tip{font-size:.88rem;margin-top:12px!important}
+
+@media (max-width:600px){.top .pill.primary{display:none}.logo{font-size:1rem}}
+@media (max-width:760px){
+  .scene{grid-template-columns:1fr;gap:14px;padding:22px 20px;align-content:center}
+  .stage{aspect-ratio:auto;height:560px}
+  .viz{height:auto}
+  .minis{grid-template-columns:repeat(4,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition:none!important}
+  .code .ln{width:100%}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="#"><i>M</i>Portfolio Markdown</a>
+    <nav>
+      <a class="pill" href="%REPO%" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Étoile sur GitHub</a>
+      <a class="pill primary" href="#modeles">Choisir un modèle</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <span class="kicker">Gratuit · licence MIT · sans coder</span>
+    <h1>Votre portfolio en ligne, <span>en remplissant des fichiers texte</span></h1>
+    <p>%COUNT% modèles prêts à l'emploi pour étudiants. Vous écrivez votre parcours dans des fichiers Markdown, le site se construit tout seul et se publie gratuitement sur GitHub Pages.</p>
+
+    <div class="film" id="film" aria-roledescription="animation" aria-label="Explication en six étapes">
+      <div class="stage">
+        <div class="scene" data-dur="5200">
+          <div class="say"><span class="step">1 · Pourquoi ce site ?</span><h2>Un portfolio pro, sans écrire une ligne de code</h2><p>Recruteurs et écoles regardent votre site avant votre CV. Ici, il se fabrique tout seul à partir de vos textes.</p></div>
+          <div class="viz"><div class="win mock"><div class="win-bar"><b></b><b></b><b></b><span>mon-portfolio.github.io</span></div><div class="win-body"><div class="head"><span class="av"></span><div><div class="title"></div><div class="row" style="width:50%"></div></div></div><div class="row"></div><div class="row" style="width:80%"></div><div class="cards"><i></i><i></i><i></i></div></div></div></div>
+        </div>
+        <div class="scene" data-dur="4600">
+          <div class="say"><span class="step">2 · Combien ça coûte ?</span><h2>Rien. Vraiment rien.</h2><p>Le code est sous licence MIT et l'hébergement est offert par GitHub Pages. Pas d'abonnement, pas de publicité.</p></div>
+          <div class="viz"><div class="price"><b>0 €</b><ul><li>Licence MIT</li><li>Hébergement GitHub Pages</li><li>Sans publicité</li></ul></div></div>
+        </div>
+        <div class="scene" data-dur="6200">
+          <div class="say"><span class="step">3 · Comment on le remplit ?</span><h2>Vous remplissez juste des fichiers .md</h2><p>Un fichier par expérience, un par projet. Le programme les lit et les met en page à votre place.</p></div>
+          <div class="viz"><div class="split"><div class="win"><div class="win-bar"><b></b><b></b><b></b><span>content/projects/credit.md</span></div><div class="win-body code"><span class="ln" style="animation-delay:.3s"><span class="c">---</span></span><span class="ln" style="animation-delay:1s"><span class="k">title:</span> Credit Scoring</span><span class="ln" style="animation-delay:1.7s"><span class="k">date:</span> <span class="s">2025-03</span></span><span class="ln" style="animation-delay:2.4s"><span class="k">tags:</span> [Python, SHAP]</span><span class="ln" style="animation-delay:3.1s"><span class="c">---</span></span></div></div><span class="arrow" style="animation-delay:3.8s">↓</span><div class="result" style="animation-delay:4.2s"><span class="th"></span><div><b>Credit Scoring</b><small>Mars 2025 · Python · SHAP</small></div></div></div></div>
+        </div>
+        <div class="scene" data-dur="6000">
+          <div class="say"><span class="step">4 · Et les images ?</span><h2>Les images aussi, c'est facile</h2><p>Déposez votre photo ou vos miniatures dans <code>content/images/</code>, puis écrivez leur chemin dans le fichier. C'est tout.</p></div>
+          <div class="viz"><div class="split"><div class="win"><div class="win-bar"><b></b><b></b><b></b><span>content/</span></div><div class="win-body tree">content/<br>├─ profile.md<br>└─ images/<br>&nbsp;&nbsp;&nbsp;└─ <span class="new drop" style="display:inline-block;animation-delay:.4s">photo.jpg</span></div></div><div class="win"><div class="win-bar"><b></b><b></b><b></b><span>content/profile.md</span></div><div class="win-body code"><span class="ln" style="animation-delay:1.6s"><span class="k">photo:</span> <span class="s">images/photo.jpg</span></span></div></div><div class="result" style="animation-delay:3s"><span class="photo"></span><div><b>Votre photo apparaît</b><small>sur toutes les pages, bien cadrée</small></div></div></div></div>
+        </div>
+        <div class="scene" data-dur="5200">
+          <div class="say"><span class="step">5 · Et le style ?</span><h2>%COUNT% modèles, vos couleurs</h2><p>Une lettre dans <code>site.yml</code> pour changer de modèle, une ligne pour la palette ou les polices. Mode sombre inclus.</p></div>
+          <div class="viz"><div><div class="minis">%MINIS%</div><div class="swatches"><i style="background:#0f766e"></i><i style="background:#4f46e5"></i><i style="background:#2f6b3a"></i><i style="background:#c2410c"></i><i style="background:#1e293b"></i></div></div></div>
+        </div>
+        <div class="scene" data-dur="6000">
+          <div class="say"><span class="step">6 · Et pour le mettre en ligne ?</span><h2>Une commande, et c'est publié</h2><p>L'installateur fait tout sur Windows, macOS et Linux. Sur GitHub, chaque modification se publie automatiquement.</p></div>
+          <div class="viz"><div><div class="win term"><div class="win-bar"><b></b><b></b><b></b><span>terminal</span></div><div class="win-body code"><span class="ln" style="animation-delay:.3s"><span class="k">$</span> uv run build.py</span><span class="ln" style="animation-delay:1.1s"><span class="c">Lecture de content/ ... ok</span></span><span class="ln" style="animation-delay:1.7s"><span class="c">Site généré : 6 pages</span></span></div></div><span class="url"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>prenom-nom.github.io</span></div></div>
+        </div>
+      </div>
+      <div class="ctrl">
+        <button type="button" data-act="toggle" aria-label="Pause"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-ic="pause"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-ic="play" hidden><path d="M7 5v14l12-7z"/></svg></button>
+        <div class="dots" role="tablist" aria-label="Étapes"></div>
+        <button type="button" data-act="next" aria-label="Étape suivante">Suivant</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-title" id="modeles"><h2>Les %COUNT% modèles</h2><p>Même contenu d'exemple (Alex Martin, étudiant fictif) dans chaque modèle.</p></div>
+  <ul class="grid">
+%CARDS%
+  </ul>
+
+  <div class="section-title"><h2>Démarrer en 3 étapes</h2></div>
+  <div class="how">
+    <div><b>1</b><h3>Copier le modèle</h3><p>Bouton « Use this template » sur GitHub (ou « Download ZIP »).</p></div>
+    <div><b>2</b><h3>Remplir vos fichiers</h3><p>Modifiez les fichiers <code>.md</code> du dossier <code>content/</code> et mettez vos images dans <code>content/images/</code>.</p></div>
+    <div><b>3</b><h3>Publier</h3><p>Activez GitHub Pages : votre site est en ligne, et se met à jour à chaque modification.</p></div>
+  </div>
+
+  <footer><span>Projet libre sous <a href="%REPO%/blob/main/LICENSE" target="_blank" rel="noopener">licence MIT</a> · créé par <a href="%OWNER%" target="_blank" rel="noopener">Djamal TOE</a></span><span><a href="%REPO%" target="_blank" rel="noopener">Code source sur GitHub</a></span></footer>
+</div>
+
+<dialog id="choose" aria-labelledby="choose-title">
+  <div class="modal">
+    <h2 id="choose-title">Bon choix : modèle <span data-name></span></h2>
+    <p>Le projet est gratuit. Pour le soutenir, deux petits gestes avant de continuer :</p>
+    <div class="asks">
+      <a class="ask" href="%REPO%" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Laisser une étoile au dépôt<small>Bouton « Star » en haut à droite de la page GitHub</small></span></a>
+      <a class="ask" href="%OWNER%" target="_blank" rel="noopener"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg><span>Suivre l'auteur sur GitHub<small>Bouton « Follow » sur le profil, pour voir les prochains modèles</small></span></a>
+    </div>
+    <div class="go"><a href="%REPO%/generate" target="_blank" rel="noopener">Utiliser ce modèle</a><button type="button" data-close>Plus tard</button></div>
+    <p class="tip">Ensuite, dans <code>content/site.yml</code>, écrivez <code>template: <span data-letter></span></code>.</p>
+  </div>
+</dialog>
+
+<script>
+(function () {
+  /* explainer: a small scene player (play, pause, next, jump) */
+  var film = document.getElementById("film");
+  var scenes = film.querySelectorAll(".scene");
+  var dots = film.querySelector(".dots");
+  var i = -1, timer = null, playing = true;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  scenes.forEach(function (s, k) {
+    var b = document.createElement("button");
+    b.type = "button"; b.setAttribute("aria-label", "Étape " + (k + 1)); b.innerHTML = "<span></span>";
+    b.addEventListener("click", function () { show(k); });
+    dots.appendChild(b);
+  });
+  var bars = dots.querySelectorAll("button");
+  function show(k) {
+    clearTimeout(timer);
+    i = (k + scenes.length) % scenes.length;
+    scenes.forEach(function (s, n) { s.classList.toggle("on", n === i); });
+    bars.forEach(function (b, n) {
+      b.classList.toggle("done", n < i); b.classList.remove("on");
+      if (n === i) { void b.offsetWidth; b.classList.add("on"); }
+    });
+    var dur = +scenes[i].getAttribute("data-dur") || 5000;
+    film.style.setProperty("--dur", dur + "ms");
+    if (playing) timer = setTimeout(function () { show(i + 1); }, dur);
+  }
+  function setPlaying(p) {
+    playing = p; film.classList.toggle("paused", !p);
+    var t = film.querySelector("[data-act=toggle]");
+    t.setAttribute("aria-label", p ? "Pause" : "Lecture");
+    t.querySelector("[data-ic=pause]").toggleAttribute("hidden", !p); t.querySelector("[data-ic=play]").toggleAttribute("hidden", p);
+    if (p) show(i); else clearTimeout(timer);
+  }
+  film.querySelector("[data-act=toggle]").addEventListener("click", function () { setPlaying(!playing); });
+  film.querySelector("[data-act=next]").addEventListener("click", function () { show(i + 1); });
+  if (reduce) { playing = false; film.classList.add("paused"); film.querySelector("[data-ic=pause]").setAttribute("hidden", ""); film.querySelector("[data-ic=play]").removeAttribute("hidden"); }
+  show(0);
+
+  /* per-template counters (free Abacus counter service, no personal data) */
+  var NS = "%COUNTER_NS%", API = "https://abacus.jasoncameron.dev";
+  function label(n) { return n + (n > 1 ? " personnes l'ont choisi" : (n === 1 ? " personne l'a choisi" : " : soyez le premier à le choisir")); }
+  document.querySelectorAll("[data-count]").forEach(function (el) {
+    var key = el.getAttribute("data-count");
+    fetch(API + "/get/" + NS + "/" + key).then(function (r) { return r.ok ? r.json() : { value: 0 }; })
+      .then(function (d) { el.querySelector("span").textContent = label(d.value || 0); el.hidden = false; })
+      .catch(function () { el.hidden = true; });
+  });
+
+  /* choose: count the choice, then ask for a star and a follow */
+  var dlg = document.getElementById("choose");
+  document.querySelectorAll("[data-choose]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var letter = btn.getAttribute("data-choose"), key = "template-" + letter;
+      dlg.querySelector("[data-name]").textContent = btn.getAttribute("data-label");
+      dlg.querySelector("[data-letter]").textContent = letter;
+      if (dlg.showModal) dlg.showModal(); else window.open("%REPO%", "_blank");
+      var counted = false;
+      try { counted = localStorage.getItem("chose-" + key) === "1"; } catch (e) {}
+      if (counted) return;
+      fetch(API + "/hit/" + NS + "/" + key).then(function (r) { return r.json(); }).then(function (d) {
+        try { localStorage.setItem("chose-" + key, "1"); } catch (e) {}
+        var el = document.querySelector('[data-count="' + key + '"]');
+        if (el && d && d.value) { el.querySelector("span").textContent = label(d.value); el.hidden = false; }
+      }).catch(function () {});
+    });
+  });
+  dlg.querySelector("[data-close]").addEventListener("click", function () { dlg.close(); });
+  dlg.addEventListener("click", function (e) { if (e.target === dlg) dlg.close(); });
+})();
+</script>
+</body>
+</html>

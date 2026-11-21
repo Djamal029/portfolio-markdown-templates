@@ -506,6 +506,9 @@ TEMPLATES = {
     "c": {"name": "Sidebar", "palette": "graphite", "heading": "space-grotesk", "body": "ibm-plex-sans", "mono": "jetbrains-mono"},
     "d": {"name": "Bento", "palette": "indigo", "heading": "space-grotesk", "body": "inter", "mono": "system"},
     "e": {"name": "Spotlight", "palette": "sunset", "heading": "source-serif-4", "body": "inter", "mono": "system"},
+    "f": {"name": "Terminal", "palette": "graphite", "heading": "jetbrains-mono", "body": "ibm-plex-sans", "mono": "jetbrains-mono"},
+    "g": {"name": "Resume", "palette": "teal", "heading": "lora", "body": "inter", "mono": "system"},
+    "h": {"name": "Horizon", "palette": "indigo", "heading": "plus-jakarta-sans", "body": "plus-jakarta-sans", "mono": "system"},
 }
 
 WHITE = (255, 255, 255)
@@ -1044,48 +1047,11 @@ def safe_clean(out_dir: Path) -> None:
 # Aperçu de tous les modèles côte à côte (--preview-all)
 # ---------------------------------------------------------------------------
 
-PREVIEW_PAGE = """<!doctype html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Choisir un modèle de portfolio</title>
-<style>
-:root{--bg:#f6f6f4;--card:#fff;--text:#18181b;--muted:#5b5b66;--line:#e3e3e0;--accent:#0f766e;color-scheme:light dark}
-@media (prefers-color-scheme:dark){:root{--bg:#121214;--card:#1b1b1f;--text:#ececf0;--muted:#a3a3ad;--line:#2c2c33;--accent:#5fc4b8}}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
-main{width:min(100% - 32px,1200px);margin:0 auto;padding:48px 0 64px}
-h1{font-size:clamp(1.8rem,4vw,2.6rem);margin:0 0 8px;letter-spacing:-.02em}
-.lead{color:var(--muted);max-width:60ch;margin:0 0 32px}
-ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
-li{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-.shot{aspect-ratio:16/10;background:var(--line);border-bottom:1px solid var(--line);overflow:hidden}
-.shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
-.body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
-h2{margin:0;font-size:1.25rem}
-code{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.85em}
-p{margin:0;color:var(--muted)}
-.links{display:flex;gap:10px;margin-top:auto;padding-top:12px}
-.links a{flex:1;text-align:center;padding:10px 12px;border-radius:10px;font-weight:600;text-decoration:none;border:1px solid var(--line);color:var(--text)}
-.links a:first-child{background:var(--accent);border-color:var(--accent);color:#fff}
-@media (prefers-color-scheme:dark){.links a:first-child{color:#0f0f10}}
-a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
-.foot{margin-top:32px;font-size:.92rem}
-</style>
-</head>
-<body>
-<main>
-<h1>Choisir un modèle de portfolio</h1>
-<p class="lead">Tous les modèles affichent exactement le même contenu d'exemple (Alex Martin, étudiant fictif). Pour utiliser un modèle, écrivez sa lettre dans <code>content/site.yml</code>, à la ligne <code>template:</code>.</p>
-<ul>
-%CARDS%
-</ul>
-<p class="foot lead">Page générée par <code>build.py --preview-all</code>. Les couleurs et polices de chaque modèle se changent aussi dans <code>content/site.yml</code>.</p>
-</main>
-</body>
-</html>
-"""
+# Liens du projet d'origine, affichés sur la page galerie (--preview-all).
+PROJECT_REPO = "https://github.com/Djamal029/portfolio-markdown-templates"
+PROJECT_OWNER = "https://github.com/Djamal029"
+# Compteurs publics « combien de personnes ont choisi ce modèle » (service gratuit Abacus, aucune donnée personnelle).
+COUNTER_NAMESPACE = "djamal029-portfolio-markdown-templates"
 
 PREVIEW_TEXT = {
     "a": "Une seule longue page, menu de sections collé en haut, titres à empattements.",
@@ -1093,6 +1059,9 @@ PREVIEW_TEXT = {
     "c": "Profil fixe dans une colonne à gauche, contenu à droite, détails en police à chasse fixe.",
     "d": "Une seule page en tuiles (bento) : grandes cartes lumineuses, projet vedette en double largeur, menu flottant.",
     "e": "Une seule page centrée façon vitrine : grand titre éclairé, frise alternée, projets en grandes rangées.",
+    "f": "Une page façon terminal de développeur : fenêtres avec barre de titre, commandes, police à chasse fixe.",
+    "g": "Un CV en ligne élégant : une feuille posée sur la page, colonne de contact et de compétences à gauche.",
+    "h": "Une page grand format : nom géant, projets qui défilent à l'horizontale, expériences numérotées.",
 }
 
 
@@ -1163,21 +1132,29 @@ def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
         (out / tpl / BUILD_MARKER).write_text("", encoding="utf-8")
     thumbs = out / "thumbs"
     thumbs.mkdir(exist_ok=True)
-    cards = []
+    cards, minis = [], []
     for tpl, info in TEMPLATES.items():
         shot = ROOT / "docs-assets" / f"template-{tpl}-desktop.webp"
         img = ""
         if shot.is_file():
             shutil.copy2(shot, thumbs / shot.name)
             img = f'<div class="shot"><img src="thumbs/{shot.name}" alt="Capture du modèle {tpl.upper()}" loading="lazy"></div>'
+            minis.append(f'<img src="thumbs/{shot.name}" alt="" style="animation-delay:{0.25 + 0.12 * len(minis):.2f}s">')
+        label = f"{tpl.upper()} « {info['name']} »"
         cards.append(
-            f'<li>{img}<div class="body"><h2>Modèle {tpl.upper()} : {info["name"]}</h2>'
-            f'<p>{PREVIEW_TEXT[tpl]}</p><p>Dans site.yml : <code>template: {tpl}</code></p>'
+            f'<li class="card">{img}<div class="body"><h3><span class="letter">{tpl.upper()}</span>{info["name"]}</h3>'
+            f'<p>{PREVIEW_TEXT[tpl]}</p>'
+            f'<p class="count" data-count="template-{tpl}" hidden><span></span></p>'
             f'<div class="links"><a href="{tpl}/en/index.html">Voir en anglais</a>'
-            f'<a href="{tpl}/fr/index.html">Voir en français</a></div></div></li>'
+            f'<a href="{tpl}/fr/index.html">Voir en français</a>'
+            f'<button type="button" class="choose" data-choose="{tpl}" data-label="{label}">Choisir ce modèle</button></div></div></li>'
         )
+    page = (ROOT / "outils" / "galerie.html").read_text(encoding="utf-8")
+    for key, value in {"%CARDS%": "\n".join(cards), "%MINIS%": "".join(minis[:8]), "%COUNT%": str(len(TEMPLATES)),
+                       "%REPO%": PROJECT_REPO, "%OWNER%": PROJECT_OWNER, "%COUNTER_NS%": COUNTER_NAMESPACE}.items():
+        page = page.replace(key, value)
     index = out / "index.html"
-    index.write_text(PREVIEW_PAGE.replace("%CARDS%", "\n".join(cards)), encoding="utf-8")
+    index.write_text(page, encoding="utf-8")
     print(f"Aperçus générés. Page de choix : {index}")
     if not serve:
         return 0
@@ -1191,7 +1168,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--out", default="docs", help="dossier de sortie (défaut : docs)")
     parser.add_argument("--template", choices=list(TEMPLATES), help="force le modèle (sinon : valeur de site.yml)")
     parser.add_argument("--language", choices=list(I18N), help="force la langue de l'interface (sinon : site.yml)")
-    parser.add_argument("--preview-all", action="store_true", help="génère les 3 modèles (anglais et français) dans previews/ et les ouvre")
+    parser.add_argument("--preview-all", action="store_true", help="génère tous les modèles (anglais et français) et la page galerie dans previews/, puis les ouvre")
     parser.add_argument("--no-serve", action="store_true", help="avec --preview-all : génère sans lancer le serveur local")
     parser.add_argument("--serve", action="store_true", help="après la génération, sert le site sur http://localhost:8000")
     parser.add_argument("--no-open", action="store_true", help="avec --preview-all ou --serve : ne pas ouvrir le navigateur")

@@ -1,0 +1,140 @@
+{% extends "_base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_macros.html" import section_head, tags, contact_buttons, project_links %}
+{% block main %}
+{% set n = namespace(i=0) %}
+<div class="sheet wrap">
+  <aside class="sheet-side" id="home" aria-labelledby="hero-title">
+    {% if profile.photo %}
+    <figure class="side-photo"><img src="{{ root }}{{ profile.photo }}" alt="{{ profile.photo_alt }}" width="400" height="400"></figure>
+    {% endif %}
+    <h1 id="hero-title">{{ profile.name }}</h1>
+    <p class="role">{{ profile.headline }}</p>
+    {% if profile.availability %}<p class="status"><span class="status-dot" aria-hidden="true"></span>{{ profile.availability }}</p>{% endif %}
+
+    <h2 class="side-title">{{ t.section_contact }}</h2>
+    <ul class="side-list">
+      {% if profile.location %}<li>{{ icon("pin", 16) }}<span>{{ profile.location }}</span></li>{% endif %}
+      {% if profile.email %}<li>{{ icon("mail", 16) }}<a href="mailto:{{ profile.email }}">{{ profile.email }}</a></li>{% endif %}
+      {% if profile.phone %}<li>{{ icon("phone", 16) }}<a href="tel:{{ profile.phone_link }}">{{ profile.phone }}</a></li>{% endif %}
+      {% if profile.linkedin %}<li>{{ icon("linkedin", 16) }}<a href="{{ profile.linkedin }}" rel="noopener" target="_blank">{{ t.linkedin }}</a></li>{% endif %}
+      {% if profile.github %}<li>{{ icon("github", 16) }}<a href="{{ profile.github }}" rel="noopener" target="_blank">{{ t.github }}</a></li>{% endif %}
+      {% if profile.website %}<li>{{ icon("globe", 16) }}<a href="{{ profile.website }}" rel="noopener" target="_blank">{{ t.website }}</a></li>{% endif %}
+    </ul>
+    {% if profile.cv_pdf %}<a class="btn btn-primary side-cv" href="{{ root }}{{ profile.cv_pdf }}" download>{{ icon("download") }}<span>{{ t.download_cv }}</span></a>{% endif %}
+
+    {% if visible.skills %}
+    <section id="skills" aria-labelledby="skills-title" class="side-skills">
+      <h2 class="side-title" id="skills-title">{{ t.section_skills }}</h2>
+      {% for g in skills.groups %}
+      <div class="skill-group">
+        <h3>{{ g.name }}</h3>
+        {% if g.has_levels %}
+        <ul class="skill-bars">
+          {% for s in g.entries %}
+          <li>
+            <span class="skill-name">{{ s.name }}</span>
+            {% if s.level %}<span class="bar" role="img" aria-label="{{ t.level.format(n=s.level) }}"><span style="width: {{ s.level * 20 }}%"></span></span>{% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <ul class="tags">{% for s in g.entries %}<li>{{ s.name }}</li>{% endfor %}</ul>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </section>
+    {% endif %}
+  </aside>
+
+  <div class="sheet-main">
+    {% if profile.pitch_html %}<div class="pitch">{{ profile.pitch_html | safe }}</div>{% endif %}
+
+    {% if visible.about %}{% set n.i = n.i + 1 %}
+    <section class="section" id="about" aria-labelledby="about-title">
+      {{ section_head(n.i, "about", t) }}
+      <div class="prose">{{ about_html | safe }}</div>
+    </section>
+    {% endif %}
+
+    {% if visible.experiences %}{% set n.i = n.i + 1 %}
+    <section class="section" id="experiences" aria-labelledby="experiences-title">
+      {{ section_head(n.i, "experiences", t) }}
+      <ol class="cv-list">
+        {% for e in experiences %}
+        <li class="cv-item{% if e.is_current %} is-current{% endif %}">
+          <div class="cv-when"><time{% if e.start_iso %} datetime="{{ e.start_iso }}"{% endif %}>{{ e.dates }}</time><span class="badge">{{ e.type_label }}</span></div>
+          <div class="cv-what">
+            <h3>{{ e.title }}</h3>
+            <p class="cv-org">{{ e.organisation }}{% if e.location %}<span class="muted"> · {{ e.location }}</span>{% endif %}</p>
+            {% if e.body_html %}<div class="prose small">{{ e.body_html | safe }}</div>{% endif %}
+            {{ tags(e.tags, t) }}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+
+    {% if visible.projects %}{% set n.i = n.i + 1 %}
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      {{ section_head(n.i, "projects", t) }}
+      {% if has_academic and has_personal %}
+      <div class="filters" role="group" aria-label="{{ t.filter_label }}" data-filters>
+        <button type="button" class="filter" data-filter="all" aria-pressed="true">{{ t.filter_all }}</button>
+        <button type="button" class="filter" data-filter="academic" aria-pressed="false">{{ t.academic }}</button>
+        <button type="button" class="filter" data-filter="personal" aria-pressed="false">{{ t.personal }}</button>
+      </div>
+      {% endif %}
+      <ul class="cv-projects" data-project-grid>
+        {% for p in projects %}
+        <li class="cv-project" data-category="{{ p.category }}">
+          {% if p.thumbnail %}<div class="cv-thumb"><img src="{{ root }}{{ p.thumbnail }}" alt="{{ p.thumbnail_alt }}" width="1200" height="675" loading="lazy"></div>{% endif %}
+          <div>
+            <p class="project-meta"><span>{{ p.category_label }}</span><span aria-hidden="true">·</span><time datetime="{{ p.date_iso }}">{{ p.date_label }}</time>{% if p.featured %}<span class="star">{{ t.featured }}</span>{% endif %}</p>
+            <h3>{% if p.has_page %}<a href="{{ root }}projects/{{ p.slug }}.html">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</h3>
+            <p class="project-summary">{{ p.summary }}</p>
+            {{ tags(p.tags, t) }}
+            <div class="project-links">
+              {% if p.has_page %}<a class="link-more" href="{{ root }}projects/{{ p.slug }}.html">{{ t.view_project }} {{ icon("arrow-right", 16) }}<span class="sr-only">: {{ p.title }}</span></a>{% endif %}
+              {{ project_links(p, t, root) }}
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+      <p class="empty-filter" hidden data-empty>{{ t.no_projects }}</p>
+    </section>
+    {% endif %}
+
+    {% if visible.education %}{% set n.i = n.i + 1 %}
+    <section class="section" id="education" aria-labelledby="education-title">
+      {{ section_head(n.i, "education", t) }}
+      <ol class="cv-list">
+        {% for e in education %}
+        <li class="cv-item">
+          <div class="cv-when"><span>{{ e.dates }}</span></div>
+          <div class="cv-what">
+            <h3>{{ e.degree }}</h3>
+            <p class="cv-org">{{ e.school }}{% if e.location %}<span class="muted"> · {{ e.location }}</span>{% endif %}</p>
+            {% if e.details_html %}<div class="prose small">{{ e.details_html | safe }}</div>{% endif %}
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+
+    {% if visible.contact %}{% set n.i = n.i + 1 %}
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      {{ section_head(n.i, "contact", t) }}
+      <div class="contact-panel">
+        <p class="contact-title">{{ t.contact_title }}</p>
+        <p class="contact-text">{{ t.contact_text }}</p>
+        <div class="actions">{{ contact_buttons(profile, t, root) }}</div>
+      </div>
+    </section>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
