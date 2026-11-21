@@ -9,7 +9,7 @@
     {% endif %}
     <div class="hero-text">
       {% if profile.location %}<p class="hero-location">{{ icon("pin", 16) }}<span>{{ profile.location }}</span></p>{% endif %}
-      <h1 id="hero-title">{{ profile.name }}</h1>
+      <h1 id="hero-title" class="shine-text">{{ profile.name }}</h1>
       <p class="hero-role">{{ profile.headline }}</p>
       {% if profile.availability %}<p class="status"><span class="status-dot" aria-hidden="true"></span>{{ profile.availability }}</p>{% endif %}
       {% if profile.pitch_html %}<div class="hero-pitch">{{ profile.pitch_html | safe }}</div>{% endif %}

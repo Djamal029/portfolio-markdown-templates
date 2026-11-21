@@ -289,3 +289,51 @@ main { flex: 1 0 auto; }
 .glance dd { margin: 0; font-size: 0.95rem; overflow-wrap: anywhere; }
 .glance-cv { margin-top: 18px; width: 100%; justify-content: center; }
 @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; gap: 28px; } .glance { position: static; } }
+
+/* === shine layer === */
+/* Soft coloured halos behind the page, like a light source above the content */
+body {
+  background:
+    radial-gradient(900px 520px at 12% -8%, rgba(var(--accent-rgb), 0.16), transparent 60%),
+    radial-gradient(760px 480px at 100% 0%, rgba(var(--accent2-rgb), 0.12), transparent 62%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+/* Hero: a glowing corner */
+.hero { position: relative; isolation: isolate; }
+.hero::before {
+  content: ""; position: absolute; inset: -40px -10% auto auto; width: 520px; height: 420px; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(var(--accent-rgb), 0.22), rgba(var(--accent2-rgb), 0.10) 55%, transparent);
+  filter: blur(8px);
+}
+/* Photo: luminous ring */
+.hero-photo img { box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.25), 0 18px 50px -12px rgba(var(--accent-rgb), 0.45) !important; }
+/* Cards: lift, accent border and a light sheen that sweeps across on hover */
+.tl-card, .project-card { position: relative; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.tl-card:hover, .project-card:hover, .tl-card:focus-within, .project-card:focus-within { transform: translateY(-4px); box-shadow: var(--shadow-lift), 0 12px 40px -18px rgba(var(--accent-rgb), 0.55); border-color: rgba(var(--accent-rgb), 0.45); }
+.tl-card::after, .project-card::after {
+  content: ""; position: absolute; top: 0; left: -60%; width: 45%; height: 100%; pointer-events: none;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,0.28) 45%, rgba(255,255,255,0.08) 60%, transparent);
+  transform: skewX(-18deg); opacity: 0;
+}
+.tl-card:hover::after, .project-card:hover::after { animation: sheen .9s ease forwards; }
+@keyframes sheen { from { left: -60%; opacity: 1; } to { left: 130%; opacity: 1; } }
+.project-thumb { overflow: hidden; }
+.project-thumb img { transition: transform .45s ease; }
+.tl-card:hover .project-thumb img, .project-card:hover .project-thumb img { transform: scale(1.05); }
+/* Primary button: glow and the same sheen */
+.btn-primary { position: relative; overflow: hidden; box-shadow: 0 8px 22px -8px rgba(var(--accent-rgb), 0.65); transition: transform .2s ease, box-shadow .2s ease; }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 30px -8px rgba(var(--accent-rgb), 0.75); }
+.btn-primary::after {
+  content: ""; position: absolute; top: 0; left: -70%; width: 50%; height: 100%; pointer-events: none;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,0.45), transparent); transform: skewX(-18deg);
+}
+.btn-primary:hover::after { animation: sheen .8s ease forwards; }
+/* Headline name: subtle gradient ink */
+h1.shine-text { background: linear-gradient(100deg, var(--text) 15%, rgb(var(--accent-rgb)) 62%, rgb(var(--accent2-rgb)) 100%); -webkit-background-clip: text; background-clip: text; color: transparent !important; -webkit-text-fill-color: transparent; padding-bottom: .06em; width: fit-content; max-width: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  .tl-card:hover::after, .project-card:hover::after, .btn-primary:hover::after { animation: none; }
+  .tl-card:hover, .project-card:hover, .tl-card:focus-within, .project-card:focus-within, .btn-primary:hover { transform: none; }
+  .tl-card:hover .project-thumb img, .project-card:hover .project-thumb img { transform: none; }
+}

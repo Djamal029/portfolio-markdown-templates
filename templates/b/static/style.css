@@ -240,3 +240,51 @@ a.contact-card:hover { border-color: var(--accent); }
 .status-dot { width: 8px; height: 8px; border-radius: 50%; background: #16a34a; box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2); }
 :root[data-theme="dark"] .status { color: #86efac; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .status { color: #86efac; } }
+
+/* === shine layer === */
+/* Soft coloured halos behind the page, like a light source above the content */
+body {
+  background:
+    radial-gradient(900px 520px at 12% -8%, rgba(var(--accent-rgb), 0.16), transparent 60%),
+    radial-gradient(760px 480px at 100% 0%, rgba(var(--accent2-rgb), 0.12), transparent 62%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+/* Hero: a glowing corner */
+.hero-card { position: relative; isolation: isolate; }
+.hero-card::before {
+  content: ""; position: absolute; inset: -40px -10% auto auto; width: 520px; height: 420px; z-index: -1; pointer-events: none;
+  background: radial-gradient(closest-side, rgba(var(--accent-rgb), 0.22), rgba(var(--accent2-rgb), 0.10) 55%, transparent);
+  filter: blur(8px);
+}
+/* Photo: luminous ring */
+.hero-photo img, .about-photo img { box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.25), 0 18px 50px -12px rgba(var(--accent-rgb), 0.45) !important; }
+/* Cards: lift, accent border and a light sheen that sweeps across on hover */
+.project-card, .exp-card, .skill-card, .edu-card, .contact-card, .about-card { position: relative; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.project-card:hover, .exp-card:hover, .skill-card:hover, .edu-card:hover, .contact-card:hover, .about-card:hover, .project-card:focus-within, .exp-card:focus-within, .skill-card:focus-within, .edu-card:focus-within, .contact-card:focus-within, .about-card:focus-within { transform: translateY(-4px); box-shadow: var(--shadow-lift), 0 12px 40px -18px rgba(var(--accent-rgb), 0.55); border-color: rgba(var(--accent-rgb), 0.45); }
+.project-card::after, .exp-card::after, .skill-card::after, .edu-card::after, .contact-card::after, .about-card::after {
+  content: ""; position: absolute; top: 0; left: -60%; width: 45%; height: 100%; pointer-events: none;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,0.28) 45%, rgba(255,255,255,0.08) 60%, transparent);
+  transform: skewX(-18deg); opacity: 0;
+}
+.project-card:hover::after, .exp-card:hover::after, .skill-card:hover::after, .edu-card:hover::after, .contact-card:hover::after, .about-card:hover::after { animation: sheen .9s ease forwards; }
+@keyframes sheen { from { left: -60%; opacity: 1; } to { left: 130%; opacity: 1; } }
+.project-thumb { overflow: hidden; }
+.project-thumb img { transition: transform .45s ease; }
+.project-card:hover .project-thumb img, .exp-card:hover .project-thumb img, .skill-card:hover .project-thumb img, .edu-card:hover .project-thumb img, .contact-card:hover .project-thumb img, .about-card:hover .project-thumb img { transform: scale(1.05); }
+/* Primary button: glow and the same sheen */
+.btn-primary { position: relative; overflow: hidden; box-shadow: 0 8px 22px -8px rgba(var(--accent-rgb), 0.65); transition: transform .2s ease, box-shadow .2s ease; }
+.btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 30px -8px rgba(var(--accent-rgb), 0.75); }
+.btn-primary::after {
+  content: ""; position: absolute; top: 0; left: -70%; width: 50%; height: 100%; pointer-events: none;
+  background: linear-gradient(105deg, transparent, rgba(255,255,255,0.45), transparent); transform: skewX(-18deg);
+}
+.btn-primary:hover::after { animation: sheen .8s ease forwards; }
+/* Headline name: subtle gradient ink */
+h1.shine-text { background: linear-gradient(100deg, var(--text) 15%, rgb(var(--accent-rgb)) 62%, rgb(var(--accent2-rgb)) 100%); -webkit-background-clip: text; background-clip: text; color: transparent !important; -webkit-text-fill-color: transparent; padding-bottom: .06em; width: fit-content; max-width: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  .project-card:hover::after, .exp-card:hover::after, .skill-card:hover::after, .edu-card:hover::after, .contact-card:hover::after, .about-card:hover::after, .btn-primary:hover::after { animation: none; }
+  .project-card:hover, .exp-card:hover, .skill-card:hover, .edu-card:hover, .contact-card:hover, .about-card:hover, .project-card:focus-within, .exp-card:focus-within, .skill-card:focus-within, .edu-card:focus-within, .contact-card:focus-within, .about-card:focus-within, .btn-primary:hover { transform: none; }
+  .project-card:hover .project-thumb img, .exp-card:hover .project-thumb img, .skill-card:hover .project-thumb img, .edu-card:hover .project-thumb img, .contact-card:hover .project-thumb img, .about-card:hover .project-thumb img { transform: none; }
+}
