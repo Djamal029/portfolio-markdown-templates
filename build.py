@@ -510,6 +510,8 @@ TEMPLATES = {
     "f": {"name": "Terminal", "palette": "graphite", "heading": "jetbrains-mono", "body": "ibm-plex-sans", "mono": "jetbrains-mono"},
     "g": {"name": "Resume", "palette": "teal", "heading": "lora", "body": "inter", "mono": "system"},
     "h": {"name": "Horizon", "palette": "indigo", "heading": "plus-jakarta-sans", "body": "plus-jakarta-sans", "mono": "system"},
+    "i": {"name": "Aurora", "palette": "indigo", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
+    "j": {"name": "Studio", "palette": "forest", "heading": "fraunces", "body": "inter", "mono": "system"},
 }
 
 WHITE = (255, 255, 255)
@@ -1053,6 +1055,8 @@ PROJECT_REPO = "https://github.com/Djamal029/portfolio-markdown-templates"
 PROJECT_OWNER = "https://github.com/Djamal029"
 # Compteurs publics « combien de personnes ont choisi ce modèle » (service gratuit Abacus, aucune donnée personnelle).
 COUNTER_NAMESPACE = "djamal029-portfolio-markdown-templates"
+# Modèles mis en avant en tête de la galerie.
+GALLERY_FIRST = ["i", "j"]
 
 PREVIEW_TEXT = {
     "a": "Une seule longue page, menu de sections collé en haut, titres à empattements.",
@@ -1063,6 +1067,8 @@ PREVIEW_TEXT = {
     "f": "Une page façon terminal de développeur : fenêtres avec barre de titre, commandes, police à chasse fixe.",
     "g": "Un CV en ligne élégant : une feuille posée sur la page, colonne de contact et de compétences à gauche.",
     "h": "Une page grand format : nom géant, projets qui défilent à l'horizontale, expériences numérotées.",
+    "i": "Le plus lumineux : aurores de couleur en fond, cartes en verre dépoli, photo cerclée de lumière, apparitions douces au défilement.",
+    "j": "Un portfolio façon magazine : grande photo en ouverture, sommaire numéroté, titres de section qui restent en marge pendant la lecture.",
 }
 
 
@@ -1145,7 +1151,9 @@ def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
     thumbs = out / "thumbs"
     thumbs.mkdir(exist_ok=True)
     cards, minis = [], []
-    for tpl, info in TEMPLATES.items():
+    order = GALLERY_FIRST + [t for t in TEMPLATES if t not in GALLERY_FIRST]
+    for tpl in order:
+        info = TEMPLATES[tpl]
         shot = ROOT / "docs-assets" / f"template-{tpl}-desktop.webp"
         img = ""
         if shot.is_file():
@@ -1154,11 +1162,12 @@ def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
             minis.append(f'<img src="thumbs/{shot.name}" alt="" style="animation-delay:{0.25 + 0.12 * len(minis):.2f}s">')
         label = f"{tpl.upper()} « {info['name']} »"
         cards.append(
-            f'<li class="card">{img}<div class="body"><h3><span class="letter">{tpl.upper()}</span>{info["name"]}</h3>'
+            f'<li class="card{" is-new" if tpl in GALLERY_FIRST else ""}">{img}<div class="body"><h3><span class="letter">{tpl.upper()}</span>{info["name"]}'
+            f'{"<span class=\"new\">Nouveau</span>" if tpl in GALLERY_FIRST else ""}</h3>'
             f'<p>{PREVIEW_TEXT[tpl]}</p>'
             f'<p class="count" data-count="template-{tpl}" hidden><span></span></p>'
-            f'<div class="links"><a href="{tpl}/en/index.html">Voir en anglais</a>'
-            f'<a href="{tpl}/fr/index.html">Voir en français</a>'
+            f'<div class="links"><a href="{tpl}/en/index.html">Voir · EN</a>'
+            f'<a href="{tpl}/fr/index.html">Voir · FR</a>'
             f'<button type="button" class="choose" data-choose="{tpl}" data-label="{label}">Choisir ce modèle</button></div></div></li>'
         )
     page = (ROOT / "outils" / "galerie.html").read_text(encoding="utf-8")

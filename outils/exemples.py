@@ -414,3 +414,10 @@ def make_content(template: str, lang: str, base: Path, dest: Path) -> Path:
               f"featured: {'true' if d['featured'] else 'false'}", "links:", f"  repo: https://github.com/example/{slug}"]
         (proj_dir / f"{slug}.md").write_text("---\n" + "\n".join(fm) + "\n---\n" + what + "\n\n" + "\n".join("- " + b for b in bullets) + "\n", encoding="utf-8")
     return dest
+
+
+# Profils des modeles I et J (fichier separe pour rester lisible)
+try:
+    import exemples_ij  # noqa: F401
+except ImportError:
+    pass
