@@ -1,4 +1,4 @@
-# Portfolio Markdown : quarante modèles prêts à l'emploi
+# Portfolio Markdown : cinquante modèles prêts à l'emploi
 
 Créez votre site portfolio **sans écrire de HTML**. Vous remplissez quelques fichiers texte (Markdown), un script fabrique le site, et GitHub Pages le publie gratuitement.
 
@@ -10,7 +10,7 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ## Sommaire
 
-1. [Les quarante modèles](#1-les-quarante-modèles)
+1. [Les cinquante modèles](#1-les-cinquante-modèles)
 2. [Démarrage rapide (5 minutes)](#2-démarrage-rapide-5-minutes)
 3. [Ce qu'il faut modifier](#3-ce-quil-faut-modifier)
 4. [Référence des fichiers, champ par champ](#4-référence-des-fichiers-champ-par-champ)
@@ -22,12 +22,22 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ---
 
-## 1. Les quarante modèles
+## 1. Les cinquante modèles
 
-**Voir les quarante modèles en ligne, avec une courte animation explicative (et sa musique) :** https://djamal029.github.io/portfolio-markdown-templates/ . Le bouton « Choisir ce modèle » compte combien de personnes ont choisi chaque modèle et mène au dépôt GitHub. Dans la galerie, chaque modèle montre un profil fictif différent (biostatistique, machine learning, IA, NLP, épidémiologie, data engineering…) ; ces profils viennent de `outils/exemples.py`. Votre propre site n'utilise que le dossier `content/`.
+**Voir les cinquante modèles en ligne, avec une courte animation explicative (et sa musique) :** https://djamal029.github.io/portfolio-markdown-templates/ . Le bouton « Choisir ce modèle » compte combien de personnes ont choisi chaque modèle et mène au dépôt GitHub. Dans la galerie, chaque modèle montre un profil fictif différent (biostatistique, machine learning, IA, NLP, épidémiologie, data engineering…) ; ces profils viennent de `outils/exemples.py`. Votre propre site n'utilise que le dossier `content/`.
 
 | Modèle | Organisation et style | Palette par défaut | Idéal pour |
 |---|---|---|---|
+| **AE « Bauhaus »** (nouveau) | formes géométriques rouges, jaunes et bleues, typographie franche, ombres décalées | `indigo` | un profil design ou dataviz |
+| **AF « Blueprint »** (nouveau) | un plan technique : quadrillage blanc sur fond bleu, cotes, figures numérotées | `indigo` | un profil ingénieur, industrie |
+| **AG « Duotone »** (nouveau) | deux couleurs fortes, photos en bichromie, très grande typographie | `indigo` | un profil marketing, créatif |
+| **AH « Deck »** (nouveau) | la photo est la carte du dessus d'une pile qui s'ouvre en éventail | `teal` | un profil ludique |
+| **AI « Museum »** (nouveau) | murs de galerie, photo et projets encadrés comme des œuvres, cartels | `graphite` | un profil culture, patrimoine |
+| **AJ « Papercut »** (nouveau) | couches de papier découpé, ombres douces, cartes en relief | `sunset` | un profil chaleureux |
+| **AK « Typewriter »** (nouveau) | une lettre tapée à la machine, papier, tampon rouge | `graphite` | un profil qui aime écrire |
+| **AL « Metro »** (nouveau) | tuiles plates de couleurs franches sur une grille régulière | `indigo` | un profil tech, plateformes |
+| **AM « Comic »** (nouveau) | cases de bande dessinée, bulle, trames de points, contours épais | `sunset` | un profil pédagogue, drôle |
+| **AN « Zen »** (nouveau) | minimalisme japonais : cercle à l'encre, sceau rouge, beaucoup de vide | `graphite` | un profil calme et précis |
 | **RA « Scholar »** (nouveau, chercheur) | la page de chercheur classique : sobre, publications numérotées avec liens [PDF] [Code] [DOI] | `indigo` | une page de thèse ou de labo |
 | **RB « Lab »** (nouveau, chercheur) | bandeau quadrillé de laboratoire, publications en cartes avec résumé encadré | `teal` | un doctorant en équipe |
 | **RC « Journal »** (nouveau, chercheur) | la page ressemble à un article publié : encadré Abstract, sections numérotées, références [1] | `graphite` | un profil très académique |
@@ -38,11 +48,11 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 | **RH « Cells »** (nouveau, chercheur) | chaque section est une cellule de notebook avec son invite In [n] | `graphite` | un profil calcul et code |
 | **RI « Chalkboard »** (nouveau, chercheur) | un tableau noir : titres à la craie, équations en fond | `forest` | un profil maths ou théorie |
 | **RJ « Network »** (nouveau, chercheur) | un réseau de co-auteurs en fond, publications reliées comme des nœuds | `teal` | un profil collaboratif |
-| **Z « Noir »** (nouveau) | toujours sombre, détails dorés, grand nom à empattements, ornements discrets | `sunset` | un profil élégant et posé |
-| **AA « Retro »** (nouveau) | un bureau des années 90 : chaque section est une fenêtre, barre des tâches en bas | `indigo` | un profil geek, jeux vidéo |
-| **AB « Split »** (nouveau) | un grand panneau coloré fixe à gauche avec photo et nom, contenu à droite | `indigo` | une présentation très visuelle |
-| **AC « Newspaper »** (nouveau) | une une de journal : manchette, colonnes, filets, photos en noir et blanc | `graphite` | un profil qui aime raconter |
-| **AD « Kanban »** (nouveau) | un tableau de gestion de projet : listes, cartes, étiquettes de couleur | `teal` | un profil produit, organisé |
+| **Z « Noir »** | toujours sombre, détails dorés, grand nom à empattements, ornements discrets | `sunset` | un profil élégant et posé |
+| **AA « Retro »** | un bureau des années 90 : chaque section est une fenêtre, barre des tâches en bas | `indigo` | un profil geek, jeux vidéo |
+| **AB « Split »** | un grand panneau coloré fixe à gauche avec photo et nom, contenu à droite | `indigo` | une présentation très visuelle |
+| **AC « Newspaper »** | une une de journal : manchette, colonnes, filets, photos en noir et blanc | `graphite` | un profil qui aime raconter |
+| **AD « Kanban »** | un tableau de gestion de projet : listes, cartes, étiquettes de couleur | `teal` | un profil produit, organisé |
 | **T « Magazine »** | couverture de magazine : nom géant sur deux lignes, photo en arche, numéros détourés, lettrine, projet à la une | `sunset` | un profil qui aime écrire et raconter |
 | **U « Glass »** | panneaux en verre dépoli sur des halos de couleur qui dérivent, photo cerclée d'un anneau tournant | `indigo` | un profil IA moderne |
 | **V « Brutal »** | néo-brutalisme : bordures épaisses, ombres franches, couleurs vives, étiquettes autocollants | `sunset` | se faire remarquer avec humour |
@@ -68,6 +78,66 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 | **F « Terminal »** | une page façon terminal, fenêtres avec barre de titre, commandes | `graphite` | un profil développeur ou data |
 | **G « Resume »** | un CV en ligne : feuille avec colonne de contact et compétences, imprimable | `teal` | un CV en ligne |
 | **H « Horizon »** | nom géant, chiffres clés, projets en défilement horizontal | `indigo` | un effet « waouh » |
+
+**Modèle AE, ordinateur et téléphone**
+
+![Modèle AE sur ordinateur](docs-assets/template-ae-desktop.webp)
+
+<img src="docs-assets/template-ae-mobile.webp" alt="Modèle AE sur téléphone" width="300">
+
+**Modèle AF, ordinateur et téléphone**
+
+![Modèle AF sur ordinateur](docs-assets/template-af-desktop.webp)
+
+<img src="docs-assets/template-af-mobile.webp" alt="Modèle AF sur téléphone" width="300">
+
+**Modèle AG, ordinateur et téléphone**
+
+![Modèle AG sur ordinateur](docs-assets/template-ag-desktop.webp)
+
+<img src="docs-assets/template-ag-mobile.webp" alt="Modèle AG sur téléphone" width="300">
+
+**Modèle AH, ordinateur et téléphone**
+
+![Modèle AH sur ordinateur](docs-assets/template-ah-desktop.webp)
+
+<img src="docs-assets/template-ah-mobile.webp" alt="Modèle AH sur téléphone" width="300">
+
+**Modèle AI, ordinateur et téléphone**
+
+![Modèle AI sur ordinateur](docs-assets/template-ai-desktop.webp)
+
+<img src="docs-assets/template-ai-mobile.webp" alt="Modèle AI sur téléphone" width="300">
+
+**Modèle AJ, ordinateur et téléphone**
+
+![Modèle AJ sur ordinateur](docs-assets/template-aj-desktop.webp)
+
+<img src="docs-assets/template-aj-mobile.webp" alt="Modèle AJ sur téléphone" width="300">
+
+**Modèle AK, ordinateur et téléphone**
+
+![Modèle AK sur ordinateur](docs-assets/template-ak-desktop.webp)
+
+<img src="docs-assets/template-ak-mobile.webp" alt="Modèle AK sur téléphone" width="300">
+
+**Modèle AL, ordinateur et téléphone**
+
+![Modèle AL sur ordinateur](docs-assets/template-al-desktop.webp)
+
+<img src="docs-assets/template-al-mobile.webp" alt="Modèle AL sur téléphone" width="300">
+
+**Modèle AM, ordinateur et téléphone**
+
+![Modèle AM sur ordinateur](docs-assets/template-am-desktop.webp)
+
+<img src="docs-assets/template-am-mobile.webp" alt="Modèle AM sur téléphone" width="300">
+
+**Modèle AN, ordinateur et téléphone**
+
+![Modèle AN sur ordinateur](docs-assets/template-an-desktop.webp)
+
+<img src="docs-assets/template-an-mobile.webp" alt="Modèle AN sur téléphone" width="300">
 
 **Modèle RA, ordinateur et téléphone**
 
@@ -327,11 +397,11 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ![Modèle X en mode sombre](docs-assets/template-x-dark.webp)
 
-Les quarante modèles s'adaptent au téléphone, à la tablette (portrait et paysage), se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).
+Les cinquante modèles s'adaptent au téléphone, à la tablette (portrait et paysage), se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).
 
 ### Comparer les modèles chez vous
 
-Une commande génère les quarante modèles avec l'exemple, en anglais et en français, et ouvre une page de choix :
+Une commande génère les cinquante modèles avec l'exemple, en anglais et en français, et ouvre une page de choix :
 
 ```
 uv run build.py --preview-all
@@ -361,7 +431,7 @@ L'installateur peut être relancé autant de fois que vous voulez : si `uv` est 
 |---|---|
 | `install.ps1` / `sh install.sh` | installe uv si besoin, génère `docs/`, ouvre `docs/index.html` |
 | `install.ps1 preview` / `sh install.sh preview` | idem, puis sert le site sur `http://localhost:8000` (Ctrl+C pour arrêter) |
-| `install.ps1 preview-all` / `sh install.sh preview-all` | les quarante modèles côte à côte (voir section 1) |
+| `install.ps1 preview-all` / `sh install.sh preview-all` | les cinquante modèles côte à côte (voir section 1) |
 | `-Port 8080` / `--port 8080` | utiliser un autre port |
 | `-NoOpen` / `--no-open` | ne pas ouvrir le navigateur |
 
@@ -428,7 +498,7 @@ Règles qui évitent 90 % des erreurs :
 | Champ | Obligatoire | Rôle |
 |---|---|---|
 | `language` | non (défaut `en`) | langue de l'interface : `en` ou `fr` (menus, titres de sections, mois, « Aujourd'hui »...) |
-| `template` | non (défaut `a`) | `a` (Editorial), `b` (Cards), `c` (Sidebar), `d` (Bento), `e` (Spotlight), `f` (Terminal), `g` (Resume), `h` (Horizon), `i` (Aurora), `j` (Studio), `k` (Neon), `l` (Pastel), `m` (Swiss), `n` (Journey), `o` (Dashboard), `p` (Plain), `q` (Paper), `r` (Mono), `s` (Quiet), `t` (Magazine), `u` (Glass), `v` (Brutal), `w` (Notebook), `x` (Cosmos), `y` (Ocean), `z` (Noir), `aa` (Retro), `ab` (Split), `ac` (Newspaper), `ad` (Kanban), et pour les chercheurs `ra` (Scholar), `rb` (Lab), `rc` (Journal), `rd` (Thesis), `re` (Poster), `rf` (Preprint), `rg` (Conference), `rh` (Cells), `ri` (Chalkboard) ou `rj` (Network) |
+| `template` | non (défaut `a`) | `a` (Editorial), `b` (Cards), `c` (Sidebar), `d` (Bento), `e` (Spotlight), `f` (Terminal), `g` (Resume), `h` (Horizon), `i` (Aurora), `j` (Studio), `k` (Neon), `l` (Pastel), `m` (Swiss), `n` (Journey), `o` (Dashboard), `p` (Plain), `q` (Paper), `r` (Mono), `s` (Quiet), `t` (Magazine), `u` (Glass), `v` (Brutal), `w` (Notebook), `x` (Cosmos), `y` (Ocean), `z` (Noir), `aa` (Retro), `ab` (Split), `ac` (Newspaper), `ad` (Kanban), `ae` (Bauhaus), `af` (Blueprint), `ag` (Duotone), `ah` (Deck), `ai` (Museum), `aj` (Papercut), `ak` (Typewriter), `al` (Metro), `am` (Comic), `an` (Zen), et pour les chercheurs `ra` (Scholar), `rb` (Lab), `rc` (Journal), `rd` (Thesis), `re` (Poster), `rf` (Preprint), `rg` (Conference), `rh` (Cells), `ri` (Chalkboard) ou `rj` (Network) |
 | `title` | non | titre de l'onglet du navigateur |
 | `description` | non | phrase affichée par Google et LinkedIn |
 | `base_url` | non | adresse finale du site, par exemple `https://pseudo.github.io/portfolio/` |
@@ -726,7 +796,7 @@ Dans `content/site.yml`, mettez `language: fr` ou `language: en`. Cela traduit l
 
 ### Changer de modèle
 
-Dans `content/site.yml`, mettez la lettre du modèle, de `template: a` à `template: z`, puis `aa` à `ad`, puis relancez le script. Aucun autre changement n'est nécessaire. Pour essayer sans modifier le fichier : `uv run build.py --template c`.
+Dans `content/site.yml`, mettez la lettre du modèle, de `template: a` à `template: z`, puis `aa` à `an`, et `ra` à `rj` pour les chercheurs, puis relancez le script. Aucun autre changement n'est nécessaire. Pour essayer sans modifier le fichier : `uv run build.py --template c`.
 
 ---
 
@@ -769,7 +839,7 @@ Options utiles :
 uv run build.py --template b                                    # essayer un autre modèle
 uv run build.py --language fr                                   # essayer l'autre langue d'interface
 uv run build.py --content content-fr-example --out apercu-fr    # générer l'exemple français ailleurs
-uv run build.py --preview-all                                   # les quarante modèles côte à côte
+uv run build.py --preview-all                                   # les cinquante modèles côte à côte
 uv run build.py --serve                                         # génère puis sert docs/ sur http://localhost:8000
 ```
 

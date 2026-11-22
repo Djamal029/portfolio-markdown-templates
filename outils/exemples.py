@@ -470,3 +470,8 @@ try:
     import exemples_research  # noqa: F401
 except ImportError:
     pass
+
+try:
+    import exemples_aean  # noqa: F401
+except ImportError:
+    pass

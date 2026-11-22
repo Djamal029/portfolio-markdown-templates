@@ -4,7 +4,7 @@
 language: fr
 
 # Modèle visuel : a (Editorial, une page), b (Cards, plusieurs pages), c (Sidebar, profil à gauche)...
-# jusqu'à z, puis aa à ad, et ra à rj pour les chercheurs (section Publications). Les 40 modèles sont décrits et visibles dans le README (section 1).
+# jusqu'à z, puis aa à an, et ra à rj pour les chercheurs (section Publications). Les 50 modèles sont décrits et visibles dans le README (section 1).
 template: b
 
 # Titre affiché dans l'onglet du navigateur et sur les moteurs de recherche

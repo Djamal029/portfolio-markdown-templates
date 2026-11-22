@@ -597,6 +597,16 @@ TEMPLATES = {
     "ab": {"name": "Split", "palette": "indigo", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
     "ac": {"name": "Newspaper", "palette": "graphite", "heading": "playfair-display", "body": "source-serif-4", "mono": "system"},
     "ad": {"name": "Kanban", "palette": "teal", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
+    "ae": {"name": "Bauhaus", "palette": "indigo", "heading": "space-grotesk", "body": "inter", "mono": "system"},
+    "af": {"name": "Blueprint", "palette": "indigo", "heading": "space-grotesk", "body": "ibm-plex-sans", "mono": "jetbrains-mono"},
+    "ag": {"name": "Duotone", "palette": "indigo", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
+    "ah": {"name": "Deck", "palette": "teal", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
+    "ai": {"name": "Museum", "palette": "graphite", "heading": "playfair-display", "body": "inter", "mono": "system"},
+    "aj": {"name": "Papercut", "palette": "sunset", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
+    "ak": {"name": "Typewriter", "palette": "graphite", "heading": "jetbrains-mono", "body": "jetbrains-mono", "mono": "jetbrains-mono"},
+    "al": {"name": "Metro", "palette": "indigo", "heading": "inter", "body": "inter", "mono": "system"},
+    "am": {"name": "Comic", "palette": "sunset", "heading": "space-grotesk", "body": "inter", "mono": "system"},
+    "an": {"name": "Zen", "palette": "graphite", "heading": "source-serif-4", "body": "inter", "mono": "system"},
     "ra": {"name": "Scholar", "palette": "indigo", "heading": "source-serif-4", "body": "inter", "mono": "system", "research": True},
     "rb": {"name": "Lab", "palette": "teal", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system", "research": True},
     "rc": {"name": "Journal", "palette": "graphite", "heading": "source-serif-4", "body": "source-serif-4", "mono": "system", "research": True},
@@ -1223,9 +1233,9 @@ PROJECT_OWNER = "https://github.com/Djamal029"
 # Compteurs publics « combien de personnes ont choisi ce modèle » (service gratuit Abacus, aucune donnée personnelle).
 COUNTER_NAMESPACE = "djamal029-portfolio-markdown-templates"
 # Modèles mis en avant en tête de la galerie.
-GALLERY_FIRST = ["ra", "rb", "rc", "rd", "re", "rf", "rg", "rh", "ri", "rj", "z", "aa", "ab", "ac", "ad", "t", "u", "v", "w", "x", "y", "p", "q", "r", "s", "i", "j", "k", "l", "m", "n", "o"]
+GALLERY_FIRST = ["ae", "af", "ag", "ah", "ai", "aj", "ak", "al", "am", "an", "ra", "rb", "rc", "rd", "re", "rf", "rg", "rh", "ri", "rj", "z", "aa", "ab", "ac", "ad", "t", "u", "v", "w", "x", "y", "p", "q", "r", "s", "i", "j", "k", "l", "m", "n", "o"]
 # Modèles marqués « Nouveau » dans la galerie.
-GALLERY_NEW = ["ra", "rb", "rc", "rd", "re", "rf", "rg", "rh", "ri", "rj", "z", "aa", "ab", "ac", "ad", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y"]
+GALLERY_NEW = ["ae", "af", "ag", "ah", "ai", "aj", "ak", "al", "am", "an", "ra", "rb", "rc", "rd", "re", "rf", "rg", "rh", "ri", "rj", "z", "aa", "ab", "ac", "ad", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y"]
 # Modèles sobres (badge « Sobre » dans la galerie).
 GALLERY_SOBER = ["p", "q", "r", "s"]
 # Modèles chercheurs (badge « Chercheur », section Publications).
@@ -1262,6 +1272,16 @@ PREVIEW_TEXT = {
     "ab": "Split : un grand panneau coloré fixe à gauche avec votre photo et votre nom, le contenu défile à droite.",
     "ac": "Journal : une une de quotidien, nom en manchette, colonnes, filets et photos en noir et blanc.",
     "ad": "Kanban : un tableau coloré façon gestion de projet, chaque section est une liste de cartes étiquetées.",
+    "ae": "Bauhaus : formes géométriques rouges, jaunes et bleues, typographie franche, ombres décalées de couleur.",
+    "af": "Blueprint : un plan technique, quadrillage blanc sur fond bleu, cotes, figures numérotées.",
+    "ag": "Duotone : deux couleurs fortes, photo et vignettes en bichromie, très grande typographie.",
+    "ah": "Deck : la photo est la carte du dessus d'une pile qui s'ouvre en éventail, cartes légèrement inclinées.",
+    "ai": "Museum : murs de galerie, photo et projets encadrés comme des œuvres, cartels, beaucoup d'espace.",
+    "aj": "Papercut : couches de papier découpé en vagues, ombres douces, cartes en relief.",
+    "ak": "Typewriter : une lettre tapée à la machine, papier, encre, tampon rouge pour la disponibilité.",
+    "al": "Metro : tuiles plates de couleurs franches sur une grille régulière, texte blanc.",
+    "am": "Comic : cases de bande dessinée, bulle de dialogue, trames de points, contours épais.",
+    "an": "Zen : minimalisme japonais, cercle à l'encre, sceau rouge, beaucoup de vide.",
     "ra": "Chercheur · Scholar : la page de chercheur classique, sobre, publications numérotées avec liens [PDF] [Code] [DOI].",
     "rb": "Chercheur · Lab : bandeau de laboratoire quadrillé, publications en cartes avec résumé encadré et résumé dépliable.",
     "rc": "Chercheur · Journal : la page ressemble à un article publié, encadré Abstract, sections numérotées, références [1] [2].",
