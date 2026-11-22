@@ -176,10 +176,43 @@ dialog::backdrop{background:rgba(5,8,10,.55);backdrop-filter:blur(4px)}
 .go a{background:linear-gradient(135deg,var(--cta1),var(--cta2));color:#fff;border:0;box-shadow:0 12px 26px -14px rgba(219,39,119,.85)}.go a:hover{filter:brightness(1.06)}
 .tip{font-size:.88rem;margin-top:12px!important}
 
+
+/* guide (second animation) */
+.guide{margin-top:0}
+.guide .stage{aspect-ratio:16/8.6}
+.guide .say p{font-size:.98rem}
+.guide .say code{font-size:.85em}
+.win.plain .win-body{font:500 .85rem/1.9 ui-monospace,Consolas,monospace}
+.gh-btns{display:flex;gap:10px;justify-content:center;padding:6px 0}
+.gh{font:700 .85rem system-ui;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:color-mix(in srgb,var(--card) 90%,var(--text) 5%)}
+.gh.hot{background:#1f883d;color:#fff;border-color:#1a7f37}
+.scene.on .gh.hot{animation:pulse 1.2s ease 0.6s 2}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(31,136,61,.25)}}
+.gh-ic,.tree-ic{display:grid;place-items:center;font-size:1.3rem;color:#fff;background:linear-gradient(135deg,#1f883d,#2da44e)}
+.tree-ic{background:linear-gradient(135deg,#f59e0b,#f97316)}
+.srcs{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:440px}
+.srcs span{font-weight:700;font-size:.85rem;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+.srcs .ok{border-color:rgba(22,163,74,.5);color:#15803d}.srcs .ok::before{content:"✓ "}
+.srcs .mid{border-color:rgba(234,179,8,.6);color:#a16207}
+.srcs .no{border-color:rgba(220,38,38,.5);color:#b91c1c}.srcs .no::before{content:"✕ "}
+.scene.on .srcs span{animation:pop .4s both}
+.to-guide{display:flex;width:max-content;max-width:100%;text-align:center;justify-content:center;margin:14px auto 0;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;font-weight:800;color:#fff;text-decoration:none;background:linear-gradient(135deg,var(--cta1),var(--cta2));box-shadow:0 12px 26px -14px rgba(219,39,119,.85)}
+.to-guide:hover{filter:brightness(1.06)}
+.scene.on .to-guide{animation:pop .5s both}
+.win-body .new{background:none;color:var(--accent);padding:0;margin:0;font-size:inherit;letter-spacing:0;text-transform:none;border-radius:0;font-weight:700}
+.guide .scene{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}.guide .say,.guide .viz,.guide .split{min-width:0}
+.guide-text{max-width:980px;margin:16px auto 0;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px 20px}
+.guide-text summary{cursor:pointer;font-weight:800;padding:12px 0}
+.guide-text ol{margin:4px 0 16px;padding-left:1.3em}
+.guide-text li{margin:0 0 10px;color:var(--muted)}
+.guide-text li b{color:var(--text)}
+@media (prefers-color-scheme:dark){.srcs .ok{color:#86efac}.srcs .mid{color:#fde047}.srcs .no{color:#fca5a5}}
+@media (min-width:761px) and (max-width:1100px){.guide .stage{aspect-ratio:auto;height:600px}#film .stage{aspect-ratio:auto;height:520px}}
+@media (max-width:760px){#film .scene{grid-template-columns:minmax(0,1fr)}.to-guide{width:auto}.guide .scene{grid-template-columns:minmax(0,1fr);align-content:start}.guide .stage{height:760px;aspect-ratio:auto}.guide .say p{font-size:.9rem}.guide .code{white-space:pre-wrap;word-break:break-word}.guide .code .ln{white-space:pre-wrap}}
 @media (max-width:600px){.top .pill.primary{display:none}.logo{font-size:1rem}}
 @media (max-width:760px){
   .scene{grid-template-columns:1fr;gap:14px;padding:22px 20px;align-content:center}
-  .stage{aspect-ratio:auto;height:560px}
+  .stage{aspect-ratio:auto;height:640px}
   .viz{height:auto}
   .minis{grid-template-columns:repeat(5,1fr)}
 }
@@ -228,7 +261,7 @@ dialog::backdrop{background:rgba(5,8,10,.55);backdrop-filter:blur(4px)}
         </div>
         <div class="scene" data-dur="6000">
           <div class="say"><span class="step">6 · Et pour le mettre en ligne ?</span><h2>Une commande, et c'est publié</h2><p>L'installateur fait tout sur Windows, macOS et Linux. Sur GitHub, chaque modification se publie automatiquement.</p></div>
-          <div class="viz"><div><div class="win term"><div class="win-bar"><b></b><b></b><b></b><span>terminal</span></div><div class="win-body code"><span class="ln" style="animation-delay:.3s"><span class="k">$</span> uv run build.py</span><span class="ln" style="animation-delay:1.1s"><span class="c">Lecture de content/ ... ok</span></span><span class="ln" style="animation-delay:1.7s"><span class="c">Site généré : 6 pages</span></span></div></div><span class="url"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>prenom-nom.github.io</span></div></div>
+          <div class="viz"><div><div class="win term"><div class="win-bar"><b></b><b></b><b></b><span>terminal</span></div><div class="win-body code"><span class="ln" style="animation-delay:.3s"><span class="k">$</span> uv run build.py</span><span class="ln" style="animation-delay:1.1s"><span class="c">Lecture de content/ ... ok</span></span><span class="ln" style="animation-delay:1.7s"><span class="c">Site généré : 6 pages</span></span></div></div><span class="url"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>prenom-nom.github.io</span><a class="to-guide" href="#guide" style="animation-delay:3s">Toutes les étapes pour avoir votre portfolio <span aria-hidden="true">↓</span></a></div></div>
         </div>
       </div>
       <div class="ctrl">
@@ -276,6 +309,74 @@ dialog::backdrop{background:rgba(5,8,10,.55);backdrop-filter:blur(4px)}
       </ul>
     </div>
   </div>
+
+
+  <div class="section-title" id="guide"><h2>Toutes les étapes pour avoir votre portfolio</h2><p>Du compte GitHub au site en ligne, en dix étapes. Mettez en pause quand vous voulez, ou lisez la version texte juste en dessous.</p></div>
+  <div class="film guide" id="guide-film" aria-roledescription="animation" aria-label="Guide complet en dix étapes">
+    <div class="stage">
+        <div class="scene" data-dur="9000">
+          <div class="say"><span class="step">Étape 1 sur 10 · Copier</span><h2>Copiez le modèle sur votre compte GitHub</h2><p>Créez un compte GitHub gratuit si besoin. Sur la page du projet, cliquez sur <b>Use this template</b>, puis <b>Create a new repository</b>. Donnez un nom court (par exemple <code>portfolio</code>) et laissez-le <b>public</b>.</p></div>
+          <div class="viz"><div class="split"><div class="win plain"><div class="win-bar"><b></b><b></b><b></b><span>github.com/Djamal029/portfolio-markdown-templates</span></div><div class="win-body "><div class="gh-btns"><span class="gh">★ Star</span><span class="gh hot">Use this template ▾</span></div></div></div><span class="arrow" style="animation-delay:1.6s">↓</span><div class="win "><div class="win-bar"><b></b><b></b><b></b><span>Create a new repository</span></div><div class="win-body code"><span class="ln" style="animation-delay:2.0s"><span class="k">Owner:</span> votre-compte</span><span class="ln" style="animation-delay:2.7s"><span class="k">Repository name:</span> <span class="s">portfolio</span></span><span class="ln" style="animation-delay:3.4s"><span class="k">Visibility:</span> Public</span></div></div><div class="result" style="animation-delay:4.4s"><span class="th gh-ic">✓</span><div><b>github.com/votre-compte/portfolio</b><small>votre copie, à vous pour toujours</small></div></div></div></div>
+        </div>
+        <div class="scene" data-dur="8500">
+          <div class="say"><span class="step">Étape 2 sur 10 · Récupérer</span><h2>Récupérez-le sur votre ordinateur</h2><p>Avec un terminal : <code>git clone</code>, puis ouvrez le dossier dans VS Code. Sans terminal : <b>GitHub Desktop</b> (File &gt; Clone repository) ou <b>Code &gt; Download ZIP</b>.</p></div>
+          <div class="viz"><div class="split"><div class="win term"><div class="win-bar"><b></b><b></b><b></b><span>terminal</span></div><div class="win-body code"><span class="ln" style="animation-delay:0.3s"><span class="k">$</span> git clone https://github.com/votre-compte/portfolio</span><span class="ln" style="animation-delay:1.4s"><span class="k">$</span> cd portfolio</span><span class="ln" style="animation-delay:2.2s"><span class="k">$</span> code .</span><span class="ln" style="animation-delay:3.0s"><span class="c">Le dossier s'ouvre dans VS Code</span></span></div></div><div class="result" style="animation-delay:3.8s"><span class="th tree-ic">📁</span><div><b>portfolio/content/</b><small>le seul dossier que vous allez modifier</small></div></div></div></div>
+        </div>
+        <div class="scene" data-dur="8000">
+          <div class="say"><span class="step">Étape 3 sur 10 · Choisir</span><h2>Choisissez votre modèle dans site.yml</h2><p>Ouvrez <code>content/site.yml</code>. Mettez la lettre du modèle choisi, la langue, et si vous voulez une palette ou vos couleurs. Laissez vide ce que vous ne voulez pas changer.</p></div>
+          <div class="viz"><div class="win "><div class="win-bar"><b></b><b></b><b></b><span>content/site.yml</span></div><div class="win-body code"><span class="ln" style="animation-delay:0.3s"><span class="k">language:</span> fr</span><span class="ln" style="animation-delay:1.0s"><span class="k">template:</span> <span class="s">t</span>   <span class="c"># Magazine</span></span><span class="ln" style="animation-delay:1.8s"><span class="k">palette:</span> ""   <span class="c"># vide = celle du modèle</span></span><span class="ln" style="animation-delay:2.6s"><span class="k">dark_mode:</span> true</span><span class="ln" style="animation-delay:3.3s"><span class="k">title:</span> "Prénom Nom, data scientist"</span></div></div></div>
+        </div>
+        <div class="scene" data-dur="9500">
+          <div class="say"><span class="step">Étape 4 sur 10 · Profil</span><h2>Remplissez votre profil</h2><p>Dans <code>content/profile.md</code> : nom, titre, ville, e-mail, liens. Sous les trois tirets, deux phrases : ce que vous faites et ce que vous cherchez. Pas de profil GitHub rempli ? Laissez <code>github: ""</code>.</p></div>
+          <div class="viz"><div class="split"><div class="win "><div class="win-bar"><b></b><b></b><b></b><span>content/profile.md</span></div><div class="win-body code"><span class="ln" style="animation-delay:0.3s"><span class="k">name:</span> Prénom Nom</span><span class="ln" style="animation-delay:1.0s"><span class="k">headline:</span> Étudiant·e en data science</span><span class="ln" style="animation-delay:1.7s"><span class="k">availability:</span> <span class="s">"Stage dès avril 2027"</span></span><span class="ln" style="animation-delay:2.4s"><span class="k">linkedin:</span> https://linkedin.com/in/...</span><span class="ln" style="animation-delay:3.1s"><span class="k">github:</span> ""   <span class="c"># vide si aucun projet</span></span><span class="ln" style="animation-delay:3.8s"><span class="c">---</span></span><span class="ln" style="animation-delay:4.4s">Je transforme des données en décisions...</span></div></div></div></div>
+        </div>
+        <div class="scene" data-dur="9000">
+          <div class="say"><span class="step">Étape 5 sur 10 · Photo</span><h2>Ajoutez votre photo</h2><p>Une photo carrée, nette, visage bien éclairé, fond simple. Copiez-la dans <code>content/images/</code>, puis écrivez son nom dans <code>profile.md</code>. Le texte <code>photo_alt</code> décrit l'image pour les lecteurs d'écran.</p></div>
+          <div class="viz"><div class="split"><div class="win plain tree"><div class="win-bar"><b></b><b></b><b></b><span>content/images/</span></div><div class="win-body ">content/images/<br>├─ <span class="new drop" style="display:inline-block;animation-delay:.4s">photo.jpg</span>&nbsp;&nbsp;<span class="c">carrée, 800×800 px</span><br>└─ thumbnails/</div></div><div class="win "><div class="win-bar"><b></b><b></b><b></b><span>content/profile.md</span></div><div class="win-body code"><span class="ln" style="animation-delay:1.6s"><span class="k">photo:</span> <span class="s">images/photo.jpg</span></span><span class="ln" style="animation-delay:2.4s"><span class="k">photo_alt:</span> Portrait de Prénom Nom</span></div></div><div class="result" style="animation-delay:3.3s"><span class="photo"></span><div><b>Votre photo apparaît</b><small>en haut de toutes les pages</small></div></div></div></div>
+        </div>
+        <div class="scene" data-dur="10000">
+          <div class="say"><span class="step">Étape 6 sur 10 · Expériences</span><h2>Une expérience = un fichier</h2><p>Copiez un fichier d'exemple de <code>content/experiences/</code> et renommez-le. En haut : poste, structure, dates. En dessous : 2 ou 3 puces qui commencent par un <b>verbe d'action</b> et donnent un <b>résultat chiffré</b>.</p></div>
+          <div class="viz"><div class="win "><div class="win-bar"><b></b><b></b><b></b><span>experiences/stage-2025.md</span></div><div class="win-body code"><span class="ln" style="animation-delay:0.3s"><span class="k">title:</span> Stagiaire data scientist</span><span class="ln" style="animation-delay:0.9s"><span class="k">organisation:</span> Nom de l'entreprise</span><span class="ln" style="animation-delay:1.5s"><span class="k">start:</span> 2025-06   <span class="k">end:</span> 2025-08</span><span class="ln" style="animation-delay:2.1s"><span class="k">type:</span> internship</span><span class="ln" style="animation-delay:2.7s"><span class="c">---</span></span><span class="ln" style="animation-delay:3.3s">- <span class="s">Construit</span> un modèle qui a fait passer le rappel : 0,58 → 0,74.</span><span class="ln" style="animation-delay:4.2s">- <span class="s">Réduit</span> le reporting : 2 j → 2 h.</span></div></div></div>
+        </div>
+        <div class="scene" data-dur="10500">
+          <div class="say"><span class="step">Étape 7 sur 10 · Projets</span><h2>Décrivez un projet comme une histoire courte</h2><p>Un fichier par projet dans <code>content/projects/</code>. Un titre clair (une question marche très bien), un résumé d'une phrase, des étiquettes, et le lien vers le code. Dans le corps : <b>Contexte</b>, <b>Données</b>, <b>Méthode</b>, <b>Résultats</b>, <b>Ce que j'ai appris</b>.</p></div>
+          <div class="viz"><div class="split"><div class="win "><div class="win-bar"><b></b><b></b><b></b><span>projects/velos.md</span></div><div class="win-body code"><span class="ln" style="animation-delay:0.3s"><span class="k">title:</span> <span class="s">Où manquera-t-il des vélos demain ?</span></span><span class="ln" style="animation-delay:1.1s"><span class="k">summary:</span> Prévoir les stations vides.</span><span class="ln" style="animation-delay:1.9s"><span class="k">tags:</span> [Python, Séries temporelles]</span><span class="ln" style="animation-delay:2.6s"><span class="k">featured:</span> true   <span class="c"># mis en avant</span></span><span class="ln" style="animation-delay:3.3s"><span class="k">links:</span>  <span class="k">repo:</span> https://github.com/...</span></div></div><div class="result" style="animation-delay:4.3s"><span class="th"></span><div><b>Où manquera-t-il des vélos demain ?</b><small>une carte claire, puis une page détaillée</small></div></div></div></div>
+        </div>
+        <div class="scene" data-dur="11000">
+          <div class="say"><span class="step">Étape 8 sur 10 · Miniatures</span><h2>Trouvez des miniatures libres de droits</h2><p>Prenez des images que vous avez le droit d'utiliser : <b>Unsplash</b>, <b>Pexels</b>, <b>Pixabay</b>, <b>Wikimedia Commons</b>, ou mieux, une capture de <b>votre propre graphique</b>. Sur Google Images, filtrez par « Licences Creative Commons ». Pinterest sert à trouver des idées, pas des images : elles appartiennent à leurs auteurs.</p></div>
+          <div class="viz"><div class="split"><div class="srcs"><span class="ok" style="animation-delay:.3s">Unsplash</span><span class="ok" style="animation-delay:.6s">Pexels</span><span class="ok" style="animation-delay:.9s">Pixabay</span><span class="ok" style="animation-delay:1.2s">Wikimedia Commons</span><span class="ok" style="animation-delay:1.5s">Votre graphique</span><span class="mid" style="animation-delay:1.8s">Google Images + filtre CC</span><span class="no" style="animation-delay:2.1s">Pinterest : idées seulement</span></div><div class="win "><div class="win-bar"><b></b><b></b><b></b><span>projects/velos.md</span></div><div class="win-body code"><span class="ln" style="animation-delay:2.8s"><span class="k">thumbnail:</span> <span class="s">images/thumbnails/velos.jpg</span></span><span class="ln" style="animation-delay:3.5s"><span class="k">thumbnail_alt:</span> Carte des stations de vélos</span><span class="ln" style="animation-delay:4.2s"><span class="c"># format 16:9, environ 1200×675 px</span></span></div></div></div></div>
+        </div>
+        <div class="scene" data-dur="9000">
+          <div class="say"><span class="step">Étape 9 sur 10 · Vérifier</span><h2>Regardez le résultat avant de publier</h2><p>Windows : double-clic sur <code>install.cmd</code>. Mac ou Linux : <code>sh install.sh</code>. Le site s'ouvre dans le navigateur. S'il y a une erreur, le message donne le fichier et la ligne à corriger.</p></div>
+          <div class="viz"><div class="win term"><div class="win-bar"><b></b><b></b><b></b><span>terminal</span></div><div class="win-body code"><span class="ln" style="animation-delay:0.3s"><span class="k">$</span> sh install.sh preview</span><span class="ln" style="animation-delay:1.2s"><span class="c">Lecture de content/ ... ok</span></span><span class="ln" style="animation-delay:1.9s"><span class="c">Site généré : 6 pages dans docs/</span></span><span class="ln" style="animation-delay:2.6s"><span class="c">Ouvert sur http://localhost:8000</span></span><span class="ln" style="animation-delay:3.6s"><span class="s">Erreur : velos.md, ligne 4 (date AAAA-MM)</span></span></div></div></div>
+        </div>
+        <div class="scene" data-dur="10000">
+          <div class="say"><span class="step">Étape 10 sur 10 · Publier</span><h2>Envoyez, et votre site est en ligne</h2><p>Une seule fois : sur GitHub, <b>Settings &gt; Pages &gt; Source : GitHub Actions</b>. Ensuite, à chaque envoi (commit puis push, ou « Push origin » dans GitHub Desktop), le site se met à jour tout seul en une minute.</p></div>
+          <div class="viz"><div><div class="win term"><div class="win-bar"><b></b><b></b><b></b><span>terminal</span></div><div class="win-body code"><span class="ln" style="animation-delay:0.3s"><span class="k">$</span> git add .</span><span class="ln" style="animation-delay:1.0s"><span class="k">$</span> git commit -m "Mon portfolio"</span><span class="ln" style="animation-delay:1.7s"><span class="k">$</span> git push</span><span class="ln" style="animation-delay:2.6s"><span class="c">GitHub Actions : site publié ✓</span></span></div></div><span class="url" style="animation-delay:3.4s"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg>votre-compte.github.io/portfolio</span></div></div>
+        </div>
+    </div>
+    <div class="ctrl">
+      <button type="button" data-act="toggle" aria-label="Pause"><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-ic="pause"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" data-ic="play" hidden><path d="M7 5v14l12-7z"/></svg></button>
+      <div class="dots" role="tablist" aria-label="Étapes du guide"></div>
+      <button type="button" data-act="prev" aria-label="Étape précédente">Précédent</button>
+      <button type="button" data-act="next" aria-label="Étape suivante">Suivant</button>
+    </div>
+  </div>
+  <details class="guide-text">
+    <summary>Lire les dix étapes en texte</summary>
+    <ol>
+      <li><b>Copier le modèle.</b> Sur la page GitHub du projet, « Use this template » puis « Create a new repository ». Nom court (<code>portfolio</code>), dépôt public. Si vous l'appelez <code>votre-compte.github.io</code>, l'adresse sera la plus courte possible.</li>
+      <li><b>Le récupérer.</b> <code>git clone https://github.com/votre-compte/portfolio</code>, ou GitHub Desktop (File &gt; Clone repository), ou « Code &gt; Download ZIP ». Ouvrez le dossier dans VS Code.</li>
+      <li><b>Choisir le modèle.</b> Dans <code>content/site.yml</code> : <code>template:</code> (une lettre), <code>language: fr</code> ou <code>en</code>, et si vous voulez <code>palette:</code> ou vos couleurs.</li>
+      <li><b>Le profil.</b> <code>content/profile.md</code> : nom, titre, ville, e-mail, LinkedIn. Sous les trois tirets, deux phrases (ce que vous faites, ce que vous cherchez). Profil GitHub vide : laissez <code>github: ""</code>.</li>
+      <li><b>La photo.</b> Carrée (environ 800×800 px), nette, bien éclairée, fond simple. Copiez-la dans <code>content/images/</code> et écrivez <code>photo: images/photo.jpg</code> et une courte description dans <code>photo_alt</code>.</li>
+      <li><b>Les expériences.</b> Un fichier par expérience dans <code>content/experiences/</code> : <code>title</code>, <code>organisation</code>, <code>start</code>, <code>end</code> (ou <code>present</code>), <code>type</code>. Dessous, 2 ou 3 puces : un verbe d'action et un résultat chiffré.</li>
+      <li><b>Les projets.</b> Un fichier par projet dans <code>content/projects/</code> : titre clair (une question fonctionne bien), <code>summary</code> d'une phrase, <code>tags</code>, <code>featured: true</code> pour vos meilleurs, <code>links: repo:</code> vers le code. Dans le corps : Contexte, Données, Méthode, Résultats, Ce que j'ai appris.</li>
+      <li><b>Les miniatures.</b> Images libres de droits : Unsplash, Pexels, Pixabay, Wikimedia Commons (vérifiez la licence de chaque fichier), ou une capture de votre propre graphique, souvent le meilleur choix. Google Images : outil « Droits d'usage », « Licences Creative Commons ». Pinterest : pour l'inspiration seulement. Format 16:9 (environ 1200×675 px), dans <code>content/images/thumbnails/</code>, puis <code>thumbnail:</code> et <code>thumbnail_alt:</code> dans le fichier du projet.</li>
+      <li><b>Vérifier.</b> <code>install.cmd</code> (Windows) ou <code>sh install.sh preview</code> (Mac, Linux) : le site s'ouvre dans le navigateur. Une erreur indique le fichier et la ligne.</li>
+      <li><b>Publier.</b> Une fois : Settings &gt; Pages &gt; Source : GitHub Actions. Ensuite chaque <code>git push</code> (ou « Push origin » dans GitHub Desktop) met le site à jour en une minute environ.</li>
+    </ol>
+  </details>
 
   <footer><span>Projet libre sous <a href="%REPO%/blob/main/LICENSE" target="_blank" rel="noopener">licence MIT</a> · créé par <a href="%OWNER%" target="_blank" rel="noopener">Djamal TOE</a></span><span><a href="%REPO%" target="_blank" rel="noopener">Code source sur GitHub</a></span></footer>
 </div>
@@ -333,6 +434,46 @@ dialog::backdrop{background:rgba(5,8,10,.55);backdrop-filter:blur(4px)}
   film.querySelector("[data-act=next]").addEventListener("click", function () { show(i + 1); });
   if (reduce) { playing = false; film.classList.add("paused"); film.querySelector("[data-ic=pause]").setAttribute("hidden", ""); film.querySelector("[data-ic=play]").removeAttribute("hidden"); }
   show(0);
+
+
+  /* guide: same player, starts when it scrolls into view */
+  (function () {
+    var g = document.getElementById("guide-film");
+    if (!g) return;
+    var sc = g.querySelectorAll(".scene"), dd = g.querySelector(".dots"), j = -1, tm = null, run = false;
+    sc.forEach(function (s, k) {
+      var b = document.createElement("button");
+      b.type = "button"; b.setAttribute("aria-label", "Étape " + (k + 1)); b.innerHTML = "<span></span>";
+      b.addEventListener("click", function () { go(k); });
+      dd.appendChild(b);
+    });
+    var bb = dd.querySelectorAll("button");
+    function go(k) {
+      clearTimeout(tm);
+      j = (k + sc.length) % sc.length;
+      sc.forEach(function (s, n) { s.classList.toggle("on", n === j); });
+      bb.forEach(function (b, n) { b.classList.toggle("done", n < j); b.classList.remove("on"); if (n === j) { void b.offsetWidth; b.classList.add("on"); } });
+      var dur = +sc[j].getAttribute("data-dur") || 8000;
+      g.style.setProperty("--dur", dur + "ms");
+      if (run) tm = setTimeout(function () { go(j + 1); }, dur);
+    }
+    function play(p) {
+      run = p; g.classList.toggle("paused", !p);
+      var t = g.querySelector("[data-act=toggle]");
+      t.setAttribute("aria-label", p ? "Pause" : "Lecture");
+      t.querySelector("[data-ic=pause]").toggleAttribute("hidden", !p); t.querySelector("[data-ic=play]").toggleAttribute("hidden", p);
+      if (p) go(j); else clearTimeout(tm);
+    }
+    g.querySelector("[data-act=toggle]").addEventListener("click", function () { play(!run); });
+    g.querySelector("[data-act=next]").addEventListener("click", function () { go(j + 1); });
+    g.querySelector("[data-act=prev]").addEventListener("click", function () { go(j - 1); });
+    play(false); go(0);
+    if (!reduce && "IntersectionObserver" in window) {
+      var seen = false;
+      new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && !seen) { seen = true; play(true); } }); }, { threshold: 0.4 }).observe(g);
+    }
+    document.querySelectorAll('a[href="#guide"]').forEach(function (a) { a.addEventListener("click", function () { if (!reduce) { seen = true; play(true); go(0); } }); });
+  })();
 
   /* music: a soft original loop generated live with the Web Audio API (no audio file, no copyright) */
   var mBtn = film.querySelector("[data-act=music]"), actx = null, master = null, beat = null, step = 0;
