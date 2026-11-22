@@ -1,4 +1,4 @@
-# Portfolio Markdown : trente modèles prêts à l'emploi
+# Portfolio Markdown : quarante modèles prêts à l'emploi
 
 Créez votre site portfolio **sans écrire de HTML**. Vous remplissez quelques fichiers texte (Markdown), un script fabrique le site, et GitHub Pages le publie gratuitement.
 
@@ -10,7 +10,7 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ## Sommaire
 
-1. [Les trente modèles](#1-les-trente-modèles)
+1. [Les quarante modèles](#1-les-quarante-modèles)
 2. [Démarrage rapide (5 minutes)](#2-démarrage-rapide-5-minutes)
 3. [Ce qu'il faut modifier](#3-ce-quil-faut-modifier)
 4. [Référence des fichiers, champ par champ](#4-référence-des-fichiers-champ-par-champ)
@@ -22,12 +22,22 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ---
 
-## 1. Les trente modèles
+## 1. Les quarante modèles
 
-**Voir les trente modèles en ligne, avec une courte animation explicative (et sa musique) :** https://djamal029.github.io/portfolio-markdown-templates/ . Le bouton « Choisir ce modèle » compte combien de personnes ont choisi chaque modèle et mène au dépôt GitHub. Dans la galerie, chaque modèle montre un profil fictif différent (biostatistique, machine learning, IA, NLP, épidémiologie, data engineering…) ; ces profils viennent de `outils/exemples.py`. Votre propre site n'utilise que le dossier `content/`.
+**Voir les quarante modèles en ligne, avec une courte animation explicative (et sa musique) :** https://djamal029.github.io/portfolio-markdown-templates/ . Le bouton « Choisir ce modèle » compte combien de personnes ont choisi chaque modèle et mène au dépôt GitHub. Dans la galerie, chaque modèle montre un profil fictif différent (biostatistique, machine learning, IA, NLP, épidémiologie, data engineering…) ; ces profils viennent de `outils/exemples.py`. Votre propre site n'utilise que le dossier `content/`.
 
 | Modèle | Organisation et style | Palette par défaut | Idéal pour |
 |---|---|---|---|
+| **RA « Scholar »** (nouveau, chercheur) | la page de chercheur classique : sobre, publications numérotées avec liens [PDF] [Code] [DOI] | `indigo` | une page de thèse ou de labo |
+| **RB « Lab »** (nouveau, chercheur) | bandeau quadrillé de laboratoire, publications en cartes avec résumé encadré | `teal` | un doctorant en équipe |
+| **RC « Journal »** (nouveau, chercheur) | la page ressemble à un article publié : encadré Abstract, sections numérotées, références [1] | `graphite` | un profil très académique |
+| **RD « Thesis »** (nouveau, chercheur) | un manuscrit de thèse : chapitres en chiffres romains, lettrine, page de papier | `forest` | raconter sa thèse |
+| **RE « Poster »** (nouveau, chercheur) | un poster scientifique : bandeau coloré, blocs à en-têtes, publications en grille | `sunset` | un profil visuel |
+| **RF « Preprint »** (nouveau, chercheur) | une liste compacte de prépublications, identifiants en chasse fixe, liens courts | `sunset` | beaucoup de publications |
+| **RG « Conference »** (nouveau, chercheur) | bannière de conférence, publications présentées comme un programme | `indigo` | beaucoup d'exposés |
+| **RH « Cells »** (nouveau, chercheur) | chaque section est une cellule de notebook avec son invite In [n] | `graphite` | un profil calcul et code |
+| **RI « Chalkboard »** (nouveau, chercheur) | un tableau noir : titres à la craie, équations en fond | `forest` | un profil maths ou théorie |
+| **RJ « Network »** (nouveau, chercheur) | un réseau de co-auteurs en fond, publications reliées comme des nœuds | `teal` | un profil collaboratif |
 | **Z « Noir »** (nouveau) | toujours sombre, détails dorés, grand nom à empattements, ornements discrets | `sunset` | un profil élégant et posé |
 | **AA « Retro »** (nouveau) | un bureau des années 90 : chaque section est une fenêtre, barre des tâches en bas | `indigo` | un profil geek, jeux vidéo |
 | **AB « Split »** (nouveau) | un grand panneau coloré fixe à gauche avec photo et nom, contenu à droite | `indigo` | une présentation très visuelle |
@@ -58,6 +68,66 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 | **F « Terminal »** | une page façon terminal, fenêtres avec barre de titre, commandes | `graphite` | un profil développeur ou data |
 | **G « Resume »** | un CV en ligne : feuille avec colonne de contact et compétences, imprimable | `teal` | un CV en ligne |
 | **H « Horizon »** | nom géant, chiffres clés, projets en défilement horizontal | `indigo` | un effet « waouh » |
+
+**Modèle RA, ordinateur et téléphone**
+
+![Modèle RA sur ordinateur](docs-assets/template-ra-desktop.webp)
+
+<img src="docs-assets/template-ra-mobile.webp" alt="Modèle RA sur téléphone" width="300">
+
+**Modèle RB, ordinateur et téléphone**
+
+![Modèle RB sur ordinateur](docs-assets/template-rb-desktop.webp)
+
+<img src="docs-assets/template-rb-mobile.webp" alt="Modèle RB sur téléphone" width="300">
+
+**Modèle RC, ordinateur et téléphone**
+
+![Modèle RC sur ordinateur](docs-assets/template-rc-desktop.webp)
+
+<img src="docs-assets/template-rc-mobile.webp" alt="Modèle RC sur téléphone" width="300">
+
+**Modèle RD, ordinateur et téléphone**
+
+![Modèle RD sur ordinateur](docs-assets/template-rd-desktop.webp)
+
+<img src="docs-assets/template-rd-mobile.webp" alt="Modèle RD sur téléphone" width="300">
+
+**Modèle RE, ordinateur et téléphone**
+
+![Modèle RE sur ordinateur](docs-assets/template-re-desktop.webp)
+
+<img src="docs-assets/template-re-mobile.webp" alt="Modèle RE sur téléphone" width="300">
+
+**Modèle RF, ordinateur et téléphone**
+
+![Modèle RF sur ordinateur](docs-assets/template-rf-desktop.webp)
+
+<img src="docs-assets/template-rf-mobile.webp" alt="Modèle RF sur téléphone" width="300">
+
+**Modèle RG, ordinateur et téléphone**
+
+![Modèle RG sur ordinateur](docs-assets/template-rg-desktop.webp)
+
+<img src="docs-assets/template-rg-mobile.webp" alt="Modèle RG sur téléphone" width="300">
+
+**Modèle RH, ordinateur et téléphone**
+
+![Modèle RH sur ordinateur](docs-assets/template-rh-desktop.webp)
+
+<img src="docs-assets/template-rh-mobile.webp" alt="Modèle RH sur téléphone" width="300">
+
+**Modèle RI, ordinateur et téléphone**
+
+![Modèle RI sur ordinateur](docs-assets/template-ri-desktop.webp)
+
+<img src="docs-assets/template-ri-mobile.webp" alt="Modèle RI sur téléphone" width="300">
+
+**Modèle RJ, ordinateur et téléphone**
+
+![Modèle RJ sur ordinateur](docs-assets/template-rj-desktop.webp)
+
+<img src="docs-assets/template-rj-mobile.webp" alt="Modèle RJ sur téléphone" width="300">
 
 **Modèle Z, ordinateur et téléphone**
 
@@ -257,11 +327,11 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ![Modèle X en mode sombre](docs-assets/template-x-dark.webp)
 
-Les trente modèles s'adaptent au téléphone, à la tablette (portrait et paysage), se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).
+Les quarante modèles s'adaptent au téléphone, à la tablette (portrait et paysage), se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).
 
 ### Comparer les modèles chez vous
 
-Une commande génère les trente modèles avec l'exemple, en anglais et en français, et ouvre une page de choix :
+Une commande génère les quarante modèles avec l'exemple, en anglais et en français, et ouvre une page de choix :
 
 ```
 uv run build.py --preview-all
@@ -291,7 +361,7 @@ L'installateur peut être relancé autant de fois que vous voulez : si `uv` est 
 |---|---|
 | `install.ps1` / `sh install.sh` | installe uv si besoin, génère `docs/`, ouvre `docs/index.html` |
 | `install.ps1 preview` / `sh install.sh preview` | idem, puis sert le site sur `http://localhost:8000` (Ctrl+C pour arrêter) |
-| `install.ps1 preview-all` / `sh install.sh preview-all` | les trente modèles côte à côte (voir section 1) |
+| `install.ps1 preview-all` / `sh install.sh preview-all` | les quarante modèles côte à côte (voir section 1) |
 | `-Port 8080` / `--port 8080` | utiliser un autre port |
 | `-NoOpen` / `--no-open` | ne pas ouvrir le navigateur |
 
@@ -358,7 +428,7 @@ Règles qui évitent 90 % des erreurs :
 | Champ | Obligatoire | Rôle |
 |---|---|---|
 | `language` | non (défaut `en`) | langue de l'interface : `en` ou `fr` (menus, titres de sections, mois, « Aujourd'hui »...) |
-| `template` | non (défaut `a`) | `a` (Editorial), `b` (Cards), `c` (Sidebar), `d` (Bento), `e` (Spotlight), `f` (Terminal), `g` (Resume), `h` (Horizon), `i` (Aurora), `j` (Studio), `k` (Neon), `l` (Pastel), `m` (Swiss), `n` (Journey), `o` (Dashboard), `p` (Plain), `q` (Paper), `r` (Mono), `s` (Quiet), `t` (Magazine), `u` (Glass), `v` (Brutal), `w` (Notebook), `x` (Cosmos), `y` (Ocean), `z` (Noir), `aa` (Retro), `ab` (Split), `ac` (Newspaper) ou `ad` (Kanban) |
+| `template` | non (défaut `a`) | `a` (Editorial), `b` (Cards), `c` (Sidebar), `d` (Bento), `e` (Spotlight), `f` (Terminal), `g` (Resume), `h` (Horizon), `i` (Aurora), `j` (Studio), `k` (Neon), `l` (Pastel), `m` (Swiss), `n` (Journey), `o` (Dashboard), `p` (Plain), `q` (Paper), `r` (Mono), `s` (Quiet), `t` (Magazine), `u` (Glass), `v` (Brutal), `w` (Notebook), `x` (Cosmos), `y` (Ocean), `z` (Noir), `aa` (Retro), `ab` (Split), `ac` (Newspaper), `ad` (Kanban), et pour les chercheurs `ra` (Scholar), `rb` (Lab), `rc` (Journal), `rd` (Thesis), `re` (Poster), `rf` (Preprint), `rg` (Conference), `rh` (Cells), `ri` (Chalkboard) ou `rj` (Network) |
 | `title` | non | titre de l'onglet du navigateur |
 | `description` | non | phrase affichée par Google et LinkedIn |
 | `base_url` | non | adresse finale du site, par exemple `https://pseudo.github.io/portfolio/` |
@@ -554,6 +624,28 @@ Projet en équipe de 4 pour le cours de Machine Learning...
 
 ---
 
+### `content/publications/*.md` (chercheurs et doctorants)
+
+Les modèles **RA à RJ** ajoutent une section **Publications**. Les autres modèles l'ignorent (un avertissement le rappelle). Un fichier par publication ; copiez `content/publications/_modele.md` (ignoré grâce au « _ ») et renommez la copie.
+
+| Champ | Obligatoire | Rôle |
+|---|---|---|
+| `title` | oui | titre exact de l'article |
+| `authors` | oui | liste des auteurs ; **votre nom est mis en gras** automatiquement |
+| `year` | oui | année, quatre chiffres |
+| `venue` | non | revue, conférence, école doctorale... |
+| `type` | non | `journal` (défaut), `conference`, `preprint`, `workshop`, `thesis`, `book`, `chapter`, `report`, `talk`, `poster` ; sert aussi au filtre par type |
+| `summary` | non | une phrase simple, affichée dans un cadre sous le titre |
+| `status`, `award` | non | badges, par exemple « Under review » ou « Best paper award » |
+| `featured` | non | `true` pour mettre en avant |
+| `doi` | non | crée un bouton DOI vers https://doi.org/... |
+| `links` | non | `paper`, `pdf` (adresse ou fichier dans `content/files/`), `arxiv`, `hal`, `code`, `data`, `slides`, `poster`, `video` |
+| `bibtex` | non | la référence BibTeX ; un bouton « Citer » l'affiche avec un bouton « Copier » |
+
+Le texte sous les tirets est le **résumé** (abstract), qu'on déplie avec le bouton « Résumé ».
+
+Si votre nom apparaît sous une autre forme dans les listes d'auteurs (« C. Fournier »), ajoutez dans `profile.md` : `author_names: [C. Fournier]`. Vous pouvez aussi ajouter `scholar:` (Google Scholar) et `orcid:` ; les modèles chercheur affichent alors ces boutons en haut de page.
+
 ## 5. Couleurs et polices
 
 Tout se règle dans `content/site.yml`.
@@ -677,7 +769,7 @@ Options utiles :
 uv run build.py --template b                                    # essayer un autre modèle
 uv run build.py --language fr                                   # essayer l'autre langue d'interface
 uv run build.py --content content-fr-example --out apercu-fr    # générer l'exemple français ailleurs
-uv run build.py --preview-all                                   # les trente modèles côte à côte
+uv run build.py --preview-all                                   # les quarante modèles côte à côte
 uv run build.py --serve                                         # génère puis sert docs/ sur http://localhost:8000
 ```
 

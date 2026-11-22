@@ -413,6 +413,35 @@ def make_content(template: str, lang: str, base: Path, dest: Path) -> Path:
               f"thumbnail_alt: {_q(title)}", "tags: [" + ", ".join(_q(t) for t in d["tags"]) + "]", f"summary: {_q(summary)}",
               f"featured: {'true' if d['featured'] else 'false'}", "links:", f"  repo: https://github.com/example/{slug}"]
         (proj_dir / f"{slug}.md").write_text("---\n" + "\n".join(fm) + "\n---\n" + what + "\n\n" + "\n".join("- " + b for b in bullets) + "\n", encoding="utf-8")
+    # publications (modèles « chercheur »)
+    pubs = p.get("pubs") or []
+    if pubs:
+        pub_dir = dest / "publications"
+        pub_dir.mkdir(exist_ok=True)
+        for x in pubs:
+            first = x["authors"][0].split()[-1].lower()
+            key = f"{first}{x['year']}{x['slug'][-3:]}"
+            bib = [f"@article{{{key},", f"  title = {{{x['title']}}},", "  author = {" + " and ".join(x["authors"]) + "},",
+                   f"  journal = {{{x['venue']}}},", f"  year = {{{x['year']}}},", f"  doi = {{{x['doi']}}}", "}"]
+            fm = [f"title: {_q(x['title'])}", "authors: [" + ", ".join(_q(a) for a in x["authors"]) + "]", f"year: {x['year']}",
+                  f"venue: {_q(x['venue'])}", f"type: {x['type']}", f"summary: {_q(x['summary'][k])}", f"doi: {x['doi']}",
+                  f"featured: {'true' if x['featured'] else 'false'}"]
+            if x["status"]:
+                fm.append(f"status: {_q(x['status'])}")
+            if x["award"]:
+                fm.append(f"award: {_q(x['award'])}")
+            fm.append("links:")
+            fm += [f"  {kk}: {vv}" for kk, vv in x["links"].items()]
+            fm.append("bibtex: |")
+            fm += ["  " + line for line in bib]
+            (pub_dir / f"{x['slug']}.md").write_text("---\n" + "\n".join(fm) + "\n---\n" + x["abstract"][k] + "\n", encoding="utf-8")
+        if p.get("author_names"):
+            prof = (dest / "profile.md").read_text(encoding="utf-8")
+            extra = ("\nauthor_names: [" + ", ".join(_q(n) for n in p["author_names"]) + "]"
+                     "\nscholar: https://scholar.google.com/citations?user=example"
+                     "\norcid: https://orcid.org/0000-0000-0000-0000\n---\n")
+            prof = prof.replace("\n---\n", extra, 1)
+            (dest / "profile.md").write_text(prof, encoding="utf-8")
     return dest
 
 
@@ -434,5 +463,10 @@ except ImportError:
 
 try:
     import exemples_zad  # noqa: F401
+except ImportError:
+    pass
+
+try:
+    import exemples_research  # noqa: F401
 except ImportError:
     pass

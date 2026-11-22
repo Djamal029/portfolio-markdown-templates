@@ -27,6 +27,7 @@ import re
 import shutil
 import sys
 import tempfile
+import unicodedata
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -60,6 +61,35 @@ BUILD_MARKER = ".portfolio-build"
 I18N: dict[str, dict[str, Any]] = {
     "en": {
         "nav_home": "Home",
+        "nav_publications": "Publications",
+        "section_publications": "Publications",
+        "pubtype_journal": "Journal article",
+        "pubtype_conference": "Conference paper",
+        "pubtype_preprint": "Preprint",
+        "pubtype_workshop": "Workshop paper",
+        "pubtype_thesis": "Thesis",
+        "pubtype_book": "Book",
+        "pubtype_chapter": "Book chapter",
+        "pubtype_report": "Technical report",
+        "pubtype_talk": "Talk",
+        "pubtype_poster": "Poster",
+        "pub_paper": "Paper",
+        "pub_pdf": "PDF",
+        "pub_arxiv": "arXiv",
+        "pub_hal": "HAL",
+        "pub_code": "Code",
+        "pub_data": "Data",
+        "pub_slides": "Slides",
+        "pub_poster": "Poster",
+        "pub_video": "Video",
+        "pub_doi": "DOI",
+        "abstract": "Abstract",
+        "cite": "Cite",
+        "copy": "Copy",
+        "copied": "Copied",
+        "n_publications": "publications",
+        "selected_publications": "Selected publications",
+        "authors": "Authors",
         "nav_about": "About",
         "nav_experiences": "Experience",
         "nav_projects": "Projects",
@@ -123,6 +153,35 @@ I18N: dict[str, dict[str, Any]] = {
     },
     "fr": {
         "nav_home": "Accueil",
+        "nav_publications": "Publications",
+        "section_publications": "Publications",
+        "pubtype_journal": "Article de revue",
+        "pubtype_conference": "Communication",
+        "pubtype_preprint": "Prépublication",
+        "pubtype_workshop": "Atelier",
+        "pubtype_thesis": "Thèse",
+        "pubtype_book": "Livre",
+        "pubtype_chapter": "Chapitre",
+        "pubtype_report": "Rapport technique",
+        "pubtype_talk": "Exposé",
+        "pubtype_poster": "Poster",
+        "pub_paper": "Article",
+        "pub_pdf": "PDF",
+        "pub_arxiv": "arXiv",
+        "pub_hal": "HAL",
+        "pub_code": "Code",
+        "pub_data": "Données",
+        "pub_slides": "Diapositives",
+        "pub_poster": "Poster",
+        "pub_video": "Vidéo",
+        "pub_doi": "DOI",
+        "abstract": "Résumé",
+        "cite": "Citer",
+        "copy": "Copier",
+        "copied": "Copié",
+        "n_publications": "publications",
+        "selected_publications": "Publications choisies",
+        "authors": "Auteurs",
         "nav_about": "À propos",
         "nav_experiences": "Expériences",
         "nav_projects": "Projets",
@@ -186,7 +245,10 @@ I18N: dict[str, dict[str, Any]] = {
     },
 }
 
-SECTION_ORDER = ["about", "experiences", "projects", "skills", "education", "contact"]
+SECTION_ORDER = ["about", "publications", "experiences", "projects", "skills", "education", "contact"]
+# Publications (modèles « chercheur ») : types et liens reconnus.
+PUB_TYPES = ["journal", "conference", "preprint", "workshop", "thesis", "book", "chapter", "report", "talk", "poster"]
+PUB_LINKS = ["paper", "pdf", "arxiv", "hal", "code", "data", "slides", "poster", "video"]
 EXPERIENCE_TYPES = ["internship", "job", "apprenticeship", "volunteering"]
 PROJECT_CATEGORIES = ["academic", "personal"]
 PRESENT_WORDS = {"present", "présent", "present.", "aujourd'hui", "en cours", "now", "current"}
@@ -535,6 +597,16 @@ TEMPLATES = {
     "ab": {"name": "Split", "palette": "indigo", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
     "ac": {"name": "Newspaper", "palette": "graphite", "heading": "playfair-display", "body": "source-serif-4", "mono": "system"},
     "ad": {"name": "Kanban", "palette": "teal", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
+    "ra": {"name": "Scholar", "palette": "indigo", "heading": "source-serif-4", "body": "inter", "mono": "system", "research": True},
+    "rb": {"name": "Lab", "palette": "teal", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system", "research": True},
+    "rc": {"name": "Journal", "palette": "graphite", "heading": "source-serif-4", "body": "source-serif-4", "mono": "system", "research": True},
+    "rd": {"name": "Thesis", "palette": "forest", "heading": "lora", "body": "lora", "mono": "system", "research": True},
+    "re": {"name": "Poster", "palette": "sunset", "heading": "space-grotesk", "body": "inter", "mono": "system", "research": True},
+    "rf": {"name": "Preprint", "palette": "sunset", "heading": "ibm-plex-sans", "body": "ibm-plex-sans", "mono": "jetbrains-mono", "research": True},
+    "rg": {"name": "Conference", "palette": "indigo", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system", "research": True},
+    "rh": {"name": "Cells", "palette": "graphite", "heading": "ibm-plex-sans", "body": "ibm-plex-sans", "mono": "jetbrains-mono", "research": True},
+    "ri": {"name": "Chalkboard", "palette": "forest", "heading": "caveat", "body": "inter", "mono": "system", "research": True},
+    "rj": {"name": "Network", "palette": "teal", "heading": "space-grotesk", "body": "inter", "mono": "system", "research": True},
 }
 
 WHITE = (255, 255, 255)
@@ -809,6 +881,10 @@ def load_profile(content_dir: Path, report: Report, assets: set[str], t: dict) -
         "linkedin": f.url("linkedin"),
         "github": f.url("github"),
         "website": f.url("website"),
+        # Variantes de votre nom dans les listes d'auteurs (mises en gras), par exemple [D. Toe, Toe D.]
+        "author_names": f.text_list("author_names"),
+        "orcid": f.url("orcid"),
+        "scholar": f.url("scholar"),
         "pitch_html": md_to_html(body),
         "initials": "".join(part[0] for part in name.split()[:2]).upper() if name else "?",
     }
@@ -1001,6 +1077,74 @@ def load_projects(content_dir: Path, report: Report, assets: set[str], t: dict) 
     return items
 
 
+def _norm_name(name: str) -> str:
+    text = unicodedata.normalize("NFKD", name).encode("ascii", "ignore").decode().lower()
+    return re.sub(r"[^a-z]", "", text)
+
+
+def load_publications(content_dir: Path, report: Report, assets: set[str], t: dict, profile: dict) -> list[dict]:
+    """Une publication par fichier dans content/publications/ (modèles « chercheur »)."""
+    mine = {_norm_name(n) for n in [profile.get("name", "")] + profile.get("author_names", []) if n}
+    items = []
+    for path in md_files(content_dir / "publications"):
+        data, body = read_markdown(path, report)
+        if data is None:
+            continue
+        f = Fields(data, path, report, content_dir, assets)
+        title = f.text("title", required=True)
+        authors = f.text_list("authors")
+        if not authors:
+            report.error(path, "authors", "liste des auteurs manquante, par exemple [Léa Moreau, Paul Martin].")
+        year_raw = data.get("year")
+        year = 0
+        if year_raw in (None, ""):
+            report.error(path, "year", "année manquante, par exemple 2025.")
+        elif not re.fullmatch(r"(19|20)\d\d", str(year_raw).strip()):
+            report.error(path, "year", f"année invalide : « {year_raw} ». Écrivez quatre chiffres, par exemple 2025.")
+        else:
+            year = int(str(year_raw).strip())
+        kind = f.choice("type", PUB_TYPES, required=False) or "journal"
+        doi = f.text("doi")
+        doi = re.sub(r"^(https?://(dx\.)?doi\.org/|doi:\s*)", "", doi, flags=re.I)
+        links_raw = data.get("links") or {}
+        links = []
+        if isinstance(links_raw, dict):
+            for key, value in links_raw.items():
+                if key not in PUB_LINKS:
+                    report.error(path, f"links.{key}", f"lien inconnu. Liens possibles : {', '.join(PUB_LINKS)}.")
+                    continue
+                if value:
+                    href = f.url(f"links.{key}", str(value).strip())
+                    if href:
+                        links.append({"kind": key, "label": t[f"pub_{key}"], "href": href, "external": href.startswith("http")})
+        else:
+            report.error(path, "links", "doit contenir des lignes « paper: https://... », « pdf: files/article.pdf », « code: ... ».")
+        if doi:
+            links.insert(0, {"kind": "doi", "label": t["pub_doi"], "href": f"https://doi.org/{doi}", "external": True})
+        items.append(
+            {
+                "title": title,
+                "authors": [{"name": a, "me": _norm_name(a) in mine} for a in authors],
+                "year": year,
+                "venue": f.text("venue"),
+                "type": kind,
+                "type_label": t[f"pubtype_{kind}"],
+                "status": f.text("status"),
+                "award": f.text("award"),
+                "summary": f.text("summary"),
+                "featured": f.boolean("featured"),
+                "doi": doi,
+                "links": links,
+                "bibtex": f.text("bibtex"),
+                "thumbnail": f.image("thumbnail"),
+                "abstract_html": md_to_html(body),
+                "slug": slugify(path.stem),
+            }
+        )
+    items.sort(key=lambda x: (x["year"], x["featured"]), reverse=True)
+    return items
+
+
 def check_unknown_dirs(content_dir: Path, report: Report) -> None:
     for path in sorted(content_dir.glob("*.md")):
         if path.name not in {"profile.md", "about.md", "skills.md", "education.md"} and not path.name.startswith(("_", ".")):
@@ -1079,11 +1223,13 @@ PROJECT_OWNER = "https://github.com/Djamal029"
 # Compteurs publics « combien de personnes ont choisi ce modèle » (service gratuit Abacus, aucune donnée personnelle).
 COUNTER_NAMESPACE = "djamal029-portfolio-markdown-templates"
 # Modèles mis en avant en tête de la galerie.
-GALLERY_FIRST = ["z", "aa", "ab", "ac", "ad", "t", "u", "v", "w", "x", "y", "p", "q", "r", "s", "i", "j", "k", "l", "m", "n", "o"]
+GALLERY_FIRST = ["ra", "rb", "rc", "rd", "re", "rf", "rg", "rh", "ri", "rj", "z", "aa", "ab", "ac", "ad", "t", "u", "v", "w", "x", "y", "p", "q", "r", "s", "i", "j", "k", "l", "m", "n", "o"]
 # Modèles marqués « Nouveau » dans la galerie.
-GALLERY_NEW = ["z", "aa", "ab", "ac", "ad", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y"]
+GALLERY_NEW = ["ra", "rb", "rc", "rd", "re", "rf", "rg", "rh", "ri", "rj", "z", "aa", "ab", "ac", "ad", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y"]
 # Modèles sobres (badge « Sobre » dans la galerie).
 GALLERY_SOBER = ["p", "q", "r", "s"]
+# Modèles chercheurs (badge « Chercheur », section Publications).
+GALLERY_RESEARCH = ["ra", "rb", "rc", "rd", "re", "rf", "rg", "rh", "ri", "rj"]
 
 PREVIEW_TEXT = {
     "a": "Une seule longue page, menu de sections collé en haut, titres à empattements.",
@@ -1116,6 +1262,16 @@ PREVIEW_TEXT = {
     "ab": "Split : un grand panneau coloré fixe à gauche avec votre photo et votre nom, le contenu défile à droite.",
     "ac": "Journal : une une de quotidien, nom en manchette, colonnes, filets et photos en noir et blanc.",
     "ad": "Kanban : un tableau coloré façon gestion de projet, chaque section est une liste de cartes étiquetées.",
+    "ra": "Chercheur · Scholar : la page de chercheur classique, sobre, publications numérotées avec liens [PDF] [Code] [DOI].",
+    "rb": "Chercheur · Lab : bandeau de laboratoire quadrillé, publications en cartes avec résumé encadré et résumé dépliable.",
+    "rc": "Chercheur · Journal : la page ressemble à un article publié, encadré Abstract, sections numérotées, références [1] [2].",
+    "rd": "Chercheur · Thesis : un manuscrit de thèse posé sur le bureau, chapitres en chiffres romains, lettrine.",
+    "re": "Chercheur · Poster : un poster scientifique, bandeau coloré, blocs à en-têtes de couleur, publications en grille.",
+    "rf": "Chercheur · Preprint : une liste compacte de prépublications, identifiants en chasse fixe, liens courts.",
+    "rg": "Chercheur · Conference : bannière de conférence, publications présentées comme un programme sur une ligne de temps.",
+    "rh": "Chercheur · Cells : chaque section est une cellule de notebook avec son invite In [n], sorties Out.",
+    "ri": "Chercheur · Chalkboard : un tableau noir, titres à la craie, équations en fond, cadres dessinés à la main.",
+    "rj": "Chercheur · Network : un réseau de co-auteurs en fond, publications reliées comme des nœuds.",
 }
 
 
@@ -1210,7 +1366,7 @@ def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
         label = f"{tpl.upper()} « {info['name']} »"
         cards.append(
             f'<li class="card{" is-new" if tpl in GALLERY_NEW else ""}">{img}<div class="body"><h3><span class="letter">{tpl.upper()}</span>{info["name"]}'
-            f'{"<span class=\"sober\">Sobre</span>" if tpl in GALLERY_SOBER else ""}'
+            f'{"<span class=\"sober\">Sobre</span>" if tpl in GALLERY_SOBER else ""}{"<span class=\"sober\">Chercheur</span>" if tpl in GALLERY_RESEARCH else ""}'
             f'{"<span class=\"new\">Nouveau</span>" if tpl in GALLERY_NEW else ""}</h3>'
             f'<p>{PREVIEW_TEXT[tpl]}</p>'
             f'<p class="count" data-count="template-{tpl}" hidden><span></span></p>'
@@ -1273,6 +1429,10 @@ def main(argv: list[str] | None = None) -> int:
     education = load_education(content_dir, report, assets, t)
     experiences = load_experiences(content_dir, report, assets, t)
     projects = load_projects(content_dir, report, assets, t)
+    publications = load_publications(content_dir, report, assets, t, profile) if profile else []
+    research = TEMPLATES.get(site["template"], {}).get("research", False)
+    if publications and not research:
+        report.warn(content_dir / "publications", None, "publications ignorées : ce modèle ne les affiche pas. Choisissez un modèle chercheur (ra à rj) dans site.yml.")
     check_unknown_dirs(content_dir, report)
 
     for message in report.warnings:
@@ -1288,6 +1448,7 @@ def main(argv: list[str] | None = None) -> int:
     wanted = site["sections"]
     visible = {
         "about": wanted["about"] and bool(about_html),
+        "publications": wanted["publications"] and bool(publications) and research,
         "experiences": wanted["experiences"] and bool(experiences),
         "projects": wanted["projects"] and bool(projects),
         "skills": wanted["skills"] and bool(skills["groups"]),
@@ -1330,6 +1491,8 @@ def main(argv: list[str] | None = None) -> int:
         "education": education,
         "experiences": experiences,
         "projects": projects,
+        "publications": publications,
+        "pub_types": [k for k in PUB_TYPES if any(x["type"] == k for x in publications)],
         "featured": [p for p in projects if p["featured"]] or projects[:3],
         "visible": visible,
         "t": t,
