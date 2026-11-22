@@ -421,3 +421,8 @@ try:
     import exemples_ij  # noqa: F401
 except ImportError:
     pass
+
+try:
+    import exemples_ko  # noqa: F401
+except ImportError:
+    pass

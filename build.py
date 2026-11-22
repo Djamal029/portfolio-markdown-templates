@@ -512,6 +512,11 @@ TEMPLATES = {
     "h": {"name": "Horizon", "palette": "indigo", "heading": "plus-jakarta-sans", "body": "plus-jakarta-sans", "mono": "system"},
     "i": {"name": "Aurora", "palette": "indigo", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
     "j": {"name": "Studio", "palette": "forest", "heading": "fraunces", "body": "inter", "mono": "system"},
+    "k": {"name": "Neon", "palette": "indigo", "heading": "space-grotesk", "body": "inter", "mono": "jetbrains-mono"},
+    "l": {"name": "Pastel", "palette": "teal", "heading": "plus-jakarta-sans", "body": "plus-jakarta-sans", "mono": "system"},
+    "m": {"name": "Swiss", "palette": "sunset", "heading": "inter", "body": "inter", "mono": "system"},
+    "n": {"name": "Journey", "palette": "forest", "heading": "source-serif-4", "body": "inter", "mono": "system"},
+    "o": {"name": "Dashboard", "palette": "graphite", "heading": "ibm-plex-sans", "body": "ibm-plex-sans", "mono": "jetbrains-mono"},
 }
 
 WHITE = (255, 255, 255)
@@ -1056,7 +1061,9 @@ PROJECT_OWNER = "https://github.com/Djamal029"
 # Compteurs publics « combien de personnes ont choisi ce modèle » (service gratuit Abacus, aucune donnée personnelle).
 COUNTER_NAMESPACE = "djamal029-portfolio-markdown-templates"
 # Modèles mis en avant en tête de la galerie.
-GALLERY_FIRST = ["i", "j"]
+GALLERY_FIRST = ["i", "j", "k", "l", "m", "n", "o"]
+# Modèles marqués « Nouveau » dans la galerie.
+GALLERY_NEW = ["k", "l", "m", "n", "o"]
 
 PREVIEW_TEXT = {
     "a": "Une seule longue page, menu de sections collé en haut, titres à empattements.",
@@ -1069,6 +1076,11 @@ PREVIEW_TEXT = {
     "h": "Une page grand format : nom géant, projets qui défilent à l'horizontale, expériences numérotées.",
     "i": "Le plus lumineux : aurores de couleur en fond, cartes en verre dépoli, photo cerclée de lumière, apparitions douces au défilement.",
     "j": "Un portfolio façon magazine : grande photo en ouverture, sommaire numéroté, titres de section qui restent en marge pendant la lecture.",
+    "k": "Ambiance néon : grille rétro en perspective, titres qui brillent, cartes cernées de lumière cyan et magenta.",
+    "l": "Doux et chaleureux : formes pastel, grandes cartes arrondies, étiquettes façon autocollants, ton accessible.",
+    "m": "Style suisse : grille stricte, typographie géante, filets noirs et une seule couleur d'accent, très lisible.",
+    "n": "Un parcours : un chemin qui relie formation, expériences et projets, étape après étape, comme un récit.",
+    "o": "Un tableau de bord : barre latérale, indicateurs clés, compétences en graphique, expériences en frise de type Gantt.",
 }
 
 
@@ -1162,8 +1174,8 @@ def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
             minis.append(f'<img src="thumbs/{shot.name}" alt="" style="animation-delay:{0.25 + 0.12 * len(minis):.2f}s">')
         label = f"{tpl.upper()} « {info['name']} »"
         cards.append(
-            f'<li class="card{" is-new" if tpl in GALLERY_FIRST else ""}">{img}<div class="body"><h3><span class="letter">{tpl.upper()}</span>{info["name"]}'
-            f'{"<span class=\"new\">Nouveau</span>" if tpl in GALLERY_FIRST else ""}</h3>'
+            f'<li class="card{" is-new" if tpl in GALLERY_NEW else ""}">{img}<div class="body"><h3><span class="letter">{tpl.upper()}</span>{info["name"]}'
+            f'{"<span class=\"new\">Nouveau</span>" if tpl in GALLERY_NEW else ""}</h3>'
             f'<p>{PREVIEW_TEXT[tpl]}</p>'
             f'<p class="count" data-count="template-{tpl}" hidden><span></span></p>'
             f'<div class="links"><a href="{tpl}/en/index.html">Voir · EN</a>'

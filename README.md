@@ -1,4 +1,4 @@
-# Portfolio Markdown : dix modèles prêts à l'emploi
+# Portfolio Markdown : quinze modèles prêts à l'emploi
 
 Créez votre site portfolio **sans écrire de HTML**. Vous remplissez quelques fichiers texte (Markdown), un script fabrique le site, et GitHub Pages le publie gratuitement.
 
@@ -10,7 +10,7 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ## Sommaire
 
-1. [Les dix modèles](#1-les-dix-modèles)
+1. [Les quinze modèles](#1-les-quinze-modèles)
 2. [Démarrage rapide (5 minutes)](#2-démarrage-rapide-5-minutes)
 3. [Ce qu'il faut modifier](#3-ce-quil-faut-modifier)
 4. [Référence des fichiers, champ par champ](#4-référence-des-fichiers-champ-par-champ)
@@ -22,14 +22,19 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ---
 
-## 1. Les dix modèles
+## 1. Les quinze modèles
 
-**Voir les dix modèles en ligne, avec une courte animation explicative (et sa musique) :** https://djamal029.github.io/portfolio-markdown-templates/ . Le bouton « Choisir ce modèle » compte combien de personnes ont choisi chaque modèle et mène au dépôt GitHub. Dans la galerie, chaque modèle montre un profil fictif différent (biostatistique, machine learning, IA, NLP, épidémiologie, data engineering…) ; ces profils viennent de `outils/exemples.py`. Votre propre site n'utilise que le dossier `content/`.
+**Voir les quinze modèles en ligne, avec une courte animation explicative (et sa musique) :** https://djamal029.github.io/portfolio-markdown-templates/ . Le bouton « Choisir ce modèle » compte combien de personnes ont choisi chaque modèle et mène au dépôt GitHub. Dans la galerie, chaque modèle montre un profil fictif différent (biostatistique, machine learning, IA, NLP, épidémiologie, data engineering…) ; ces profils viennent de `outils/exemples.py`. Votre propre site n'utilise que le dossier `content/`.
 
 | Modèle | Organisation et style | Palette par défaut | Idéal pour |
 |---|---|---|---|
-| **I « Aurora »** (nouveau) | une page lumineuse : aurores de couleur en fond, cartes en verre dépoli, photo cerclée de lumière, apparitions douces au défilement | `indigo` | se démarquer tout de suite |
-| **J « Studio »** (nouveau) | une page façon magazine : grande photo en ouverture, sommaire numéroté, titres de section qui restent en marge | `forest` | un profil élégant, qui aime écrire |
+| **K « Neon »** (nouveau) | grille rétro en perspective, soleil couchant, titres qui brillent, cartes néon | `indigo` | un profil IA, jeux ou tech qui ose |
+| **L « Pastel »** (nouveau) | formes douces, grandes cartes arrondies de couleurs pastel, étiquettes façon autocollants | `teal` | un profil chaleureux et accessible |
+| **M « Swiss »** (nouveau) | grille stricte, nom géant, filets noirs, une seule couleur d'accent | `sunset` | un profil rigoureux, statistique publique |
+| **N « Journey »** (nouveau) | un chemin continu relie toutes les sections comme les étapes d'un récit | `forest` | raconter un parcours |
+| **O « Dashboard »** (nouveau) | barre latérale, indicateurs clés, compétences en barres, expériences façon Gantt | `graphite` | un profil BI, analytics, data engineering |
+| **I « Aurora »** | une page lumineuse : aurores de couleur en fond, cartes en verre dépoli, photo cerclée de lumière, apparitions douces au défilement | `indigo` | se démarquer tout de suite |
+| **J « Studio »** | une page façon magazine : grande photo en ouverture, sommaire numéroté, titres de section qui restent en marge | `forest` | un profil élégant, qui aime écrire |
 | **A « Editorial »** | une seule longue page, titres à empattements, ambiance magazine | `teal` | un profil à lire d'une traite |
 | **B « Cards »** | plusieurs pages (Accueil, À propos, Expériences, Projets, Contact), grille de cartes | `indigo` | beaucoup de projets |
 | **C « Sidebar »** | profil fixe dans une colonne à gauche, détails en police à chasse fixe | `graphite` | un profil technique, data ou dev |
@@ -38,6 +43,36 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 | **F « Terminal »** | une page façon terminal, fenêtres avec barre de titre, commandes | `graphite` | un profil développeur ou data |
 | **G « Resume »** | un CV en ligne : feuille avec colonne de contact et compétences, imprimable | `teal` | un CV en ligne |
 | **H « Horizon »** | nom géant, chiffres clés, projets en défilement horizontal | `indigo` | un effet « waouh » |
+
+**Modèle K, ordinateur et téléphone**
+
+![Modèle K sur ordinateur](docs-assets/template-k-desktop.webp)
+
+<img src="docs-assets/template-k-mobile.webp" alt="Modèle K sur téléphone" width="300">
+
+**Modèle L, ordinateur et téléphone**
+
+![Modèle L sur ordinateur](docs-assets/template-l-desktop.webp)
+
+<img src="docs-assets/template-l-mobile.webp" alt="Modèle L sur téléphone" width="300">
+
+**Modèle M, ordinateur et téléphone**
+
+![Modèle M sur ordinateur](docs-assets/template-m-desktop.webp)
+
+<img src="docs-assets/template-m-mobile.webp" alt="Modèle M sur téléphone" width="300">
+
+**Modèle N, ordinateur et téléphone**
+
+![Modèle N sur ordinateur](docs-assets/template-n-desktop.webp)
+
+<img src="docs-assets/template-n-mobile.webp" alt="Modèle N sur téléphone" width="300">
+
+**Modèle O, ordinateur et téléphone**
+
+![Modèle O sur ordinateur](docs-assets/template-o-desktop.webp)
+
+<img src="docs-assets/template-o-mobile.webp" alt="Modèle O sur téléphone" width="300">
 
 **Modèle I, ordinateur et téléphone**
 
@@ -111,11 +146,13 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ![Modèle I en mode sombre](docs-assets/template-i-dark.webp)
 
-Les dix modèles s'adaptent au téléphone, à la tablette (portrait et paysage), se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).
+![Modèle K en mode sombre](docs-assets/template-k-dark.webp)
+
+Les quinze modèles s'adaptent au téléphone, à la tablette (portrait et paysage), se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).
 
 ### Comparer les modèles chez vous
 
-Une commande génère les dix modèles avec l'exemple, en anglais et en français, et ouvre une page de choix :
+Une commande génère les quinze modèles avec l'exemple, en anglais et en français, et ouvre une page de choix :
 
 ```
 uv run build.py --preview-all
@@ -145,7 +182,7 @@ L'installateur peut être relancé autant de fois que vous voulez : si `uv` est 
 |---|---|
 | `install.ps1` / `sh install.sh` | installe uv si besoin, génère `docs/`, ouvre `docs/index.html` |
 | `install.ps1 preview` / `sh install.sh preview` | idem, puis sert le site sur `http://localhost:8000` (Ctrl+C pour arrêter) |
-| `install.ps1 preview-all` / `sh install.sh preview-all` | les dix modèles côte à côte (voir section 1) |
+| `install.ps1 preview-all` / `sh install.sh preview-all` | les quinze modèles côte à côte (voir section 1) |
 | `-Port 8080` / `--port 8080` | utiliser un autre port |
 | `-NoOpen` / `--no-open` | ne pas ouvrir le navigateur |
 
@@ -166,7 +203,7 @@ portfolio/
     images/             photo, logos, vignettes de projets
     files/              CV en PDF, rapports
   content-fr-example/   le même exemple, rédigé en français (à consulter)
-  templates/a … j/      les modèles (inutile d'y toucher)
+  templates/a … o/      les modèles (inutile d'y toucher)
   build.py              le script qui fabrique le site
   install.ps1, install.sh, install.cmd   installateurs
   docs/                 le site généré (ne pas modifier à la main)
@@ -212,7 +249,7 @@ Règles qui évitent 90 % des erreurs :
 | Champ | Obligatoire | Rôle |
 |---|---|---|
 | `language` | non (défaut `en`) | langue de l'interface : `en` ou `fr` (menus, titres de sections, mois, « Aujourd'hui »...) |
-| `template` | non (défaut `a`) | `a` (Editorial), `b` (Cards), `c` (Sidebar), `d` (Bento), `e` (Spotlight), `f` (Terminal), `g` (Resume), `h` (Horizon), `i` (Aurora) ou `j` (Studio) |
+| `template` | non (défaut `a`) | `a` (Editorial), `b` (Cards), `c` (Sidebar), `d` (Bento), `e` (Spotlight), `f` (Terminal), `g` (Resume), `h` (Horizon), `i` (Aurora), `j` (Studio), `k` (Neon), `l` (Pastel), `m` (Swiss), `n` (Journey) ou `o` (Dashboard) |
 | `title` | non | titre de l'onglet du navigateur |
 | `description` | non | phrase affichée par Google et LinkedIn |
 | `base_url` | non | adresse finale du site, par exemple `https://pseudo.github.io/portfolio/` |
@@ -488,7 +525,7 @@ Dans `content/site.yml`, mettez `language: fr` ou `language: en`. Cela traduit l
 
 ### Changer de modèle
 
-Dans `content/site.yml`, mettez `template: a`, `b`, `c`, `d`, `e`, `f`, `g`, `h`, `i` ou `j`, puis relancez le script. Aucun autre changement n'est nécessaire. Pour essayer sans modifier le fichier : `uv run build.py --template c`.
+Dans `content/site.yml`, mettez la lettre du modèle, de `template: a` à `template: o`, puis relancez le script. Aucun autre changement n'est nécessaire. Pour essayer sans modifier le fichier : `uv run build.py --template c`.
 
 ---
 
@@ -531,7 +568,7 @@ Options utiles :
 uv run build.py --template b                                    # essayer un autre modèle
 uv run build.py --language fr                                   # essayer l'autre langue d'interface
 uv run build.py --content content-fr-example --out apercu-fr    # générer l'exemple français ailleurs
-uv run build.py --preview-all                                   # les dix modèles côte à côte
+uv run build.py --preview-all                                   # les quinze modèles côte à côte
 uv run build.py --serve                                         # génère puis sert docs/ sur http://localhost:8000
 ```
 
@@ -596,7 +633,7 @@ Pas de souci : l'aperçu essaie automatiquement les ports suivants (8001, 8002..
 Non. Le dossier `docs/` fonctionne aussi hors ligne. Pour n'utiliser aucune ressource externe, mettez `google_fonts: false`.
 
 **Puis-je modifier la mise en page plus finement ?**
-Oui, dans `templates/<a…j>/static/style.css`. Ce n'est pas nécessaire pour un usage normal.
+Oui, dans `templates/<a…o>/static/style.css`. Ce n'est pas nécessaire pour un usage normal.
 
 **Que sont les dossiers `previews/` et `_qa/` ?**
 `previews/` est créé par `--preview-all` ; `_qa/` contient des essais de vérification. Les deux sont ignorés par Git et peuvent être supprimés.
