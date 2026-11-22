@@ -381,3 +381,25 @@ body { background: var(--page); }
 
 @media (max-width: 860px) { .pa-hero { grid-template-columns: 1fr; padding-top: 40px; } .pa-photo { order: -1; width: min(100%, 240px); justify-self: start; } .about-grid { grid-template-columns: 1fr; } }
 @media (prefers-reduced-motion: reduce) { .pa-blobs i { animation: none; } .tl-card:hover, .project-card:hover, .skill-group:hover, .edu-item:hover { transform: none; } }
+
+
+/* Menu hamburger sur téléphone */
+.menu-toggle { display: none; }
+.menu-toggle .when-open { display: none; }
+.menu-toggle[aria-expanded="true"] .when-open { display: inline-flex; }
+.menu-toggle[aria-expanded="true"] .when-closed { display: none; }
+@media (max-width: 760px) {
+  .menu-toggle { display: grid; place-items: center; flex: none; width: 42px; height: 42px; margin-left: auto; border-radius: 12px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--text); cursor: pointer; }
+  .menu-toggle:hover, .menu-toggle[aria-expanded="true"] { border-color: var(--accent); color: var(--accent); }
+  .section-nav { display: none; order: 5; flex-basis: 100%; width: 100% !important; margin: 0 !important; padding: 4px 0 12px !important; overflow: visible !important; }
+  .section-nav.is-open { display: block; animation: menu-in .2s ease; }
+  .section-nav ul { flex-direction: column; gap: 2px; }
+  .section-nav a { display: block; padding: 12px 14px; border-radius: 10px; font-size: 1rem; white-space: normal; }
+  .section-nav a::after { display: none; }
+  .topbar-inner { flex-wrap: wrap; }
+  .topbar-inner .theme-toggle { margin-left: 0; }
+  .brand { flex: 1 1 auto; min-width: 0; }
+}
+@keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .section-nav.is-open { animation: none; } }

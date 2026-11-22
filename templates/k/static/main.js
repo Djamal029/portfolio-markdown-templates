@@ -55,6 +55,13 @@
       menuButton.setAttribute("aria-expanded", open ? "false" : "true");
       menu.classList.toggle("is-open", !open);
     });
+    // Ferme le menu après un clic sur un lien (pages à une seule section).
+    menu.addEventListener("click", function (event) {
+      if (event.target.closest("a")) {
+        menuButton.setAttribute("aria-expanded", "false");
+        menu.classList.remove("is-open");
+      }
+    });
     document.addEventListener("keydown", function (event) {
       if (event.key === "Escape" && menu.classList.contains("is-open")) {
         menuButton.setAttribute("aria-expanded", "false");

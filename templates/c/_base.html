@@ -32,6 +32,7 @@
   <header class="mobile-bar">
     <div class="mobile-bar-row">
       <a class="mobile-brand" href="{{ root }}index.html">{{ profile.name }}</a>
+      {% if nav %}<button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle><span class="when-closed">{{ icon("menu", 20) }}</span><span class="when-open">{{ icon("close", 20) }}</span><span class="sr-only">{{ t.menu }}</span></button>{% endif %}
       {% if theme.dark_mode %}
       <button class="theme-toggle" type="button" aria-label="{{ t.theme_toggle }}" title="{{ t.theme_toggle }}" data-theme-toggle>
         <span class="when-light">{{ icon("moon") }}</span><span class="when-dark">{{ icon("sun") }}</span>
@@ -39,7 +40,7 @@
       {% endif %}
     </div>
     {% if nav %}
-    <nav class="mobile-nav" aria-label="{{ t.main_nav }}">
+    <nav class="mobile-nav" id="site-menu" aria-label="{{ t.main_nav }}">
       <ul>
         {% for item in nav %}<li><a href="{{ root }}{{ item.href }}" data-spy="{{ item.key }}">{{ item.label }}</a></li>{% endfor %}
       </ul>

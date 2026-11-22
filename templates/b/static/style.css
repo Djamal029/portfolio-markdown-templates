@@ -329,3 +329,8 @@ body {
 
 /* keep decorative glows from widening the page on phones */
 html, body { overflow-x: clip; }
+
+.menu-toggle .when-open { display: none; }
+.menu-toggle[aria-expanded="true"] .when-open { display: inline-flex; }
+.menu-toggle[aria-expanded="true"] .when-closed { display: none; }
+.menu-toggle span { display: inline-flex; }

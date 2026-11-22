@@ -335,3 +335,25 @@ body {
 
 /* keep decorative glows from widening the page on phones */
 html, body { overflow-x: clip; }
+
+
+/* Menu hamburger sur téléphone */
+.menu-toggle { display: none; }
+.menu-toggle .when-open { display: none; }
+.menu-toggle[aria-expanded="true"] .when-open { display: inline-flex; }
+.menu-toggle[aria-expanded="true"] .when-closed { display: none; }
+@media (max-width: 760px) {
+  .menu-toggle { display: grid; place-items: center; flex: none; width: 42px; height: 42px; margin-left: auto; border-radius: 12px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--text); cursor: pointer; }
+  .menu-toggle:hover, .menu-toggle[aria-expanded="true"] { border-color: var(--accent); color: var(--accent); }
+  .mobile-nav { display: none; order: 5; flex-basis: 100%; width: 100% !important; margin: 0 !important; padding: 4px 0 12px !important; overflow: visible !important; }
+  .mobile-nav.is-open { display: block; animation: menu-in .2s ease; }
+  .mobile-nav ul { flex-direction: column; gap: 2px; }
+  .mobile-nav a { display: block; padding: 12px 14px; border-radius: 10px; font-size: 1rem; white-space: normal; }
+  .mobile-nav a::after { display: none; }
+  .mobile-bar-row { flex-wrap: wrap; }
+  .mobile-bar-row .theme-toggle { margin-left: 0; }
+  .mobile-brand { flex: 1 1 auto; min-width: 0; }
+}
+@keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .mobile-nav.is-open { animation: none; } }

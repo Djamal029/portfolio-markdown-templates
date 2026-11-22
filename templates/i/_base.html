@@ -32,7 +32,8 @@
     <div class="topbar-inner">
       <a class="brand" href="{{ root }}index.html">{{ profile.name }}</a>
       {% if nav %}
-      <nav class="section-nav" aria-label="{{ t.main_nav }}">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle><span class="when-closed">{{ icon("menu", 20) }}</span><span class="when-open">{{ icon("close", 20) }}</span><span class="sr-only">{{ t.menu }}</span></button>
+      <nav class="section-nav" id="site-menu" aria-label="{{ t.main_nav }}">
         <ul>
           {% for item in nav %}
           <li><a href="{{ root }}{{ item.href }}" data-spy="{{ item.key }}">{{ item.label }}</a></li>

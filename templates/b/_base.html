@@ -35,7 +35,7 @@
         <span class="brand-name">{{ profile.name }}</span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle>
-        {{ icon("menu", 20) }}<span class="sr-only">{{ t.menu }}</span>
+        <span class="when-closed">{{ icon("menu", 20) }}</span><span class="when-open">{{ icon("close", 20) }}</span><span class="sr-only">{{ t.menu }}</span>
       </button>
       <nav class="site-nav" id="site-menu" aria-label="{{ t.main_nav }}">
         <ul>
