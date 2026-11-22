@@ -89,7 +89,7 @@ a{color:var(--accent)}
 .photo{width:74px;height:74px;border-radius:50%;flex:none;background:radial-gradient(circle at 50% 38%,#c9d3da 0 22%,transparent 23%),radial-gradient(circle at 50% 100%,#c9d3da 0 42%,transparent 43%),linear-gradient(135deg,#7f93a3,#5b6f80);border:3px solid var(--card);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.6)}
 .scene.on .drop{animation:drop .9s both}
 /* scene 5: templates and colours */
-.minis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;width:100%;max-width:460px}
+.minis{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;width:100%;max-width:480px}
 .minis img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--line);box-shadow:0 10px 24px -16px rgba(0,0,0,.6)}
 .scene.on .minis img{animation:pop .45s both}
 .swatches{display:flex;gap:8px;justify-content:center;margin-top:16px}
@@ -170,7 +170,7 @@ dialog::backdrop{background:rgba(5,8,10,.55);backdrop-filter:blur(4px)}
   .scene{grid-template-columns:1fr;gap:14px;padding:22px 20px;align-content:center}
   .stage{aspect-ratio:auto;height:560px}
   .viz{height:auto}
-  .minis{grid-template-columns:repeat(4,1fr)}
+  .minis{grid-template-columns:repeat(5,1fr)}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition:none!important}

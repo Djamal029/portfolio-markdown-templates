@@ -1171,7 +1171,7 @@ def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
             f'<button type="button" class="choose" data-choose="{tpl}" data-label="{label}">Choisir ce modèle</button></div></div></li>'
         )
     page = (ROOT / "outils" / "galerie.html").read_text(encoding="utf-8")
-    for key, value in {"%CARDS%": "\n".join(cards), "%MINIS%": "".join(minis[:8]), "%COUNT%": str(len(TEMPLATES)),
+    for key, value in {"%CARDS%": "\n".join(cards), "%MINIS%": "".join(minis), "%COUNT%": str(len(TEMPLATES)),
                        "%REPO%": PROJECT_REPO, "%OWNER%": PROJECT_OWNER, "%COUNTER_NS%": COUNTER_NAMESPACE}.items():
         page = page.replace(key, value)
     index = out / "index.html"
