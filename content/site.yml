@@ -4,7 +4,7 @@
 language: en
 
 # Modèle visuel : a (Editorial, une page), b (Cards, plusieurs pages), c (Sidebar, profil à gauche)...
-# jusqu'à y. Les 25 modèles sont décrits et visibles dans le README (section 1).
+# jusqu'à z, puis aa à ad. Les 30 modèles sont décrits et visibles dans le README (section 1).
 template: a
 
 # Titre affiché dans l'onglet du navigateur et sur les moteurs de recherche
@@ -45,7 +45,7 @@ dark_mode: true
 
 # ----- Polices ------------------------------------------------------------
 # Choix possibles : inter, plus-jakarta-sans, space-grotesk, ibm-plex-sans,
-# fraunces, lora, source-serif-4, jetbrains-mono, caveat, system. Vide = police du modèle.
+# fraunces, lora, source-serif-4, jetbrains-mono, caveat, playfair-display, vt323, system. Vide = police du modèle.
 fonts:
   heading: ""
   body: ""

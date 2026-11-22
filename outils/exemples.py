@@ -431,3 +431,8 @@ try:
     import exemples_py  # noqa: F401
 except ImportError:
     pass
+
+try:
+    import exemples_zad  # noqa: F401
+except ImportError:
+    pass

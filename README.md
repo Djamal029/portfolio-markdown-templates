@@ -1,4 +1,4 @@
-# Portfolio Markdown : vingt-cinq modèles prêts à l'emploi
+# Portfolio Markdown : trente modèles prêts à l'emploi
 
 Créez votre site portfolio **sans écrire de HTML**. Vous remplissez quelques fichiers texte (Markdown), un script fabrique le site, et GitHub Pages le publie gratuitement.
 
@@ -10,7 +10,7 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ## Sommaire
 
-1. [Les vingt-cinq modèles](#1-les-vingt-cinq-modèles)
+1. [Les trente modèles](#1-les-trente-modèles)
 2. [Démarrage rapide (5 minutes)](#2-démarrage-rapide-5-minutes)
 3. [Ce qu'il faut modifier](#3-ce-quil-faut-modifier)
 4. [Référence des fichiers, champ par champ](#4-référence-des-fichiers-champ-par-champ)
@@ -22,22 +22,27 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ---
 
-## 1. Les vingt-cinq modèles
+## 1. Les trente modèles
 
-**Voir les vingt-cinq modèles en ligne, avec une courte animation explicative (et sa musique) :** https://djamal029.github.io/portfolio-markdown-templates/ . Le bouton « Choisir ce modèle » compte combien de personnes ont choisi chaque modèle et mène au dépôt GitHub. Dans la galerie, chaque modèle montre un profil fictif différent (biostatistique, machine learning, IA, NLP, épidémiologie, data engineering…) ; ces profils viennent de `outils/exemples.py`. Votre propre site n'utilise que le dossier `content/`.
+**Voir les trente modèles en ligne, avec une courte animation explicative (et sa musique) :** https://djamal029.github.io/portfolio-markdown-templates/ . Le bouton « Choisir ce modèle » compte combien de personnes ont choisi chaque modèle et mène au dépôt GitHub. Dans la galerie, chaque modèle montre un profil fictif différent (biostatistique, machine learning, IA, NLP, épidémiologie, data engineering…) ; ces profils viennent de `outils/exemples.py`. Votre propre site n'utilise que le dossier `content/`.
 
 | Modèle | Organisation et style | Palette par défaut | Idéal pour |
 |---|---|---|---|
-| **T « Magazine »** (nouveau) | couverture de magazine : nom géant sur deux lignes, photo en arche, numéros détourés, lettrine, projet à la une | `sunset` | un profil qui aime écrire et raconter |
-| **U « Glass »** (nouveau) | panneaux en verre dépoli sur des halos de couleur qui dérivent, photo cerclée d'un anneau tournant | `indigo` | un profil IA moderne |
-| **V « Brutal »** (nouveau) | néo-brutalisme : bordures épaisses, ombres franches, couleurs vives, étiquettes autocollants | `sunset` | se faire remarquer avec humour |
-| **W « Notebook »** (nouveau) | carnet de notes : papier quadrillé, titres manuscrits, polaroïd scotché, projets épinglés | `forest` | un profil pédagogue, créatif |
-| **X « Cosmos »** (nouveau) | ciel étoilé, orbites autour de la photo, frise en constellation, cartes qui s'illuminent | `graphite` | un profil scientifique, recherche |
-| **Y « Ocean »** (nouveau) | vagues animées sous le titre, photo aux formes organiques, sections en bandes de couleur | `teal` | un profil environnement, climat |
-| **P « Plain »** (nouveau, sobre) | une colonne étroite, titres de section dans la marge, aucune carte ni effet | `graphite` | aller à l'essentiel |
-| **Q « Paper »** (nouveau, sobre) | allure de CV académique : en-tête centré, petites capitales, filets fins | `forest` | un profil recherche ou thèse |
-| **R « Mono »** (nouveau, sobre) | monochrome, lignes de grille visibles, angles droits, fiche technique à côté du nom | `graphite` | un profil technique et minimaliste |
-| **S « Quiet »** (nouveau, sobre) | panneaux blancs arrondis sur fond gris doux, accent discret | `indigo` | un profil professionnel et calme |
+| **Z « Noir »** (nouveau) | toujours sombre, détails dorés, grand nom à empattements, ornements discrets | `sunset` | un profil élégant et posé |
+| **AA « Retro »** (nouveau) | un bureau des années 90 : chaque section est une fenêtre, barre des tâches en bas | `indigo` | un profil geek, jeux vidéo |
+| **AB « Split »** (nouveau) | un grand panneau coloré fixe à gauche avec photo et nom, contenu à droite | `indigo` | une présentation très visuelle |
+| **AC « Newspaper »** (nouveau) | une une de journal : manchette, colonnes, filets, photos en noir et blanc | `graphite` | un profil qui aime raconter |
+| **AD « Kanban »** (nouveau) | un tableau de gestion de projet : listes, cartes, étiquettes de couleur | `teal` | un profil produit, organisé |
+| **T « Magazine »** | couverture de magazine : nom géant sur deux lignes, photo en arche, numéros détourés, lettrine, projet à la une | `sunset` | un profil qui aime écrire et raconter |
+| **U « Glass »** | panneaux en verre dépoli sur des halos de couleur qui dérivent, photo cerclée d'un anneau tournant | `indigo` | un profil IA moderne |
+| **V « Brutal »** | néo-brutalisme : bordures épaisses, ombres franches, couleurs vives, étiquettes autocollants | `sunset` | se faire remarquer avec humour |
+| **W « Notebook »** | carnet de notes : papier quadrillé, titres manuscrits, polaroïd scotché, projets épinglés | `forest` | un profil pédagogue, créatif |
+| **X « Cosmos »** | ciel étoilé, orbites autour de la photo, frise en constellation, cartes qui s'illuminent | `graphite` | un profil scientifique, recherche |
+| **Y « Ocean »** | vagues animées sous le titre, photo aux formes organiques, sections en bandes de couleur | `teal` | un profil environnement, climat |
+| **P « Plain »** (sobre) | une colonne étroite, titres de section dans la marge, aucune carte ni effet | `graphite` | aller à l'essentiel |
+| **Q « Paper »** (sobre) | allure de CV académique : en-tête centré, petites capitales, filets fins | `forest` | un profil recherche ou thèse |
+| **R « Mono »** (sobre) | monochrome, lignes de grille visibles, angles droits, fiche technique à côté du nom | `graphite` | un profil technique et minimaliste |
+| **S « Quiet »** (sobre) | panneaux blancs arrondis sur fond gris doux, accent discret | `indigo` | un profil professionnel et calme |
 | **K « Neon »** | grille rétro en perspective, soleil couchant, titres qui brillent, cartes néon | `indigo` | un profil IA, jeux ou tech qui ose |
 | **L « Pastel »** | formes douces, grandes cartes arrondies de couleurs pastel, étiquettes façon autocollants | `teal` | un profil chaleureux et accessible |
 | **M « Swiss »** | grille stricte, nom géant, filets noirs, une seule couleur d'accent | `sunset` | un profil rigoureux, statistique publique |
@@ -53,6 +58,36 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 | **F « Terminal »** | une page façon terminal, fenêtres avec barre de titre, commandes | `graphite` | un profil développeur ou data |
 | **G « Resume »** | un CV en ligne : feuille avec colonne de contact et compétences, imprimable | `teal` | un CV en ligne |
 | **H « Horizon »** | nom géant, chiffres clés, projets en défilement horizontal | `indigo` | un effet « waouh » |
+
+**Modèle Z, ordinateur et téléphone**
+
+![Modèle Z sur ordinateur](docs-assets/template-z-desktop.webp)
+
+<img src="docs-assets/template-z-mobile.webp" alt="Modèle Z sur téléphone" width="300">
+
+**Modèle AA, ordinateur et téléphone**
+
+![Modèle AA sur ordinateur](docs-assets/template-aa-desktop.webp)
+
+<img src="docs-assets/template-aa-mobile.webp" alt="Modèle AA sur téléphone" width="300">
+
+**Modèle AB, ordinateur et téléphone**
+
+![Modèle AB sur ordinateur](docs-assets/template-ab-desktop.webp)
+
+<img src="docs-assets/template-ab-mobile.webp" alt="Modèle AB sur téléphone" width="300">
+
+**Modèle AC, ordinateur et téléphone**
+
+![Modèle AC sur ordinateur](docs-assets/template-ac-desktop.webp)
+
+<img src="docs-assets/template-ac-mobile.webp" alt="Modèle AC sur téléphone" width="300">
+
+**Modèle AD, ordinateur et téléphone**
+
+![Modèle AD sur ordinateur](docs-assets/template-ad-desktop.webp)
+
+<img src="docs-assets/template-ad-mobile.webp" alt="Modèle AD sur téléphone" width="300">
 
 **Modèle T, ordinateur et téléphone**
 
@@ -222,11 +257,11 @@ Trois modèles visuels sont fournis, avec **le même contenu** : vous passez de 
 
 ![Modèle X en mode sombre](docs-assets/template-x-dark.webp)
 
-Les vingt-cinq modèles s'adaptent au téléphone, à la tablette (portrait et paysage), se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).
+Les trente modèles s'adaptent au téléphone, à la tablette (portrait et paysage), se parcourent au clavier, respectent le réglage « réduire les animations » et fonctionnent hors ligne (seules les polices Google Fonts sont chargées en ligne, et c'est désactivable).
 
 ### Comparer les modèles chez vous
 
-Une commande génère les vingt-cinq modèles avec l'exemple, en anglais et en français, et ouvre une page de choix :
+Une commande génère les trente modèles avec l'exemple, en anglais et en français, et ouvre une page de choix :
 
 ```
 uv run build.py --preview-all
@@ -256,7 +291,7 @@ L'installateur peut être relancé autant de fois que vous voulez : si `uv` est 
 |---|---|
 | `install.ps1` / `sh install.sh` | installe uv si besoin, génère `docs/`, ouvre `docs/index.html` |
 | `install.ps1 preview` / `sh install.sh preview` | idem, puis sert le site sur `http://localhost:8000` (Ctrl+C pour arrêter) |
-| `install.ps1 preview-all` / `sh install.sh preview-all` | les vingt-cinq modèles côte à côte (voir section 1) |
+| `install.ps1 preview-all` / `sh install.sh preview-all` | les trente modèles côte à côte (voir section 1) |
 | `-Port 8080` / `--port 8080` | utiliser un autre port |
 | `-NoOpen` / `--no-open` | ne pas ouvrir le navigateur |
 
@@ -277,7 +312,7 @@ portfolio/
     images/             photo, logos, vignettes de projets
     files/              CV en PDF, rapports
   content-fr-example/   le même exemple, rédigé en français (à consulter)
-  templates/a … y/      les modèles (inutile d'y toucher)
+  templates/a … ad/      les modèles (inutile d'y toucher)
   build.py              le script qui fabrique le site
   install.ps1, install.sh, install.cmd   installateurs
   docs/                 le site généré (ne pas modifier à la main)
@@ -323,7 +358,7 @@ Règles qui évitent 90 % des erreurs :
 | Champ | Obligatoire | Rôle |
 |---|---|---|
 | `language` | non (défaut `en`) | langue de l'interface : `en` ou `fr` (menus, titres de sections, mois, « Aujourd'hui »...) |
-| `template` | non (défaut `a`) | `a` (Editorial), `b` (Cards), `c` (Sidebar), `d` (Bento), `e` (Spotlight), `f` (Terminal), `g` (Resume), `h` (Horizon), `i` (Aurora), `j` (Studio), `k` (Neon), `l` (Pastel), `m` (Swiss), `n` (Journey), `o` (Dashboard), `p` (Plain), `q` (Paper), `r` (Mono), `s` (Quiet), `t` (Magazine), `u` (Glass), `v` (Brutal), `w` (Notebook), `x` (Cosmos) ou `y` (Ocean) |
+| `template` | non (défaut `a`) | `a` (Editorial), `b` (Cards), `c` (Sidebar), `d` (Bento), `e` (Spotlight), `f` (Terminal), `g` (Resume), `h` (Horizon), `i` (Aurora), `j` (Studio), `k` (Neon), `l` (Pastel), `m` (Swiss), `n` (Journey), `o` (Dashboard), `p` (Plain), `q` (Paper), `r` (Mono), `s` (Quiet), `t` (Magazine), `u` (Glass), `v` (Brutal), `w` (Notebook), `x` (Cosmos), `y` (Ocean), `z` (Noir), `aa` (Retro), `ab` (Split), `ac` (Newspaper) ou `ad` (Kanban) |
 | `title` | non | titre de l'onglet du navigateur |
 | `description` | non | phrase affichée par Google et LinkedIn |
 | `base_url` | non | adresse finale du site, par exemple `https://pseudo.github.io/portfolio/` |
@@ -599,7 +634,7 @@ Dans `content/site.yml`, mettez `language: fr` ou `language: en`. Cela traduit l
 
 ### Changer de modèle
 
-Dans `content/site.yml`, mettez la lettre du modèle, de `template: a` à `template: y`, puis relancez le script. Aucun autre changement n'est nécessaire. Pour essayer sans modifier le fichier : `uv run build.py --template c`.
+Dans `content/site.yml`, mettez la lettre du modèle, de `template: a` à `template: z`, puis `aa` à `ad`, puis relancez le script. Aucun autre changement n'est nécessaire. Pour essayer sans modifier le fichier : `uv run build.py --template c`.
 
 ---
 
@@ -642,7 +677,7 @@ Options utiles :
 uv run build.py --template b                                    # essayer un autre modèle
 uv run build.py --language fr                                   # essayer l'autre langue d'interface
 uv run build.py --content content-fr-example --out apercu-fr    # générer l'exemple français ailleurs
-uv run build.py --preview-all                                   # les vingt-cinq modèles côte à côte
+uv run build.py --preview-all                                   # les trente modèles côte à côte
 uv run build.py --serve                                         # génère puis sert docs/ sur http://localhost:8000
 ```
 
@@ -707,7 +742,7 @@ Pas de souci : l'aperçu essaie automatiquement les ports suivants (8001, 8002..
 Non. Le dossier `docs/` fonctionne aussi hors ligne. Pour n'utiliser aucune ressource externe, mettez `google_fonts: false`.
 
 **Puis-je modifier la mise en page plus finement ?**
-Oui, dans `templates/<a…y>/static/style.css`. Ce n'est pas nécessaire pour un usage normal.
+Oui, dans `templates/<lettre>/static/style.css`. Ce n'est pas nécessaire pour un usage normal.
 
 **Que sont les dossiers `previews/` et `_qa/` ?**
 `previews/` est créé par `--preview-all` ; `_qa/` contient des essais de vérification. Les deux sont ignorés par Git et peuvent être supprimés.

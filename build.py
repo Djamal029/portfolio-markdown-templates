@@ -494,6 +494,8 @@ FONTS: dict[str, tuple[str, str, str]] = {
     "source-serif-4": ("Source Serif 4", "opsz,wght@8..60,400;8..60,600;8..60,700", "serif"),
     "jetbrains-mono": ("JetBrains Mono", "wght@400;500;700", "mono"),
     "caveat": ("Caveat", "wght@500;700", "sans"),
+    "playfair-display": ("Playfair Display", "wght@400;500;600;700;800;900", "serif"),
+    "vt323": ("VT323", "wght@400", "mono"),
     "system": ("", "", "sans"),
 }
 FALLBACKS = {
@@ -528,6 +530,11 @@ TEMPLATES = {
     "w": {"name": "Notebook", "palette": "forest", "heading": "caveat", "body": "inter", "mono": "system"},
     "x": {"name": "Cosmos", "palette": "graphite", "heading": "space-grotesk", "body": "inter", "mono": "jetbrains-mono"},
     "y": {"name": "Ocean", "palette": "teal", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
+    "z": {"name": "Noir", "palette": "sunset", "heading": "playfair-display", "body": "inter", "mono": "system"},
+    "aa": {"name": "Retro", "palette": "indigo", "heading": "vt323", "body": "inter", "mono": "system"},
+    "ab": {"name": "Split", "palette": "indigo", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
+    "ac": {"name": "Newspaper", "palette": "graphite", "heading": "playfair-display", "body": "source-serif-4", "mono": "system"},
+    "ad": {"name": "Kanban", "palette": "teal", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
 }
 
 WHITE = (255, 255, 255)
@@ -1072,9 +1079,9 @@ PROJECT_OWNER = "https://github.com/Djamal029"
 # Compteurs publics « combien de personnes ont choisi ce modèle » (service gratuit Abacus, aucune donnée personnelle).
 COUNTER_NAMESPACE = "djamal029-portfolio-markdown-templates"
 # Modèles mis en avant en tête de la galerie.
-GALLERY_FIRST = ["t", "u", "v", "w", "x", "y", "p", "q", "r", "s", "i", "j", "k", "l", "m", "n", "o"]
+GALLERY_FIRST = ["z", "aa", "ab", "ac", "ad", "t", "u", "v", "w", "x", "y", "p", "q", "r", "s", "i", "j", "k", "l", "m", "n", "o"]
 # Modèles marqués « Nouveau » dans la galerie.
-GALLERY_NEW = ["p", "q", "r", "s", "t", "u", "v", "w", "x", "y"]
+GALLERY_NEW = ["z", "aa", "ab", "ac", "ad", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y"]
 # Modèles sobres (badge « Sobre » dans la galerie).
 GALLERY_SOBER = ["p", "q", "r", "s"]
 
@@ -1104,6 +1111,11 @@ PREVIEW_TEXT = {
     "w": "Carnet de notes : papier quadrillé, titres manuscrits, polaroïd scotché, projets épinglés comme des fiches.",
     "x": "Cosmos : ciel étoilé, orbites autour de la photo, frise en constellation, cartes qui s'illuminent.",
     "y": "Océan : grandes vagues animées sous le titre, photo aux formes organiques, sections en bandes de couleur.",
+    "z": "Noir : toujours sombre, détails dorés, grand nom à empattements, ornements discrets. Élégant et calme.",
+    "aa": "Rétro : un bureau des années 90, chaque section est une fenêtre avec sa barre de titre, et une barre des tâches en bas.",
+    "ab": "Split : un grand panneau coloré fixe à gauche avec votre photo et votre nom, le contenu défile à droite.",
+    "ac": "Journal : une une de quotidien, nom en manchette, colonnes, filets et photos en noir et blanc.",
+    "ad": "Kanban : un tableau coloré façon gestion de projet, chaque section est une liste de cartes étiquetées.",
 }
 
 

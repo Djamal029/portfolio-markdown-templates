@@ -1,0 +1,161 @@
+{% extends "_base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_macros.html" import section_head, tags, contact_buttons, project_links %}
+{% block main %}
+{% set n = namespace(i=0) %}
+<section class="np-hero wrap" id="home" aria-labelledby="hero-title">
+  <div class="np-mast"><span>Portfolio · {{ year }}</span><h1 id="hero-title">{{ profile.name }}</h1><span>{{ profile.location }}</span></div>
+  <div class="np-strip"><span>{{ profile.headline }}</span>{% if profile.availability %}<p class="status"><span class="status-dot" aria-hidden="true"></span>{{ profile.availability }}</p>{% endif %}</div>
+  <div class="np-lead">
+    {% if profile.photo %}<figure class="np-photo"><img src="{{ root }}{{ profile.photo }}" alt="{{ profile.photo_alt }}" width="400" height="400"><figcaption>{{ profile.photo_alt }}</figcaption></figure>{% endif %}
+    <div class="np-story">
+      <h2>{{ profile.headline }}</h2>
+      {% if profile.pitch_html %}<div class="pitch">{{ profile.pitch_html | safe }}</div>{% endif %}
+      <div class="actions">
+      {% if profile.cv_pdf %}<a class="btn btn-primary" href="{{ root }}{{ profile.cv_pdf }}" download>{{ icon("download") }}<span>{{ t.download_cv }}</span></a>{% endif %}
+      {% if visible.contact %}<a class="btn {{ 'btn-ghost' if profile.cv_pdf else 'btn-primary' }}" href="#contact">{{ icon("mail") }}<span>{{ t.contact_me }}</span></a>{% endif %}
+      {% if profile.linkedin %}<a class="btn btn-icon" href="{{ profile.linkedin }}" rel="noopener" target="_blank" aria-label="{{ t.linkedin }}">{{ icon("linkedin") }}</a>{% endif %}
+      {% if profile.github %}<a class="btn btn-icon" href="{{ profile.github }}" rel="noopener" target="_blank" aria-label="{{ t.github }}">{{ icon("github") }}</a>{% endif %}
+    </div>
+    </div>
+  </div>
+</section>
+
+{% if visible.about %}{% set n.i = n.i + 1 %}
+<section class="section wrap" id="about" aria-labelledby="about-title">
+  {{ section_head(n.i, "about", t) }}
+  <div class="about-grid">
+    <div class="prose prose-lead">{{ about_html | safe }}</div>
+    <aside class="glance" aria-label="{{ t.at_a_glance }}">
+      <p class="glance-title">{{ t.at_a_glance }}</p>
+      <div class="glance-stats">
+        {% if experiences %}<div><b>{{ experiences | length }}</b><span>{{ t.n_experiences }}</span></div>{% endif %}
+        {% if projects %}<div><b>{{ projects | length }}</b><span>{{ t.n_projects }}</span></div>{% endif %}
+      </div>
+      <dl>
+        {% if profile.location %}<div><dt>{{ t.location }}</dt><dd>{{ profile.location }}</dd></div>{% endif %}
+        {% if profile.availability %}<div><dt>{{ t.availability }}</dt><dd>{{ profile.availability }}</dd></div>{% endif %}
+        {% if profile.email %}<div><dt>{{ t.email }}</dt><dd><a href="mailto:{{ profile.email }}">{{ profile.email }}</a></dd></div>{% endif %}
+      </dl>
+      {% if profile.cv_pdf %}<a class="btn btn-ghost glance-cv" href="{{ root }}{{ profile.cv_pdf }}" download>{{ icon("download") }}<span>{{ t.download_cv }}</span></a>{% endif %}
+    </aside>
+  </div>
+</section>
+{% endif %}
+
+{% if visible.experiences %}{% set n.i = n.i + 1 %}
+<section class="section wrap" id="experiences" aria-labelledby="experiences-title">
+  {{ section_head(n.i, "experiences", t) }}
+  <ol class="timeline">
+    {% for e in experiences %}
+    <li class="tl-item{% if e.is_current %} is-current{% endif %}">
+      <article class="tl-card">
+        <header class="tl-head">
+          {% if e.logo %}<img class="tl-logo" src="{{ root }}{{ e.logo }}" alt="{{ e.logo_alt }}" width="48" height="48" loading="lazy">
+          {% else %}<span class="tl-logo tl-initials" aria-hidden="true">{{ e.org_initials }}</span>{% endif %}
+          <div class="tl-title">
+            <h3>{{ e.title }}</h3>
+            <p class="tl-org">{{ e.organisation }}{% if e.location %}<span class="sep" aria-hidden="true"> · </span><span class="muted">{{ e.location }}</span>{% endif %}</p>
+          </div>
+          <div class="tl-meta">
+            <time{% if e.start_iso %} datetime="{{ e.start_iso }}"{% endif %}>{{ e.dates }}</time>
+            <span class="badge">{{ e.type_label }}</span>
+          </div>
+        </header>
+        {% if e.body_html %}<div class="prose">{{ e.body_html | safe }}</div>{% endif %}
+        {{ tags(e.tags, t) }}
+      </article>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
+
+{% if visible.projects %}{% set n.i = n.i + 1 %}
+<section class="section wrap" id="projects" aria-labelledby="projects-title">
+  {{ section_head(n.i, "projects", t) }}
+  {% if has_academic and has_personal %}
+  <div class="filters" role="group" aria-label="{{ t.filter_label }}" data-filters>
+    <button type="button" class="filter" data-filter="all" aria-pressed="true">{{ t.filter_all }}</button>
+    <button type="button" class="filter" data-filter="academic" aria-pressed="false">{{ t.academic }}</button>
+    <button type="button" class="filter" data-filter="personal" aria-pressed="false">{{ t.personal }}</button>
+  </div>
+  {% endif %}
+  <ul class="project-grid" data-project-grid>
+    {% for p in projects %}
+    <li class="project-card" data-category="{{ p.category }}">
+      {% if p.thumbnail %}
+      <div class="project-thumb"><img src="{{ root }}{{ p.thumbnail }}" alt="{{ p.thumbnail_alt }}" width="1200" height="675" loading="lazy"></div>
+      {% endif %}
+      <div class="project-body">
+        <p class="project-meta"><span>{{ p.category_label }}</span><span aria-hidden="true">·</span><time datetime="{{ p.date_iso }}">{{ p.date_label }}</time>{% if p.featured %}<span class="star">{{ t.featured }}</span>{% endif %}</p>
+        <h3>{% if p.has_page %}<a href="{{ root }}projects/{{ p.slug }}.html">{{ p.title }}</a>{% else %}{{ p.title }}{% endif %}</h3>
+        <p class="project-summary">{{ p.summary }}</p>
+        {{ tags(p.tags, t) }}
+        <div class="project-links">
+          {% if p.has_page %}<a class="link-more" href="{{ root }}projects/{{ p.slug }}.html">{{ t.view_project }} {{ icon("arrow-right", 16) }}<span class="sr-only">: {{ p.title }}</span></a>{% endif %}
+          {{ project_links(p, t, root) }}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  <p class="empty-filter" hidden data-empty>{{ t.no_projects }}</p>
+</section>
+{% endif %}
+
+{% if visible.skills %}{% set n.i = n.i + 1 %}
+<section class="section wrap" id="skills" aria-labelledby="skills-title">
+  {{ section_head(n.i, "skills", t) }}
+  {% if skills.intro_html %}<div class="prose">{{ skills.intro_html | safe }}</div>{% endif %}
+  <div class="skills-grid">
+    {% for g in skills.groups %}
+    <div class="skill-group">
+      <h3>{{ g.name }}</h3>
+      {% if g.has_levels %}
+      <ul class="skill-levels">
+        {% for s in g.entries %}
+        <li>
+          <span class="skill-name">{{ s.name }}</span>
+          {% if s.level %}<span class="dots" role="img" aria-label="{{ t.level.format(n=s.level) }}">{% for k in range(5) %}<span class="dot{% if k < s.level %} on{% endif %}"></span>{% endfor %}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <ul class="tags tags-lg">{% for s in g.entries %}<li>{{ s.name }}</li>{% endfor %}</ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+{% if visible.education %}{% set n.i = n.i + 1 %}
+<section class="section wrap" id="education" aria-labelledby="education-title">
+  {{ section_head(n.i, "education", t) }}
+  <ol class="edu-list">
+    {% for e in education %}
+    <li class="edu-item">
+      <p class="edu-dates">{{ e.dates }}</p>
+      <div>
+        <h3>{{ e.degree }}</h3>
+        <p class="edu-school">{{ e.school }}{% if e.location %}<span class="muted"> · {{ e.location }}</span>{% endif %}</p>
+        {% if e.details_html %}<div class="prose small">{{ e.details_html | safe }}</div>{% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+{% endif %}
+
+{% if visible.contact %}{% set n.i = n.i + 1 %}
+<section class="section wrap contact" id="contact" aria-labelledby="contact-title">
+  {{ section_head(n.i, "contact", t) }}
+  <div class="contact-panel">
+    <p class="contact-title">{{ t.contact_title }}</p>
+    <p class="contact-text">{{ t.contact_text }}</p>
+    <div class="actions">{{ contact_buttons(profile, t, root) }}</div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}
