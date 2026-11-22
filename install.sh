@@ -4,7 +4,7 @@
 # Utilisation (dans le dossier du portfolio) :
 #   sh install.sh               installe uv si besoin, génère le site, l'ouvre
 #   sh install.sh preview       idem, puis sert docs/ sur http://localhost:8000
-#   sh install.sh preview-all   les 3 modèles côte à côte sur http://localhost:8000
+#   sh install.sh preview-all   tous les modèles côte à côte sur http://localhost:8000
 #
 # Options : --port 8080 (autre port), --no-open (ne pas ouvrir le navigateur), --no-serve (pas de serveur local).
 # Le script peut être relancé autant de fois que nécessaire : il ne réinstalle rien d'inutile.

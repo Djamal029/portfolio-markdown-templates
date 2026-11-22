@@ -40,7 +40,7 @@ li{margin:4px 0}
 </head>
 <body>
 <div class="layout">
-<nav class="toc" aria-label="Sommaire"><p>Sommaire</p><ul><li><a href="#1-les-dix-modèles">1. Les dix modèles</a></li><li><a href="#2-démarrage-rapide-5-minutes">2. Démarrage rapide (5 minutes)</a></li><li><a href="#3-ce-quil-faut-modifier">3. Ce qu'il faut modifier</a></li><li><a href="#4-référence-des-fichiers-champ-par-champ">4. Référence des fichiers, champ par champ</a></li><li><a href="#5-couleurs-et-polices">5. Couleurs et polices</a></li><li><a href="#6-tâches-courantes">6. Tâches courantes</a></li><li><a href="#7-voir-le-site-sur-son-ordinateur">7. Voir le site sur son ordinateur</a></li><li><a href="#8-publier-sur-github-pages">8. Publier sur GitHub Pages</a></li><li><a href="#9-faq">9. FAQ</a></li><li><a href="#licence">Licence</a></li></ul></nav>
+<nav class="toc" aria-label="Sommaire"><p>Sommaire</p><ul><li><a href="#1-les-dix-modèles">1. Les dix modèles</a></li><li><a href="#2-démarrage-rapide-5-minutes">2. Démarrage rapide (5 minutes)</a></li><li><a href="#3-ce-quil-faut-modifier">3. Ce qu'il faut modifier</a></li><li><a href="#4-référence-des-fichiers-champ-par-champ">4. Référence des fichiers, champ par champ</a></li><li><a href="#5-couleurs-et-polices">5. Couleurs et polices</a></li><li><a href="#6-tâches-courantes">6. Tâches courantes</a></li><li><a href="#7-voir-le-site-sur-son-ordinateur">7. Voir le site sur son ordinateur</a></li><li><a href="#8-publier-sur-github-pages">8. Publier sur GitHub Pages</a></li><li><a href="#9-faq">9. FAQ</a></li><li><a href="#conseils--github-et-vos-projets">Conseils : GitHub et vos projets</a></li><li><a href="#licence">Licence</a></li></ul></nav>
 <main>
 <h1 id="portfolio-markdown--dix-modèles-prêts-à-lemploi">Portfolio Markdown : dix modèles prêts à l'emploi</h1>
 <p>Créez votre site portfolio <strong>sans écrire de HTML</strong>. Vous remplissez quelques fichiers texte (Markdown), un script fabrique le site, et GitHub Pages le publie gratuitement.</p>
@@ -747,6 +747,17 @@ Oui, dans <code>templates/&lt;a…j&gt;/static/style.css</code>. Ce n'est pas n�
 <code>previews/</code> est créé par <code>--preview-all</code> ; <code>_qa/</code> contient des essais de vérification. Les deux sont ignorés par Git et peuvent être supprimés.</p>
 <hr />
 <p>Licence MIT. Les images d'exemple sont des créations neutres libres de droits, à remplacer par les vôtres.</p>
+<hr />
+<h2 id="conseils--github-et-vos-projets">Conseils : GitHub et vos projets</h2>
+<p><strong>Mettez tous vos projets data sur GitHub</strong> (projets de cours, projets personnels, analyses, tableaux de bord) :</p>
+<ul>
+<li>c'est une preuve : un recruteur lit votre code et vos résultats au lieu de vous croire sur parole ;</li>
+<li>ça montre votre façon de travailler (code propre, historique Git, tests, documentation) ;</li>
+<li>un bon README (contexte, données, méthode, résultats, une image) se lit en cinq minutes ;</li>
+<li>dans chaque fichier de <code>content/projects/</code>, la ligne <code>repo:</code> ajoute un bouton « Code » vers le dépôt ;</li>
+<li>épinglez vos 4 à 6 meilleurs dépôts sur votre profil GitHub.</li>
+</ul>
+<p><strong>Pas encore de projet public ? Ne mettez pas le lien vers votre profil GitHub.</strong> Un profil vide fait plus de mal que pas de lien : le recruteur clique, ne trouve rien et doute du reste. Laissez <code>github: ""</code> dans <code>content/profile.md</code> : le modèle masque alors tous les boutons GitHub. Ajoutez le lien dès que vous avez deux ou trois dépôts propres. Même règle pour les liens « Code » des projets.</p>
 <hr />
 <h2 id="licence">Licence</h2>
 <p>Projet libre sous <a href="LICENSE">licence MIT</a> : vous pouvez l'utiliser, le modifier et le partager gratuitement, y compris pour votre portfolio personnel. Seule condition : garder la mention de copyright du fichier <code>LICENSE</code> dans les copies du code. Si le projet vous aide, une étoile sur le dépôt et un abonnement à <a href="https://github.com/Djamal029">Djamal029</a> font plaisir.</p>

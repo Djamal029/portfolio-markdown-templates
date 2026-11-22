@@ -4,7 +4,7 @@
   Utilisation (dans le dossier du portfolio) :
     powershell -ExecutionPolicy Bypass -File install.ps1               installe uv si besoin, génère le site, l'ouvre
     powershell -ExecutionPolicy Bypass -File install.ps1 preview       idem, puis sert docs/ sur http://localhost:8000
-    powershell -ExecutionPolicy Bypass -File install.ps1 preview-all   les 3 modèles côte à côte sur http://localhost:8000
+    powershell -ExecutionPolicy Bypass -File install.ps1 preview-all   tous les modèles côte à côte sur http://localhost:8000
 
   Options : -Port 8080 (autre port), -NoOpen (ne pas ouvrir le navigateur), -NoServe (pas de serveur local).
   Le script peut être relancé autant de fois que nécessaire : il ne réinstalle rien d'inutile.

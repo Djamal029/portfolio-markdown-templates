@@ -607,6 +607,20 @@ Licence MIT. Les images d'exemple sont des créations neutres libres de droits, 
 
 ---
 
+## Conseils : GitHub et vos projets
+
+**Mettez tous vos projets data sur GitHub** (projets de cours, projets personnels, analyses, tableaux de bord) :
+
+- c'est une preuve : un recruteur lit votre code et vos résultats au lieu de vous croire sur parole ;
+- ça montre votre façon de travailler (code propre, historique Git, tests, documentation) ;
+- un bon README (contexte, données, méthode, résultats, une image) se lit en cinq minutes ;
+- dans chaque fichier de `content/projects/`, la ligne `repo:` ajoute un bouton « Code » vers le dépôt ;
+- épinglez vos 4 à 6 meilleurs dépôts sur votre profil GitHub.
+
+**Pas encore de projet public ? Ne mettez pas le lien vers votre profil GitHub.** Un profil vide fait plus de mal que pas de lien : le recruteur clique, ne trouve rien et doute du reste. Laissez `github: ""` dans `content/profile.md` : le modèle masque alors tous les boutons GitHub. Ajoutez le lien dès que vous avez deux ou trois dépôts propres. Même règle pour les liens « Code » des projets.
+
+---
+
 ## Licence
 
 Projet libre sous [licence MIT](LICENSE) : vous pouvez l'utiliser, le modifier et le partager gratuitement, y compris pour votre portfolio personnel. Seule condition : garder la mention de copyright du fichier `LICENSE` dans les copies du code. Si le projet vous aide, une étoile sur le dépôt et un abonnement à [Djamal029](https://github.com/Djamal029) font plaisir.

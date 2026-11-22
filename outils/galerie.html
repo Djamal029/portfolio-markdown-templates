@@ -142,6 +142,15 @@ a{color:var(--accent)}
 .how div{padding:20px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
 .how b{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(var(--accent-rgb),.14);color:var(--accent);margin-bottom:8px}
 .how h3{margin:0 0 4px;font-size:1.05rem}.how p{margin:0;color:var(--muted);font-size:.93rem}
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.tip-card{padding:22px 24px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.tip-card h3{margin:0 0 8px;font-size:1.1rem;display:flex;align-items:center;gap:10px}
+.tip-card h3 .icon{width:22px;height:22px;color:var(--accent)}
+.tip-card p{margin:0 0 10px;color:var(--muted);font-size:.95rem}
+.tip-card ul{margin:0;padding-left:1.1em;color:var(--muted);font-size:.95rem}
+.tip-card li{margin-bottom:6px}.tip-card li::marker{color:var(--accent)}
+.tip-card.warn{border-color:rgba(var(--accent2-rgb),.45);background:linear-gradient(180deg,rgba(var(--accent2-rgb),.07),var(--card) 60%)}
+.tip-card.warn h3 .icon{color:var(--accent2)}
 code{font:500 .85em ui-monospace,Consolas,monospace;background:color-mix(in srgb,var(--card) 60%,var(--line));padding:1px 6px;border-radius:6px}
 footer{margin:64px 0 0;padding:24px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;display:flex;flex-wrap:wrap;gap:8px 24px;justify-content:space-between}
 
@@ -239,6 +248,31 @@ dialog::backdrop{background:rgba(5,8,10,.55);backdrop-filter:blur(4px)}
     <div><b>1</b><h3>Copier le modèle</h3><p>Bouton « Use this template » sur GitHub (ou « Download ZIP »).</p></div>
     <div><b>2</b><h3>Remplir vos fichiers</h3><p>Modifiez les fichiers <code>.md</code> du dossier <code>content/</code> et mettez vos images dans <code>content/images/</code>.</p></div>
     <div><b>3</b><h3>Publier</h3><p>Activez GitHub Pages : votre site est en ligne, et se met à jour à chaque modification.</p></div>
+  </div>
+
+  <div class="section-title" id="conseils"><h2>Conseils avant de publier</h2><p>Un portfolio sert à prouver ce que vous savez faire.</p></div>
+  <div class="tips">
+    <div class="tip-card">
+      <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>Mettez tous vos projets data sur GitHub</h3>
+      <p>Projets de cours, projets personnels, analyses, tableaux de bord : chacun peut devenir un dépôt public.</p>
+      <ul>
+        <li><b>C'est une preuve.</b> Un recruteur lit votre code, vos notebooks et vos résultats au lieu de vous croire sur parole.</li>
+        <li><b>Ça montre votre façon de travailler</b> : code propre, historique Git, tests, documentation. C'est souvent ce qui départage deux profils.</li>
+        <li><b>Le README fait vitrine</b> : contexte, données, méthode, résultats et une image. Cinq minutes de lecture suffisent pour comprendre le projet.</li>
+        <li><b>Vos projets se relient au portfolio</b> : dans chaque fichier projet, la ligne <code>repo:</code> ajoute un bouton « Code ».</li>
+        <li><b>Épinglez vos 4 à 6 meilleurs dépôts</b> sur votre profil GitHub pour qu'on les voie en premier.</li>
+      </ul>
+    </div>
+    <div class="tip-card warn">
+      <h3><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Pas encore de projet sur GitHub ? Ne mettez pas le lien</h3>
+      <p>Un bouton GitHub qui mène à un profil vide fait plus de mal que pas de bouton du tout.</p>
+      <ul>
+        <li><b>Un profil vide envoie un mauvais signal</b> : le recruteur clique, ne trouve rien, et se demande si les projets du portfolio existent vraiment.</li>
+        <li><b>Laissez simplement la ligne vide</b> dans <code>content/profile.md</code> : <code>github: ""</code>. Le modèle masque alors tous les boutons GitHub.</li>
+        <li><b>Ajoutez le lien plus tard</b>, dès que vous avez deux ou trois dépôts propres avec un vrai README.</li>
+        <li><b>Même règle pour les liens « Code »</b> des projets : n'en mettez que s'ils pointent vers un dépôt public et lisible.</li>
+      </ul>
+    </div>
   </div>
 
   <footer><span>Projet libre sous <a href="%REPO%/blob/main/LICENSE" target="_blank" rel="noopener">licence MIT</a> · créé par <a href="%OWNER%" target="_blank" rel="noopener">Djamal TOE</a></span><span><a href="%REPO%" target="_blank" rel="noopener">Code source sur GitHub</a></span></footer>
