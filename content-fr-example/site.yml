@@ -3,7 +3,8 @@
 # Langue de l'interface (menus, titres, mois) : en ou fr
 language: fr
 
-# Modèle visuel : a (Editorial, une page), b (Cards, plusieurs pages) ou c (Sidebar, profil à gauche)
+# Modèle visuel : a (Editorial, une page), b (Cards, plusieurs pages), c (Sidebar, profil à gauche)...
+# jusqu'à y. Les 25 modèles sont décrits et visibles dans le README (section 1).
 template: b
 
 # Titre affiché dans l'onglet du navigateur et sur les moteurs de recherche

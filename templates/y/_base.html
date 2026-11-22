@@ -1,0 +1,62 @@
+{% from "_icons.html" import icon %}
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ title }}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{{ description }}{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ self.title() }}">
+  <meta property="og:description" content="{{ self.description() }}">
+  {% if site.base_url %}
+  <link rel="canonical" href="{{ site.base_url }}{{ '' if page.file == 'index.html' else page.file }}">
+  <meta property="og:url" content="{{ site.base_url }}{{ '' if page.file == 'index.html' else page.file }}">
+  {% if profile.photo %}<meta property="og:image" content="{{ site.base_url }}{{ profile.photo }}">{% endif %}
+  {% endif %}
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="{{ root }}favicon.svg" type="image/svg+xml">
+  <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  {% if theme.fonts_url %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ theme.fonts_url }}">
+  {% endif %}
+  <link rel="stylesheet" href="{{ root }}assets/style.css">
+  <style>{{ theme.css | safe }}</style>
+</head>
+<body class="tpl-y">
+  <a class="skip-link" href="#main">{{ t.skip_link }}</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="{{ root }}index.html">{{ profile.name }}</a>
+      {% if nav %}
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu" data-menu-toggle><span class="when-closed">{{ icon("menu", 20) }}</span><span class="when-open">{{ icon("close", 20) }}</span><span class="sr-only">{{ t.menu }}</span></button>
+      <nav class="section-nav" id="site-menu" aria-label="{{ t.main_nav }}">
+        <ul>
+          {% for item in nav %}
+          <li><a href="{{ root }}{{ item.href }}" data-spy="{{ item.key }}">{{ item.label }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+      {% endif %}
+      {% if theme.dark_mode %}
+      <button class="theme-toggle" type="button" aria-label="{{ t.theme_toggle }}" title="{{ t.theme_toggle }}" data-theme-toggle>
+        <span class="when-light">{{ icon("moon") }}</span><span class="when-dark">{{ icon("sun") }}</span>
+      </button>
+      {% endif %}
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+    {% block main %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <p>&copy; {{ year }} {{ profile.name }}</p>
+    </div>
+  </footer>
+  <script src="{{ root }}assets/main.js" defer></script>
+</body>
+</html>

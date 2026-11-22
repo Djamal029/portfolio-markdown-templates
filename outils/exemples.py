@@ -426,3 +426,8 @@ try:
     import exemples_ko  # noqa: F401
 except ImportError:
     pass
+
+try:
+    import exemples_py  # noqa: F401
+except ImportError:
+    pass

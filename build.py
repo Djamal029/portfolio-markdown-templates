@@ -493,6 +493,7 @@ FONTS: dict[str, tuple[str, str, str]] = {
     "lora": ("Lora", "wght@400;500;600;700", "serif"),
     "source-serif-4": ("Source Serif 4", "opsz,wght@8..60,400;8..60,600;8..60,700", "serif"),
     "jetbrains-mono": ("JetBrains Mono", "wght@400;500;700", "mono"),
+    "caveat": ("Caveat", "wght@500;700", "sans"),
     "system": ("", "", "sans"),
 }
 FALLBACKS = {
@@ -517,6 +518,16 @@ TEMPLATES = {
     "m": {"name": "Swiss", "palette": "sunset", "heading": "inter", "body": "inter", "mono": "system"},
     "n": {"name": "Journey", "palette": "forest", "heading": "source-serif-4", "body": "inter", "mono": "system"},
     "o": {"name": "Dashboard", "palette": "graphite", "heading": "ibm-plex-sans", "body": "ibm-plex-sans", "mono": "jetbrains-mono"},
+    "p": {"name": "Plain", "palette": "graphite", "heading": "inter", "body": "inter", "mono": "system"},
+    "q": {"name": "Paper", "palette": "forest", "heading": "source-serif-4", "body": "source-serif-4", "mono": "system"},
+    "r": {"name": "Mono", "palette": "graphite", "heading": "ibm-plex-sans", "body": "ibm-plex-sans", "mono": "jetbrains-mono"},
+    "s": {"name": "Quiet", "palette": "indigo", "heading": "inter", "body": "inter", "mono": "system"},
+    "t": {"name": "Magazine", "palette": "sunset", "heading": "fraunces", "body": "inter", "mono": "system"},
+    "u": {"name": "Glass", "palette": "indigo", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
+    "v": {"name": "Brutal", "palette": "sunset", "heading": "space-grotesk", "body": "inter", "mono": "system"},
+    "w": {"name": "Notebook", "palette": "forest", "heading": "caveat", "body": "inter", "mono": "system"},
+    "x": {"name": "Cosmos", "palette": "graphite", "heading": "space-grotesk", "body": "inter", "mono": "jetbrains-mono"},
+    "y": {"name": "Ocean", "palette": "teal", "heading": "plus-jakarta-sans", "body": "inter", "mono": "system"},
 }
 
 WHITE = (255, 255, 255)
@@ -1061,9 +1072,11 @@ PROJECT_OWNER = "https://github.com/Djamal029"
 # Compteurs publics « combien de personnes ont choisi ce modèle » (service gratuit Abacus, aucune donnée personnelle).
 COUNTER_NAMESPACE = "djamal029-portfolio-markdown-templates"
 # Modèles mis en avant en tête de la galerie.
-GALLERY_FIRST = ["i", "j", "k", "l", "m", "n", "o"]
+GALLERY_FIRST = ["t", "u", "v", "w", "x", "y", "p", "q", "r", "s", "i", "j", "k", "l", "m", "n", "o"]
 # Modèles marqués « Nouveau » dans la galerie.
-GALLERY_NEW = ["k", "l", "m", "n", "o"]
+GALLERY_NEW = ["p", "q", "r", "s", "t", "u", "v", "w", "x", "y"]
+# Modèles sobres (badge « Sobre » dans la galerie).
+GALLERY_SOBER = ["p", "q", "r", "s"]
 
 PREVIEW_TEXT = {
     "a": "Une seule longue page, menu de sections collé en haut, titres à empattements.",
@@ -1081,6 +1094,16 @@ PREVIEW_TEXT = {
     "m": "Style suisse : grille stricte, typographie géante, filets noirs et une seule couleur d'accent, très lisible.",
     "n": "Un parcours : un chemin qui relie formation, expériences et projets, étape après étape, comme un récit.",
     "o": "Un tableau de bord : barre latérale, indicateurs clés, compétences en graphique, expériences en frise de type Gantt.",
+    "p": "Sobre : une colonne étroite, titres de section dans la marge, aucune carte ni effet. L'essentiel, rien d'autre.",
+    "q": "Sobre : l'allure d'un CV académique, en-tête centré, petites capitales, filets fins, police à empattements.",
+    "r": "Sobre : monochrome, lignes de grille visibles, angles droits, une fiche technique à côté du nom.",
+    "s": "Sobre : panneaux blancs arrondis sur un fond gris doux, photo à gauche, couleur d'accent discrète.",
+    "t": "Couverture de magazine : nom géant en deux lignes, photo en arche, numéros détourés, lettrine, projet à la une.",
+    "u": "Verre dépoli : panneaux translucides sur des halos de couleur qui dérivent lentement, photo cerclée d'un anneau tournant.",
+    "v": "Néo-brutalisme : bordures épaisses, ombres franches, couleurs vives et étiquettes façon autocollants.",
+    "w": "Carnet de notes : papier quadrillé, titres manuscrits, polaroïd scotché, projets épinglés comme des fiches.",
+    "x": "Cosmos : ciel étoilé, orbites autour de la photo, frise en constellation, cartes qui s'illuminent.",
+    "y": "Océan : grandes vagues animées sous le titre, photo aux formes organiques, sections en bandes de couleur.",
 }
 
 
@@ -1175,6 +1198,7 @@ def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
         label = f"{tpl.upper()} « {info['name']} »"
         cards.append(
             f'<li class="card{" is-new" if tpl in GALLERY_NEW else ""}">{img}<div class="body"><h3><span class="letter">{tpl.upper()}</span>{info["name"]}'
+            f'{"<span class=\"sober\">Sobre</span>" if tpl in GALLERY_SOBER else ""}'
             f'{"<span class=\"new\">Nouveau</span>" if tpl in GALLERY_NEW else ""}</h3>'
             f'<p>{PREVIEW_TEXT[tpl]}</p>'
             f'<p class="count" data-count="template-{tpl}" hidden><span></span></p>'
