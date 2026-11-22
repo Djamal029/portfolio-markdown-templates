@@ -126,12 +126,16 @@ a{color:var(--accent)}
 .shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}
 .card:hover .shot img{transform:scale(1.04)}
 .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
-.body h3{margin:0;font-size:1.15rem;display:flex;align-items:center;gap:8px}
+.body h3{margin:0;font-size:1.15rem;display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;min-width:0}
+.tname{min-width:0;overflow-wrap:anywhere}
+.badges{margin-left:auto;display:inline-flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
+.badges:empty{display:none}
+.badges .sober,.badges .new{margin-left:0;white-space:nowrap}
 .sober{margin-left:auto;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid currentColor;opacity:.75}
 .sober + .new{margin-left:6px}
 .new{margin-left:auto;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;padding:3px 9px;border-radius:999px;background:linear-gradient(135deg,var(--cta1),var(--cta2))}
 .card.is-new{border-color:rgba(219,39,119,.45);box-shadow:0 20px 50px -30px rgba(219,39,119,.6)}
-.letter{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:8px;font-size:.85rem;color:var(--on);background:var(--accent)}
+.letter{display:inline-grid;place-items:center;min-width:26px;padding:0 5px;height:26px;border-radius:8px;font-size:.85rem;color:var(--on);background:var(--accent)}
 .body p{margin:0;color:var(--muted);font-size:.93rem}
 .count{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:700;color:var(--accent2);margin-top:4px}
 .links{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:12px}
@@ -273,9 +277,14 @@ dialog::backdrop{background:rgba(5,8,10,.55);backdrop-filter:blur(4px)}
     </div>
   </section>
 
-  <div class="section-title" id="modeles"><h2>Les %COUNT% modèles</h2><p>Chaque modèle montre un profil fictif différent : biostatistique, IA, climat, NLP, data engineering…</p></div>
+  <div class="section-title" id="modeles"><h2>Les %COUNT_MAIN% modèles pour étudiants</h2><p>Chaque modèle montre un profil fictif différent : biostatistique, IA, climat, NLP, data engineering…</p></div>
   <ul class="grid">
 %CARDS%
+  </ul>
+
+  <div class="section-title" id="chercheurs"><h2>Pour les chercheurs et doctorants : %COUNT_RESEARCH% modèles</h2><p>Les mêmes bases, plus une section <b>Publications</b> : chaque article dans un cadre avec ses auteurs (votre nom en gras), la revue, un résumé dépliable et les liens vers l'article, le PDF, le DOI, le code, les diapositives et la référence BibTeX à copier.</p></div>
+  <ul class="grid">
+%CARDS_RESEARCH%
   </ul>
 
   <div class="section-title"><h2>Démarrer en 3 étapes</h2></div>

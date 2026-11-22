@@ -1373,7 +1373,7 @@ def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
     shutil.rmtree(tmp, ignore_errors=True)
     thumbs = out / "thumbs"
     thumbs.mkdir(exist_ok=True)
-    cards, minis = [], []
+    cards, research_cards, minis = [], [], []
     order = GALLERY_FIRST + [t for t in TEMPLATES if t not in GALLERY_FIRST]
     for tpl in order:
         info = TEMPLATES[tpl]
@@ -1384,10 +1384,11 @@ def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
             img = f'<div class="shot"><img src="thumbs/{shot.name}" alt="Capture du modèle {tpl.upper()}" loading="lazy"></div>'
             minis.append(f'<img src="thumbs/{shot.name}" alt="" style="animation-delay:{0.25 + 0.12 * len(minis):.2f}s">')
         label = f"{tpl.upper()} « {info['name']} »"
-        cards.append(
-            f'<li class="card{" is-new" if tpl in GALLERY_NEW else ""}">{img}<div class="body"><h3><span class="letter">{tpl.upper()}</span>{info["name"]}'
-            f'{"<span class=\"sober\">Sobre</span>" if tpl in GALLERY_SOBER else ""}{"<span class=\"sober\">Chercheur</span>" if tpl in GALLERY_RESEARCH else ""}'
-            f'{"<span class=\"new\">Nouveau</span>" if tpl in GALLERY_NEW else ""}</h3>'
+        target = research_cards if tpl in GALLERY_RESEARCH else cards
+        target.append(
+            f'<li class="card{" is-new" if tpl in GALLERY_NEW else ""}">{img}<div class="body"><h3><span class="letter">{tpl.upper()}</span><span class="tname">{info["name"]}</span><span class="badges">'
+            f'{"<span class=\"sober\">Sobre</span>" if tpl in GALLERY_SOBER else ""}'
+            f'{"<span class=\"new\">Nouveau</span>" if tpl in GALLERY_NEW else ""}</span></h3>'
             f'<p>{PREVIEW_TEXT[tpl]}</p>'
             f'<p class="count" data-count="template-{tpl}" hidden><span></span></p>'
             f'<div class="links"><a href="{tpl}/en/index.html">Voir · EN</a>'
@@ -1395,7 +1396,8 @@ def preview_all(serve: bool, port: int, open_browser: bool = True) -> int:
             f'<button type="button" class="choose" data-choose="{tpl}" data-label="{label}">Choisir ce modèle</button></div></div></li>'
         )
     page = (ROOT / "outils" / "galerie.html").read_text(encoding="utf-8")
-    for key, value in {"%CARDS%": "\n".join(cards), "%MINIS%": "".join(minis), "%COUNT%": str(len(TEMPLATES)),
+    for key, value in {"%CARDS_RESEARCH%": "\n".join(research_cards), "%COUNT_RESEARCH%": str(len(research_cards)), "%COUNT_MAIN%": str(len(cards)),
+                       "%CARDS%": "\n".join(cards), "%MINIS%": "".join(minis), "%COUNT%": str(len(TEMPLATES)),
                        "%REPO%": PROJECT_REPO, "%OWNER%": PROJECT_OWNER, "%COUNTER_NS%": COUNTER_NAMESPACE}.items():
         page = page.replace(key, value)
     index = out / "index.html"
